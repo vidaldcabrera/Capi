@@ -142,9 +142,33 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		225860232DF85CCD0024E3E8 /* Tools */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Tools;
+			sourceTree = "<group>";
+		};
+		225860242DF85CE10024E3E8 /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Entity;
+			sourceTree = "<group>";
+		};
+		225860252DF85CEF0024E3E8 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
 		2C6CF7412DE4B65200771D67 = {
 			isa = PBXGroup;
 			children = (
+				225860252DF85CEF0024E3E8 /* Components */,
+				225860242DF85CE10024E3E8 /* Entity */,
+				225860232DF85CCD0024E3E8 /* Tools */,
 				2C6CF7462DE4B65200771D67 /* Capi Shared */,
 				2C6CF7512DE4B65700771D67 /* Capi iOS */,
 				2C6CF7622DE4B65700771D67 /* Capi watchOS App */,
