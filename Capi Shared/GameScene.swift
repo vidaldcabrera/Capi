@@ -1,8 +1,11 @@
 import SpriteKit
+import GameplayKit
 
 class GameScene: SKScene {
 
     var chao: SKTileMapNode?
+    var entities: [GKEntity] = []
+
 
     class func newGameScene() -> GameScene {
         guard let scene = SKScene(fileNamed: "GameScene") as? GameScene else {
@@ -25,6 +28,15 @@ class GameScene: SKScene {
             physicsBody.isDynamic = false
             chao.physicsBody = physicsBody
         }
+        
+        
+        let spiderTexture = SKTexture(imageNamed: "_CrouchTransition")
+        let spider = SpiderEntity(texture: spiderTexture, position: CGPoint(x: 0.5, y: 0.5))
+         
+        if let node = spider.component(ofType: RenderComponent.self)?.node {
+            addChild(node)
+        }
+        entities.append(spider)
 
         
     }
@@ -33,7 +45,12 @@ class GameScene: SKScene {
         setUpScene()
     }
 
-    override func update(_ currentTime: TimeInterval) {}
+    override func update(_ currentTime: TimeInterval) {
+        for entity in entities {
+            entity.update(deltaTime: currentTime)
+        }
+    }
+
 }
 
 extension GameScene {
