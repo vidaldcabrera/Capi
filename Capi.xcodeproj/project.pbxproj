@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		2258602A2DF85E2D0024E3E8 /* EnimiesEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225860292DF85E2D0024E3E8 /* EnimiesEntity.swift */; };
 		2258602C2DF85E3D0024E3E8 /* TrapEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2258602B2DF85E3D0024E3E8 /* TrapEntity.swift */; };
-		2258602E2DF85E4F0024E3E8 /* PlayerEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2258602D2DF85E4F0024E3E8 /* PlayerEntity.swift */; };
 		225860302DF85E650024E3E8 /* DinoSEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2258602F2DF85E650024E3E8 /* DinoSEntity.swift */; };
 		225860322DF85E760024E3E8 /* ItensEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225860312DF85E760024E3E8 /* ItensEntity.swift */; };
 		225860342DF85EA50024E3E8 /* SnakeEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225860332DF85EA50024E3E8 /* SnakeEntity.swift */; };
@@ -20,7 +19,7 @@
 		2258603F2DF85F2D0024E3E8 /* DropComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2258603E2DF85F2D0024E3E8 /* DropComponent.swift */; };
 		225860412DF85F3B0024E3E8 /* UpdateComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225860402DF85F3B0024E3E8 /* UpdateComponent.swift */; };
 		225860432DF85F520024E3E8 /* PlayerInputComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225860422DF85F520024E3E8 /* PlayerInputComponent.swift */; };
-		225860452DF85F690024E3E8 /* MovimentComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225860442DF85F690024E3E8 /* MovimentComponent.swift */; };
+		225860452DF85F690024E3E8 /* MovementComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225860442DF85F690024E3E8 /* MovementComponent.swift */; };
 		225860472DF85F840024E3E8 /* TextComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225860462DF85F840024E3E8 /* TextComponent.swift */; };
 		225860492DF85F970024E3E8 /* HUDComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225860482DF85F970024E3E8 /* HUDComponent.swift */; };
 		2258604B2DF85FA60024E3E8 /* SkillsComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2258604A2DF85FA60024E3E8 /* SkillsComponent.swift */; };
@@ -38,64 +37,28 @@
 		2C6CF7552DE4B65700771D67 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6CF7542DE4B65700771D67 /* GameViewController.swift */; };
 		2C6CF7582DE4B65700771D67 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2C6CF7562DE4B65700771D67 /* Main.storyboard */; };
 		2C6CF75B2DE4B65700771D67 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2C6CF7592DE4B65700771D67 /* LaunchScreen.storyboard */; };
-		2C6CF75F2DE4B65700771D67 /* Capi.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 2C6CF75E2DE4B65700771D67 /* Capi.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		2C6CF76B2DE4B65700771D67 /* Capi Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 2C6CF76A2DE4B65700771D67 /* Capi Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		2C6CF78B2DE4B65700771D67 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6CF78A2DE4B65700771D67 /* AppDelegate.swift */; };
 		2C6CF78D2DE4B65700771D67 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6CF78C2DE4B65700771D67 /* GameViewController.swift */; };
 		2C6CF7902DE4B65700771D67 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2C6CF78E2DE4B65700771D67 /* Main.storyboard */; };
-		2C6CF7922DE4B65800771D67 /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = 2C6CF7472DE4B65200771D67 /* Actions.sks */; };
-		2C6CF7932DE4B65800771D67 /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = 2C6CF7472DE4B65200771D67 /* Actions.sks */; };
-		2C6CF7942DE4B65800771D67 /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = 2C6CF7472DE4B65200771D67 /* Actions.sks */; };
 		2C6CF7952DE4B65800771D67 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 2C6CF7482DE4B65200771D67 /* GameScene.sks */; };
-		2C6CF7962DE4B65800771D67 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 2C6CF7482DE4B65200771D67 /* GameScene.sks */; };
-		2C6CF7972DE4B65800771D67 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 2C6CF7482DE4B65200771D67 /* GameScene.sks */; };
 		2C6CF7982DE4B65800771D67 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 2C6CF7482DE4B65200771D67 /* GameScene.sks */; };
 		2C6CF7992DE4B65800771D67 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6CF7492DE4B65200771D67 /* GameScene.swift */; };
-		2C6CF79A2DE4B65800771D67 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6CF7492DE4B65200771D67 /* GameScene.swift */; };
-		2C6CF79B2DE4B65800771D67 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6CF7492DE4B65200771D67 /* GameScene.swift */; };
 		2C6CF79C2DE4B65800771D67 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6CF7492DE4B65200771D67 /* GameScene.swift */; };
 		2C6CF79D2DE4B65800771D67 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2C6CF74A2DE4B65700771D67 /* Assets.xcassets */; };
-		2C6CF79E2DE4B65800771D67 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2C6CF74A2DE4B65700771D67 /* Assets.xcassets */; };
-		2C6CF79F2DE4B65800771D67 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2C6CF74A2DE4B65700771D67 /* Assets.xcassets */; };
 		2C6CF7A02DE4B65800771D67 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2C6CF74A2DE4B65700771D67 /* Assets.xcassets */; };
+		2C8C1DD42DF9D392005603D6 /* SKEntityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C8C1DD32DF9D392005603D6 /* SKEntityManager.swift */; };
+		2C8C1DD52DF9D392005603D6 /* SKEntityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C8C1DD32DF9D392005603D6 /* SKEntityManager.swift */; };
+		2C8C1DD72DFB19F7005603D6 /* PlayerEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C8C1DD62DFB19F7005603D6 /* PlayerEntity.swift */; };
+		2C8C1DD82DFB19F7005603D6 /* PlayerEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C8C1DD62DFB19F7005603D6 /* PlayerEntity.swift */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		2C6CF7602DE4B65700771D67 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 2C6CF7422DE4B65200771D67 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 2C6CF75D2DE4B65700771D67;
-			remoteInfo = "Capi watchOS App";
-		};
-		2C6CF76C2DE4B65700771D67 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 2C6CF7422DE4B65200771D67 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 2C6CF7692DE4B65700771D67;
-			remoteInfo = "Capi watchOS App Extension";
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXCopyFilesBuildPhase section */
-		2C6CF7A62DE4B65800771D67 /* Embed App Extensions */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 13;
-			files = (
-				2C6CF76B2DE4B65700771D67 /* Capi Extension.appex in Embed App Extensions */,
-			);
-			name = "Embed App Extensions";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		2C6CF7AA2DE4B65800771D67 /* Embed Watch Content */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
 			dstSubfolderSpec = 16;
 			files = (
-				2C6CF75F2DE4B65700771D67 /* Capi.app in Embed Watch Content */,
 			);
 			name = "Embed Watch Content";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -105,7 +68,6 @@
 /* Begin PBXFileReference section */
 		225860292DF85E2D0024E3E8 /* EnimiesEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnimiesEntity.swift; sourceTree = "<group>"; };
 		2258602B2DF85E3D0024E3E8 /* TrapEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrapEntity.swift; sourceTree = "<group>"; };
-		2258602D2DF85E4F0024E3E8 /* PlayerEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerEntity.swift; sourceTree = "<group>"; };
 		2258602F2DF85E650024E3E8 /* DinoSEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DinoSEntity.swift; sourceTree = "<group>"; };
 		225860312DF85E760024E3E8 /* ItensEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItensEntity.swift; sourceTree = "<group>"; };
 		225860332DF85EA50024E3E8 /* SnakeEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnakeEntity.swift; sourceTree = "<group>"; };
@@ -116,7 +78,7 @@
 		2258603E2DF85F2D0024E3E8 /* DropComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropComponent.swift; sourceTree = "<group>"; };
 		225860402DF85F3B0024E3E8 /* UpdateComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateComponent.swift; sourceTree = "<group>"; };
 		225860422DF85F520024E3E8 /* PlayerInputComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerInputComponent.swift; sourceTree = "<group>"; };
-		225860442DF85F690024E3E8 /* MovimentComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovimentComponent.swift; sourceTree = "<group>"; };
+		225860442DF85F690024E3E8 /* MovementComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovementComponent.swift; sourceTree = "<group>"; };
 		225860462DF85F840024E3E8 /* TextComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextComponent.swift; sourceTree = "<group>"; };
 		225860482DF85F970024E3E8 /* HUDComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HUDComponent.swift; sourceTree = "<group>"; };
 		2258604A2DF85FA60024E3E8 /* SkillsComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillsComponent.swift; sourceTree = "<group>"; };
@@ -130,7 +92,6 @@
 		2258605B2DF860970024E3E8 /* SKTileMapNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKTileMapNode.swift; sourceTree = "<group>"; };
 		2258605E2DF860DB0024E3E8 /* SceneTile.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = SceneTile.sks; sourceTree = "<group>"; };
 		225860602DF860F40024E3E8 /* scene1.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = scene1.sks; sourceTree = "<group>"; };
-		2C6CF7472DE4B65200771D67 /* Actions.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Actions.sks; sourceTree = "<group>"; };
 		2C6CF7482DE4B65200771D67 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
 		2C6CF7492DE4B65200771D67 /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
 		2C6CF74A2DE4B65700771D67 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -139,32 +100,17 @@
 		2C6CF7542DE4B65700771D67 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		2C6CF7572DE4B65700771D67 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		2C6CF75A2DE4B65700771D67 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		2C6CF75E2DE4B65700771D67 /* Capi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Capi.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		2C6CF76A2DE4B65700771D67 /* Capi Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Capi Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
-		2C6CF7782DE4B65700771D67 /* Capi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Capi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C6CF7882DE4B65700771D67 /* Capi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Capi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C6CF78A2DE4B65700771D67 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2C6CF78C2DE4B65700771D67 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		2C6CF78F2DE4B65700771D67 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		2C6CF7912DE4B65800771D67 /* Capi_macOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Capi_macOS.entitlements; sourceTree = "<group>"; };
+		2C8C1DD32DF9D392005603D6 /* SKEntityManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKEntityManager.swift; sourceTree = "<group>"; };
+		2C8C1DD62DFB19F7005603D6 /* PlayerEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerEntity.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		2C6CF74C2DE4B65700771D67 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		2C6CF7672DE4B65700771D67 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		2C6CF7752DE4B65700771D67 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -186,12 +132,13 @@
 			children = (
 				225860292DF85E2D0024E3E8 /* EnimiesEntity.swift */,
 				2258602B2DF85E3D0024E3E8 /* TrapEntity.swift */,
-				2258602D2DF85E4F0024E3E8 /* PlayerEntity.swift */,
 				2258602F2DF85E650024E3E8 /* DinoSEntity.swift */,
 				225860312DF85E760024E3E8 /* ItensEntity.swift */,
 				225860332DF85EA50024E3E8 /* SnakeEntity.swift */,
 				225860352DF85EC00024E3E8 /* GroundEntity.swift */,
 				225860372DF85EE20024E3E8 /* SceneEntity.swift */,
+				2C8C1DD32DF9D392005603D6 /* SKEntityManager.swift */,
+				2C8C1DD62DFB19F7005603D6 /* PlayerEntity.swift */,
 			);
 			name = Entities;
 			sourceTree = "<group>";
@@ -204,7 +151,7 @@
 				2258603E2DF85F2D0024E3E8 /* DropComponent.swift */,
 				225860402DF85F3B0024E3E8 /* UpdateComponent.swift */,
 				225860422DF85F520024E3E8 /* PlayerInputComponent.swift */,
-				225860442DF85F690024E3E8 /* MovimentComponent.swift */,
+				225860442DF85F690024E3E8 /* MovementComponent.swift */,
 				225860462DF85F840024E3E8 /* TextComponent.swift */,
 				225860482DF85F970024E3E8 /* HUDComponent.swift */,
 				2258604A2DF85FA60024E3E8 /* SkillsComponent.swift */,
@@ -253,7 +200,6 @@
 		2C6CF7462DE4B65200771D67 /* Capi Shared */ = {
 			isa = PBXGroup;
 			children = (
-				2C6CF7472DE4B65200771D67 /* Actions.sks */,
 				2C6CF7482DE4B65200771D67 /* GameScene.sks */,
 				2C6CF7492DE4B65200771D67 /* GameScene.swift */,
 				2C6CF74A2DE4B65700771D67 /* Assets.xcassets */,
@@ -265,9 +211,6 @@
 			isa = PBXGroup;
 			children = (
 				2C6CF74F2DE4B65700771D67 /* Capi.app */,
-				2C6CF75E2DE4B65700771D67 /* Capi.app */,
-				2C6CF76A2DE4B65700771D67 /* Capi Extension.appex */,
-				2C6CF7782DE4B65700771D67 /* Capi.app */,
 				2C6CF7882DE4B65700771D67 /* Capi.app */,
 			);
 			name = Products;
@@ -310,62 +253,10 @@
 			buildRules = (
 			);
 			dependencies = (
-				2C6CF7612DE4B65700771D67 /* PBXTargetDependency */,
 			);
 			name = "Capi iOS";
 			productName = "Capi iOS";
 			productReference = 2C6CF74F2DE4B65700771D67 /* Capi.app */;
-			productType = "com.apple.product-type.application";
-		};
-		2C6CF75D2DE4B65700771D67 /* Capi watchOS App */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 2C6CF7A72DE4B65800771D67 /* Build configuration list for PBXNativeTarget "Capi watchOS App" */;
-			buildPhases = (
-				2C6CF75C2DE4B65700771D67 /* Resources */,
-				2C6CF7A62DE4B65800771D67 /* Embed App Extensions */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				2C6CF76D2DE4B65700771D67 /* PBXTargetDependency */,
-			);
-			name = "Capi watchOS App";
-			productName = "Capi watchOS App";
-			productReference = 2C6CF75E2DE4B65700771D67 /* Capi.app */;
-			productType = "com.apple.product-type.application.watchapp2";
-		};
-		2C6CF7692DE4B65700771D67 /* Capi watchOS App Extension */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 2C6CF7A32DE4B65800771D67 /* Build configuration list for PBXNativeTarget "Capi watchOS App Extension" */;
-			buildPhases = (
-				2C6CF7662DE4B65700771D67 /* Sources */,
-				2C6CF7672DE4B65700771D67 /* Frameworks */,
-				2C6CF7682DE4B65700771D67 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = "Capi watchOS App Extension";
-			productName = "Capi watchOS App Extension";
-			productReference = 2C6CF76A2DE4B65700771D67 /* Capi Extension.appex */;
-			productType = "com.apple.product-type.watchkit2-extension";
-		};
-		2C6CF7772DE4B65700771D67 /* Capi tvOS */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 2C6CF7AE2DE4B65800771D67 /* Build configuration list for PBXNativeTarget "Capi tvOS" */;
-			buildPhases = (
-				2C6CF7742DE4B65700771D67 /* Sources */,
-				2C6CF7752DE4B65700771D67 /* Frameworks */,
-				2C6CF7762DE4B65700771D67 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = "Capi tvOS";
-			productName = "Capi tvOS";
-			productReference = 2C6CF7782DE4B65700771D67 /* Capi.app */;
 			productType = "com.apple.product-type.application";
 		};
 		2C6CF7872DE4B65700771D67 /* Capi macOS */ = {
@@ -398,15 +289,6 @@
 					2C6CF74E2DE4B65700771D67 = {
 						CreatedOnToolsVersion = 13.2;
 					};
-					2C6CF75D2DE4B65700771D67 = {
-						CreatedOnToolsVersion = 13.2;
-					};
-					2C6CF7692DE4B65700771D67 = {
-						CreatedOnToolsVersion = 13.2;
-					};
-					2C6CF7772DE4B65700771D67 = {
-						CreatedOnToolsVersion = 13.2;
-					};
 					2C6CF7872DE4B65700771D67 = {
 						CreatedOnToolsVersion = 13.2;
 					};
@@ -426,9 +308,6 @@
 			projectRoot = "";
 			targets = (
 				2C6CF74E2DE4B65700771D67 /* Capi iOS */,
-				2C6CF75D2DE4B65700771D67 /* Capi watchOS App */,
-				2C6CF7692DE4B65700771D67 /* Capi watchOS App Extension */,
-				2C6CF7772DE4B65700771D67 /* Capi tvOS */,
 				2C6CF7872DE4B65700771D67 /* Capi macOS */,
 			);
 		};
@@ -443,35 +322,8 @@
 				2C6CF7582DE4B65700771D67 /* Main.storyboard in Resources */,
 				2258605F2DF860DB0024E3E8 /* SceneTile.sks in Resources */,
 				225860612DF860F40024E3E8 /* scene1.sks in Resources */,
-				2C6CF7922DE4B65800771D67 /* Actions.sks in Resources */,
 				2C6CF75B2DE4B65700771D67 /* LaunchScreen.storyboard in Resources */,
 				2C6CF79D2DE4B65800771D67 /* Assets.xcassets in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		2C6CF75C2DE4B65700771D67 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				2C6CF79E2DE4B65800771D67 /* Assets.xcassets in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		2C6CF7682DE4B65700771D67 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				2C6CF7962DE4B65800771D67 /* GameScene.sks in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		2C6CF7762DE4B65700771D67 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				2C6CF7972DE4B65800771D67 /* GameScene.sks in Resources */,
-				2C6CF7932DE4B65800771D67 /* Actions.sks in Resources */,
-				2C6CF79F2DE4B65800771D67 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -482,7 +334,6 @@
 				2C6CF7902DE4B65700771D67 /* Main.storyboard in Resources */,
 				2C6CF7982DE4B65800771D67 /* GameScene.sks in Resources */,
 				2C6CF7A02DE4B65800771D67 /* Assets.xcassets in Resources */,
-				2C6CF7942DE4B65800771D67 /* Actions.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -494,6 +345,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				225860532DF85FEB0024E3E8 /* BuyComponent.swift in Sources */,
+				2C8C1DD72DFB19F7005603D6 /* PlayerEntity.swift in Sources */,
 				225860512DF85FDE0024E3E8 /* AnimationComponent.swift in Sources */,
 				2258605C2DF860970024E3E8 /* SKTileMapNode.swift in Sources */,
 				225860382DF85EE20024E3E8 /* SceneEntity.swift in Sources */,
@@ -501,6 +353,7 @@
 				2C6CF7992DE4B65800771D67 /* GameScene.swift in Sources */,
 				2258603D2DF85F1F0024E3E8 /* CollisionComponent.swift in Sources */,
 				2258602A2DF85E2D0024E3E8 /* EnimiesEntity.swift in Sources */,
+				2C8C1DD42DF9D392005603D6 /* SKEntityManager.swift in Sources */,
 				225860552DF85FFF0024E3E8 /* PhysicsComponent.swift in Sources */,
 				225860492DF85F970024E3E8 /* HUDComponent.swift in Sources */,
 				225860342DF85EA50024E3E8 /* SnakeEntity.swift in Sources */,
@@ -510,10 +363,9 @@
 				2258603F2DF85F2D0024E3E8 /* DropComponent.swift in Sources */,
 				2C6CF7552DE4B65700771D67 /* GameViewController.swift in Sources */,
 				225860302DF85E650024E3E8 /* DinoSEntity.swift in Sources */,
-				225860452DF85F690024E3E8 /* MovimentComponent.swift in Sources */,
+				225860452DF85F690024E3E8 /* MovementComponent.swift in Sources */,
 				225860322DF85E760024E3E8 /* ItensEntity.swift in Sources */,
 				225860472DF85F840024E3E8 /* TextComponent.swift in Sources */,
-				2258602E2DF85E4F0024E3E8 /* PlayerEntity.swift in Sources */,
 				2258603B2DF85F0C0024E3E8 /* ProjectTilesComponent.swift in Sources */,
 				225860412DF85F3B0024E3E8 /* UpdateComponent.swift in Sources */,
 				225860572DF860190024E3E8 /* LightComponent.swift in Sources */,
@@ -524,46 +376,19 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		2C6CF7662DE4B65700771D67 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				2C6CF79A2DE4B65800771D67 /* GameScene.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		2C6CF7742DE4B65700771D67 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				2C6CF79B2DE4B65800771D67 /* GameScene.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		2C6CF7842DE4B65700771D67 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2C8C1DD82DFB19F7005603D6 /* PlayerEntity.swift in Sources */,
 				2C6CF79C2DE4B65800771D67 /* GameScene.swift in Sources */,
 				2C6CF78D2DE4B65700771D67 /* GameViewController.swift in Sources */,
+				2C8C1DD52DF9D392005603D6 /* SKEntityManager.swift in Sources */,
 				2C6CF78B2DE4B65700771D67 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		2C6CF7612DE4B65700771D67 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 2C6CF75D2DE4B65700771D67 /* Capi watchOS App */;
-			targetProxy = 2C6CF7602DE4B65700771D67 /* PBXContainerItemProxy */;
-		};
-		2C6CF76D2DE4B65700771D67 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 2C6CF7692DE4B65700771D67 /* Capi watchOS App Extension */;
-			targetProxy = 2C6CF76C2DE4B65700771D67 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		2C6CF7562DE4B65700771D67 /* Main.storyboard */ = {
@@ -704,112 +529,6 @@
 			};
 			name = Release;
 		};
-		2C6CF7A42DE4B65800771D67 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "Capi watchOS App Extension/Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = "Capi watchOS App Extension";
-				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				INFOPLIST_KEY_WKExtensionDelegateClassName = "$(PRODUCT_MODULE_NAME).ExtensionDelegate";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@executable_path/../../Frameworks",
-				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = vidal.Capi.watchkitapp.watchkitextension;
-				PRODUCT_NAME = "Capi Extension";
-				SDKROOT = watchos;
-				SKIP_INSTALL = YES;
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 8.3;
-			};
-			name = Debug;
-		};
-		2C6CF7A52DE4B65800771D67 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "Capi watchOS App Extension/Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = "Capi watchOS App Extension";
-				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				INFOPLIST_KEY_WKExtensionDelegateClassName = "$(PRODUCT_MODULE_NAME).ExtensionDelegate";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@executable_path/../../Frameworks",
-				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = vidal.Capi.watchkitapp.watchkitextension;
-				PRODUCT_NAME = "Capi Extension";
-				SDKROOT = watchos;
-				SKIP_INSTALL = YES;
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 4;
-				VALIDATE_PRODUCT = YES;
-				WATCHOS_DEPLOYMENT_TARGET = 8.3;
-			};
-			name = Release;
-		};
-		2C6CF7A82DE4B65800771D67 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				GENERATE_INFOPLIST_FILE = YES;
-				IBSC_MODULE = Capi_Extension;
-				INFOPLIST_KEY_CFBundleDisplayName = Capi;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = vidal.Capi;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = vidal.Capi.watchkitapp;
-				PRODUCT_NAME = Capi;
-				SDKROOT = watchos;
-				SKIP_INSTALL = YES;
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 8.3;
-			};
-			name = Debug;
-		};
-		2C6CF7A92DE4B65800771D67 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				GENERATE_INFOPLIST_FILE = YES;
-				IBSC_MODULE = Capi_Extension;
-				INFOPLIST_KEY_CFBundleDisplayName = Capi;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = vidal.Capi;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = vidal.Capi.watchkitapp;
-				PRODUCT_NAME = Capi;
-				SDKROOT = watchos;
-				SKIP_INSTALL = YES;
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 4;
-				VALIDATE_PRODUCT = YES;
-				WATCHOS_DEPLOYMENT_TARGET = 8.3;
-			};
-			name = Release;
-		};
 		2C6CF7AC2DE4B65800771D67 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -817,6 +536,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = ZTK9F54WV3;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
@@ -846,6 +566,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = ZTK9F54WV3;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
@@ -865,59 +586,6 @@
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-			};
-			name = Release;
-		};
-		2C6CF7AF2DE4B65800771D67 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = "tvOS App Icon & Top Shelf Image";
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UIUserInterfaceStyle = Automatic;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = vidal.Capi;
-				PRODUCT_NAME = Capi;
-				SDKROOT = appletvos;
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 3;
-				TVOS_DEPLOYMENT_TARGET = 15.2;
-			};
-			name = Debug;
-		};
-		2C6CF7B02DE4B65800771D67 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = "tvOS App Icon & Top Shelf Image";
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UIUserInterfaceStyle = Automatic;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = vidal.Capi;
-				PRODUCT_NAME = Capi;
-				SDKROOT = appletvos;
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 3;
-				TVOS_DEPLOYMENT_TARGET = 15.2;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -988,38 +656,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		2C6CF7A32DE4B65800771D67 /* Build configuration list for PBXNativeTarget "Capi watchOS App Extension" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				2C6CF7A42DE4B65800771D67 /* Debug */,
-				2C6CF7A52DE4B65800771D67 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		2C6CF7A72DE4B65800771D67 /* Build configuration list for PBXNativeTarget "Capi watchOS App" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				2C6CF7A82DE4B65800771D67 /* Debug */,
-				2C6CF7A92DE4B65800771D67 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		2C6CF7AB2DE4B65800771D67 /* Build configuration list for PBXNativeTarget "Capi iOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2C6CF7AC2DE4B65800771D67 /* Debug */,
 				2C6CF7AD2DE4B65800771D67 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		2C6CF7AE2DE4B65800771D67 /* Build configuration list for PBXNativeTarget "Capi tvOS" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				2C6CF7AF2DE4B65800771D67 /* Debug */,
-				2C6CF7B02DE4B65800771D67 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

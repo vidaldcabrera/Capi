@@ -1,43 +1,30 @@
-//
-//  GameViewController.swift
-//  Capi iOS
-//
-//  Created by Aluno 48 on 26/05/25.
-//
-
-import UIKit
 import SpriteKit
 import GameplayKit
 
 class GameViewController: UIViewController {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let scene = GameScene.newGameScene()
-
-        // Present the scene
-        let skView = self.view as! SKView
-        skView.presentScene(scene)
-        
-        skView.ignoresSiblingOrder = true
-        skView.showsFPS = true
-        skView.showsNodeCount = true
-    }
-
-    override var shouldAutorotate: Bool {
-        return true
-    }
-
-    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
-        if UIDevice.current.userInterfaceIdiom == .phone {
-            return .allButUpsideDown
-        } else {
-            return .all
+        if let scene = GKScene(fileNamed: "GameScene") {
+            
+            if let sceneNode = scene.rootNode as! GameScene? {
+                sceneNode.scaleMode = .aspectFill
+                
+                // Present the scene
+                if let view = self.view as! SKView? {
+                    view.presentScene(sceneNode)
+                    
+                    view.ignoresSiblingOrder = true
+                    
+                    #if DEBUG
+                    view.showsPhysics = true
+                    view.showsFPS = true
+                    #endif
+                }
+            }
         }
+        
     }
-
-    override var prefersStatusBarHidden: Bool {
-        return true
-    }
+    
 }
