@@ -36,6 +36,9 @@ class FlyingState: GKState{
     override func update(deltaTime seconds: TimeInterval) {
             let direction: CGFloat = goingRight ? 1 : -1
         mosquito.spriteNode.position.x += direction * speed * CGFloat(seconds)
+        
+        mosquito.spriteNode.xScale = goingRight ? -1.0 : 1.0
+
             
         if mosquito.spriteNode.position.x >= rightLimit {
                 goingRight = false

@@ -27,11 +27,13 @@ class MosquitoEntity: GKEntity {
         
         // Configuração da física
         spriteNode.physicsBody = SKPhysicsBody(rectangleOf: spriteNode.size)
-        spriteNode.physicsBody?.isDynamic = true
+        spriteNode.physicsBody?.isDynamic = false
         spriteNode.physicsBody?.affectedByGravity = false
-        spriteNode.physicsBody?.categoryBitMask = 0x1 << 1
-        spriteNode.physicsBody?.contactTestBitMask = 0xFFFFFFFF // Ajusta depois conforme os contatos desejados
-        spriteNode.physicsBody?.collisionBitMask = 0
+        
+        spriteNode.physicsBody?.categoryBitMask = PhysicsCategory.mosquito
+        spriteNode.physicsBody?.contactTestBitMask = PhysicsCategory.player
+        spriteNode.physicsBody?.collisionBitMask = PhysicsCategory.chao
+
         
         // Estados
         let fly = FlyingState(mosquito: self, leftLimit: position.x - 50, rightLimit: position.x + 50)

@@ -40,6 +40,8 @@
 		286FD3AF2E01AF0C00BE6BEA /* FlyingState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28AD55452E0060A900062B28 /* FlyingState.swift */; };
 		286FD3B02E01AF1100BE6BEA /* AttackingState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 286FD3AA2E01988000BE6BEA /* AttackingState.swift */; };
 		286FD3B12E01AF1400BE6BEA /* DyingState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 286FD3AC2E019BD800BE6BEA /* DyingState.swift */; };
+		289F16282E02ED260073C874 /* PhysicsComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225860542DF85FFF0024E3E8 /* PhysicsComponent.swift */; };
+		289F16292E02F1100073C874 /* PlayerEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2258602D2DF85E4F0024E3E8 /* PlayerEntity.swift */; };
 		28AD55432E004ACA00062B28 /* MosquitoEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28AD55422E004ACA00062B28 /* MosquitoEntity.swift */; };
 		28AD55462E0060A900062B28 /* FlyingState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28AD55452E0060A900062B28 /* FlyingState.swift */; };
 		2C6CF7532DE4B65700771D67 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6CF7522DE4B65700771D67 /* AppDelegate.swift */; };
@@ -420,7 +422,9 @@
 				2C6CF78D2DE4B65700771D67 /* GameViewController.swift in Sources */,
 				286FD3B12E01AF1400BE6BEA /* DyingState.swift in Sources */,
 				2C6CF78B2DE4B65700771D67 /* AppDelegate.swift in Sources */,
+				289F16292E02F1100073C874 /* PlayerEntity.swift in Sources */,
 				286FD3AF2E01AF0C00BE6BEA /* FlyingState.swift in Sources */,
+				289F16282E02ED260073C874 /* PhysicsComponent.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
