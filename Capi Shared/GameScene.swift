@@ -7,6 +7,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var entities: [GKEntity] = []
     var player: SKSpriteNode!
     
+    private var lastTapTime: TimeInterval = 0
+    private let doubleTapMaxDelay: TimeInterval = 0.3
+    
     
     class func newGameScene() -> GameScene {
         guard let scene = SKScene(fileNamed: "GameScene") as? GameScene else {
@@ -166,7 +169,7 @@ extension GameScene {
     
     func createSpider() {
         let spiderTexture = SKTexture(imageNamed: "hat-man-idle-1")
-        let spider = SpiderEntity(texture: spiderTexture, position: CGPoint(x: -30, y: -330))
+        let spider = SpiderEntity(texture: spiderTexture, position: CGPoint(x: -30, y: -300))
         
         if let node = spider.component(ofType: RenderComponent.self)?.node {
             node.name = "spider"
@@ -176,19 +179,48 @@ extension GameScene {
         entities.append(spider)
     }
 
-    
+    func performPlayerAttack() {
+        let attackNode = SKSpriteNode(color: .clear, size: CGSize(width: 30, height: 30))
+        attackNode.position = CGPoint(x: player.position.x, y: player.position.y)
+        attackNode.name = "playerAttack"
+
+        let physicsBody = SKPhysicsBody(rectangleOf: attackNode.size)
+        physicsBody.affectedByGravity = false
+        physicsBody.isDynamic = true
+        physicsBody.categoryBitMask = PhysicsCategory.playerAttack
+        physicsBody.contactTestBitMask = PhysicsCategory.spider
+        physicsBody.collisionBitMask = 0
+
+        attackNode.physicsBody = physicsBody
+
+        let removeAfterDelay = SKAction.sequence([
+            SKAction.wait(forDuration: 0.2),
+            SKAction.removeFromParent()
+        ])
+        attackNode.run(removeAfterDelay)
+
+        addChild(attackNode)
+    }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         guard let touch = touches.first else { return }
         let location = touch.location(in: self)
+        let currentTime = CACurrentMediaTime()
         
-        if location.x < frame.midX {
-            // Tocou na metade esquerda da tela -> move para a esquerda
-            player.physicsBody?.applyImpulse(CGVector(dx: -20, dy: 0))
+        if currentTime - lastTapTime < doubleTapMaxDelay {
+            // Detectou duplo clique -> ataque
+            performPlayerAttack()
         } else {
-            // Tocou na metade direita da tela -> move para a direita
-            player.physicsBody?.applyImpulse(CGVector(dx: 20, dy: 0))
+            // Movimento normal
+            if location.x < frame.midX {
+                player.physicsBody?.applyImpulse(CGVector(dx: -20, dy: 0))
+            } else {
+                player.physicsBody?.applyImpulse(CGVector(dx: 20, dy: 0))
+            }
         }
+        
+        lastTapTime = currentTime
     }
+
     
 }

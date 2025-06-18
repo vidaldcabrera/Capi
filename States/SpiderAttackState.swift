@@ -20,9 +20,9 @@ class SpiderAttackState: GKState {
         // print(seconds)
         elapsedTime += 1
         if let movement = entity.component(ofType: MovementComponent.self) {
-            movement.spiderAttackMovement(deltaTime: seconds)
+            movement.spiderAttackMovement()
         }
-        if elapsedTime >= 25 { // Aqui vai depender do nosso sprite
+        if elapsedTime >= 15 { // Aqui vai depender do nosso sprite
             elapsedTime = 0
             // volta para o estado de movimento
             entity.component(ofType: StateMachineComponent.self)?

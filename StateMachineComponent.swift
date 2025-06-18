@@ -14,7 +14,7 @@ class StateMachineComponent: GKComponent {
     override func update(deltaTime seconds: TimeInterval) {
         stateMachine.update(deltaTime: seconds)
     }
-
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

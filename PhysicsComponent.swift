@@ -3,15 +3,15 @@ import GameplayKit
 
 class PhysicsComponent: GKComponent {
     var body: SKPhysicsBody?
-
+    
     override init() {
         super.init()
     }
-
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
+    
     func configurePhysicsBody(for node: SKNode, size: CGSize,
                               affectedByGravity: Bool = false,
                               allowsRotation: Bool = false,
@@ -27,7 +27,7 @@ class PhysicsComponent: GKComponent {
         physicsBody.categoryBitMask = categoryBitMask
         physicsBody.contactTestBitMask = contactTestBitMask
         physicsBody.collisionBitMask = collisionBitMask
-
+        
         node.physicsBody = physicsBody
         self.body = physicsBody
     }

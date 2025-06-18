@@ -4,49 +4,53 @@ import GameplayKit
 class MovementComponent: GKComponent {
     
     var direction: CGFloat = 1
-    let speed: CGFloat = 0.0005
+    let speed: CGFloat = 3
     let offset: CGFloat = 100
     var initialY: CGFloat?
-
-    override func update(deltaTime seconds: TimeInterval) {
     
+    
+    
+    func spiderVerticalMovement() {
+        guard let renderComponent = entity?.component(ofType: RenderComponent.self),
+              let animationComponent = entity?.component(ofType: AnimationComponent.self) else { return }
+
+        let node = renderComponent.node
+
+        if initialY == nil {
+            initialY = node.position.y
+        }
+
+        guard let baseY = initialY else { return }
+
+        // Troca a animação antes de começar a movimentar
+        let currentAnimation = direction > 0 ? "subindo" : "descendo"
+        animationComponent.runAnimation(named: currentAnimation)
+
+        // Move
+        node.position.y += direction * speed
+
+        // Verifica limites e inverte direção
+        if node.position.y >= baseY + offset {
+            node.position.y = baseY + offset
+            direction = -1
+        } else if node.position.y <= baseY - offset {
+            node.position.y = baseY - offset
+            direction = 1
+        }
     }
 
-    func spiderVerticalMovement(deltaTime seconds: TimeInterval){
-        guard let renderComponent = entity?.component(ofType: RenderComponent.self), let animationComponent = entity?.component(ofType: AnimationComponent.self) else { return }
-
-                let node = renderComponent.node
-
-                if initialY == nil {
-                    initialY = node.position.y
-                }
-
-                guard let baseY = initialY else { return }
-
-                node.position.y += direction * speed * CGFloat(seconds)
-
-                if node.position.y >= baseY + offset {
-                    node.position.y = baseY + offset
-                    animationComponent.runAnimation(named: "descendo")
-                    direction = -1
-                } else if node.position.y <= baseY - offset {
-                    node.position.y = baseY - offset
-                    animationComponent.runAnimation(named: "subindo")
-                    direction = 1
-                }
-        }
     
-    func spiderIdleMovement(deltaTime seconds: TimeInterval){
+    func spiderIdleMovement(){
         guard let animationComponent = entity?.component(ofType: AnimationComponent.self) else { return }
         animationComponent.runAnimation(named: "parado")
     }
     
-    func spiderAttackMovement(deltaTime seconds: TimeInterval){
+    func spiderAttackMovement(){
         guard let animationComponent = entity?.component(ofType: AnimationComponent.self) else { return }
         animationComponent.runAnimation(named: "ataque")
     }
     
-    func spiderDeadMovement(deltaTime seconds: TimeInterval){
+    func spiderDeadMovement(){
         guard let animationComponent = entity?.component(ofType: AnimationComponent.self) else { return }
         animationComponent.runAnimation(named: "morte")
     }
