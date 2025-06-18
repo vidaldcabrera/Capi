@@ -22,6 +22,15 @@ class GameScene: SKScene {
         let playerEntity = PlayerEntity()
         entityManager?.add(entity: playerEntity)
         self.playerEntity = playerEntity
+        
+        let sceneEntity = SceneEntity(named: "Scene1", entityManager: entityManager!)
+        entityManager?.add(entity: sceneEntity)
+        
+        let cameraNode = SKCameraNode()
+        self.addChild(cameraNode)
+        self.camera = cameraNode
+        
+        self.camera?.setScale(2.5)
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {

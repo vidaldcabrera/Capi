@@ -1,10 +1,3 @@
-//
-//  SKEntityManager.swift
-//  Capi
-//
-//  Created by Aluno 48 on 11/06/25.
-//
-
 import Foundation
 import SpriteKit
 import GameplayKit

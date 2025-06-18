@@ -15,6 +15,10 @@ class PlayerEntity: GKEntity {
         node.setScale(4)
         self.addComponent(GKSKNodeComponent(node: node))
         
+        let size: CGSize = .init(width: 28 * 7, height: 48 * 7)
+        let body = SKPhysicsBody(rectangleOf: size, center: .init(x: 0, y: size.height/1.5))
+        self.addComponent(PhysicsComponent(physicsBody: body))
+        
         let animationComp = AnimationComponent(
             idleAction: .repeatForever(.animate(with: .init(withFormat: "idle%@.png", range: 1...7), timePerFrame: 0.1)),
             runAction: .repeatForever(.animate(with: .init(withFormat: "walk%@.png", range: 1...7), timePerFrame: 0.1)))
