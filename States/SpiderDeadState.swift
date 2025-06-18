@@ -15,6 +15,12 @@ class SpiderDeadState: GKState {
         }
         print("Spider morreu")
     }
+    
+    override func update(deltaTime seconds: TimeInterval) {
+        if let movement = entity.component(ofType: MovementComponent.self) {
+            movement.spiderDeadMovement(deltaTime: seconds)
+        }
+    }
 
     override func isValidNextState(_ stateClass: AnyClass) -> Bool {
         return false

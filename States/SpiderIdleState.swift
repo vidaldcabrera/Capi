@@ -14,6 +14,13 @@ class SpiderIdleState: GKState {
         print("Spider entrou em IDLE")
     }
 
+    override func update(deltaTime seconds: TimeInterval) {
+        if let movement = entity.component(ofType: MovementComponent.self) {
+            movement.spiderIdleMovement(deltaTime: seconds)
+        }
+    }
+
+    
     override func isValidNextState(_ stateClass: AnyClass) -> Bool {
         return stateClass == SpiderMoveState.self
     }
