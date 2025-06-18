@@ -13,8 +13,6 @@ class SpiderEntity: GKEntity, CollisionHandler {
         spriteNode.name = "spider"
         
         let renderComponent = RenderComponent(node: spriteNode)
-        
-        
         addComponent(renderComponent)
         
         let physicsComponent = PhysicsComponent()
@@ -25,14 +23,11 @@ class SpiderEntity: GKEntity, CollisionHandler {
                allowsRotation: false,                   // Impede que a aranha gire ao colidir com outros objetos
                isDynamic: false,
                categoryBitMask: PhysicsCategory.spider, // Define que a aranha pertence à categoria "spider"
-               
                contactTestBitMask: PhysicsCategory.player | PhysicsCategory.playerAttack,
                // Detecta contatos com o jogador ou com ataques do jogador. Isso é importante para disparar eventos como causar dano ou morrer.
-               
                collisionBitMask: 0 // Não colide com nada
         )
         addComponent(physicsComponent)
-        
         
         let stateMachineComponent = StateMachineComponent(states: [
             SpiderIdleState(entity: self),
@@ -41,26 +36,20 @@ class SpiderEntity: GKEntity, CollisionHandler {
             SpiderDeadState(entity: self)
         ])
         addComponent(stateMachineComponent)
-        
         stateMachineComponent.stateMachine.enter(SpiderMoveState.self)
-        
         let movementComponent = MovementComponent()
         addComponent(movementComponent)
         
         let animationComponent = AnimationComponent(node: spriteNode)
-                let idleAnima = SKAction.repeatForever(.animate(with: .init(withFormat: "hat-man-idle-%@", range: 1...4), timePerFrame: 0.1))
+        let idleAnima = SKAction.repeatForever(.animate(with: .init(withFormat: "hat-man-idle-%@", range: 1...4), timePerFrame: 0.1))
         let walkAnima = SKAction.repeatForever(.animate(with: .init(withFormat: "hat-man-walk-%@", range: 1...6), timePerFrame: 0.1))
         let attAnima = SKAction.repeatForever(.animate(with: .init(withFormat: "woman-walk-%@", range: 1...6), timePerFrame: 0.1))
         let dedAnima = SKAction.repeatForever(.animate(with: .init(withFormat: "bearded-walk-%@", range: 1...6), timePerFrame: 0.1))
-        
-        
-        
         animationComponent.addAnimation(named: "subindo", action: walkAnima)
         animationComponent.addAnimation(named: "descendo", action: walkAnima)
         animationComponent.addAnimation(named: "parado", action: idleAnima)
         animationComponent.addAnimation(named: "ataque", action: attAnima)
         animationComponent.addAnimation(named: "morte", action: dedAnima)
-        
         addComponent(animationComponent)
         
         

@@ -3,10 +3,8 @@ import GameplayKit
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
     
-    var chao: SKTileMapNode?
     var entities: [GKEntity] = []
     var player: SKSpriteNode!
-    
     private var lastTapTime: TimeInterval = 0
     private let doubleTapMaxDelay: TimeInterval = 0.3
     
@@ -19,35 +17,27 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         return scene
     }
     
+    
     func setUpScene() {
-        
         backgroundColor = .cyan
-        
-        
-        chao = buildGround()
+        buildGround()
         createPlayer()
         createPlayerAttack()
         createSpider()
-        
-        
     }
     
+    
     func didBegin(_ contact: SKPhysicsContact) {
-        print("ele entra em didBegin")
-        
         let bodyA = contact.bodyA
         let bodyB = contact.bodyB
+        var spiderNode: SKNode?
+        var otherNode: SKNode?
+        
         
         guard let nodeA = bodyA.node, let nodeB = bodyB.node else {
             return
         }
-        print(nodeA)
-        print(nodeB)
         
-        
-        // Tenta identificar quem é a aranha e quem é o outro objeto
-        var spiderNode: SKNode?
-        var otherNode: SKNode?
         
         if nodeA.name == "spider" {
             spiderNode = nodeA
@@ -58,12 +48,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         } else {
             return // nenhum dos dois é aranha
         }
-        
-        print("ele passa do spider")
+    
         
         guard let spiderEntity = spiderNode?.entity as? SpiderEntity else {
             return
         }
+        
         
         if let stateMachineComponent = spiderEntity.component(ofType: StateMachineComponent.self) {
             if otherNode?.name == "player" {
@@ -71,7 +61,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     print("colidiu")
                     stateMachineComponent.stateMachine.enter(SpiderAttackState.self)
                 }
-                
             } else if otherNode?.name == "playerAttack" {
                 print("atacoueste")
                 stateMachineComponent.stateMachine.enter(SpiderDeadState.self)
@@ -80,12 +69,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     
-    
-    
     override func didMove(to view: SKView) {
         physicsWorld.contactDelegate = self
         setUpScene()
     }
+    
     
     override func update(_ currentTime: TimeInterval) {
         
@@ -93,24 +81,19 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             entity.update(deltaTime: currentTime)
         }
     }
-    
 }
 
 extension GameScene {
-    func buildGround() -> SKTileMapNode? {
+    func buildGround() {
         guard let chao = childNode(withName: "chao") as? SKTileMapNode else {
-            return nil
+            return
         }
         
         let physicsBody = SKPhysicsBody(edgeLoopFrom: chao.frame)
         chao.physicsBody = physicsBody
         physicsBody.categoryBitMask = PhysicsCategory.ground
-        //physicsBody.contactTestBitMask = PhysicsCategory.spider
-        //physicsBody.collisionBitMask = PhysicsCategory.spider
         physicsBody.isDynamic = false
-        return chao
     }
-    
     
     
     func createPlayer() {
@@ -132,10 +115,9 @@ extension GameScene {
                collisionBitMask: PhysicsCategory.ground | PhysicsCategory.spider
                // Colide fisicamente com o chão e com a aranha
         )
-        
-        // Adiciona o jogador na cena
         addChild(player)
     }
+    
     
     func createPlayerAttack() {
         // Cria uma hitbox de ataque do jogador
@@ -143,7 +125,6 @@ extension GameScene {
         
         // Posiciona na frente do jogador (ajuste conforme a direção do ataque)
         attackNode.position = CGPoint(x: player.position.x + 30, y: player.position.y)
-        
         attackNode.name = "playerAttack"
         
         // Configura o corpo físico apenas para contato, sem colisão física
