@@ -9,7 +9,7 @@ class MovementComponent: GKComponent {
     var initialY: CGFloat?
     
     
-    
+     
     func spiderVerticalMovement() {
         guard let renderComponent = entity?.component(ofType: RenderComponent.self),
               let animationComponent = entity?.component(ofType: AnimationComponent.self) else { return }

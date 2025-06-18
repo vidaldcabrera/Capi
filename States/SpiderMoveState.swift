@@ -15,6 +15,7 @@ class SpiderMoveState: GKState {
     }
     
     override func update(deltaTime seconds: TimeInterval) {
+        
         if let movement = entity.component(ofType: MovementComponent.self) {
             movement.spiderVerticalMovement()
         }

@@ -48,27 +48,19 @@ class SpiderEntity: GKEntity, CollisionHandler {
         addComponent(movementComponent)
         
         let animationComponent = AnimationComponent(node: spriteNode)
+                let idleAnima = SKAction.repeatForever(.animate(with: .init(withFormat: "hat-man-idle-%@", range: 1...4), timePerFrame: 0.1))
+        let walkAnima = SKAction.repeatForever(.animate(with: .init(withFormat: "hat-man-walk-%@", range: 1...6), timePerFrame: 0.1))
+        let attAnima = SKAction.repeatForever(.animate(with: .init(withFormat: "woman-walk-%@", range: 1...6), timePerFrame: 0.1))
+        let dedAnima = SKAction.repeatForever(.animate(with: .init(withFormat: "bearded-walk-%@", range: 1...6), timePerFrame: 0.1))
         
-        let idleAnimation = [SKTexture(imageNamed: "hat-man-idle-1"), SKTexture(imageNamed: "hat-man-idle-2"), SKTexture(imageNamed: "hat-man-idle-3"), SKTexture(imageNamed: "hat-man-idle-4")]
         
-        let walkingAnimation = [SKTexture(imageNamed: "hat-man-walk-1"), SKTexture(imageNamed: "hat-man-walk-2"), SKTexture(imageNamed: "hat-man-walk-3"), SKTexture(imageNamed: "hat-man-walk-4"), SKTexture(imageNamed: "hat-man-walk-5"), SKTexture(imageNamed: "hat-man-walk-6")]
-        
-        let attackAnimation = [SKTexture(imageNamed: "woman-walk-1"), SKTexture(imageNamed: "woman-walk-2"), SKTexture(imageNamed: "woman-walk-3"), SKTexture(imageNamed: "woman-walk-4"), SKTexture(imageNamed: "woman-walk-5"), SKTexture(imageNamed: "woman-walk-6")]
-        
-        let deadAnimation = [SKTexture(imageNamed: "bearded-walk-1"), SKTexture(imageNamed: "bearded-walk-2"), SKTexture(imageNamed: "bearded-walk-3"), SKTexture(imageNamed: "bearded-walk-4"), SKTexture(imageNamed: "bearded-walk-5"), SKTexture(imageNamed: "bearded-walk-6")]
-        
-        let idleAnima = SKAction.repeatForever(SKAction.animate(with: idleAnimation, timePerFrame: 0.1))
-        let walkAnima = SKAction.repeatForever(SKAction.animate(with: walkingAnimation, timePerFrame: 0.1))
-        let attAnima = SKAction.repeatForever(SKAction.animate(with: attackAnimation, timePerFrame: 0.1))
-        
-        let dedAnima = SKAction.repeatForever(SKAction.animate(with: deadAnimation, timePerFrame: 0.1))
         
         animationComponent.addAnimation(named: "subindo", action: walkAnima)
         animationComponent.addAnimation(named: "descendo", action: walkAnima)
         animationComponent.addAnimation(named: "parado", action: idleAnima)
         animationComponent.addAnimation(named: "ataque", action: attAnima)
         animationComponent.addAnimation(named: "morte", action: dedAnima)
-
+        
         addComponent(animationComponent)
         
         
