@@ -32,7 +32,7 @@ class MosquitoEntity: GKEntity {
         
         spriteNode.physicsBody?.categoryBitMask = PhysicsCategory.mosquito
         spriteNode.physicsBody?.contactTestBitMask = PhysicsCategory.player
-        spriteNode.physicsBody?.collisionBitMask = PhysicsCategory.chao
+        spriteNode.physicsBody?.collisionBitMask = PhysicsCategory.ground
 
         
         // Estados

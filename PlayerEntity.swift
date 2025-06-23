@@ -18,7 +18,7 @@ class PlayerEntity: GKEntity {
         spriteNode.physicsBody?.affectedByGravity = false
         spriteNode.physicsBody?.categoryBitMask = PhysicsCategory.player
         spriteNode.physicsBody?.contactTestBitMask = PhysicsCategory.mosquito
-        spriteNode.physicsBody?.collisionBitMask = PhysicsCategory.chao // Só colide com o chão, por exemplo
+        spriteNode.physicsBody?.collisionBitMask = PhysicsCategory.ground // Só colide com o chão, por exemplo
         
         super.init()
     }

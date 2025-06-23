@@ -24,7 +24,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }    
     
     func setUpScene() {
-                /*
+        backgroundColor = .cyan
+        
+        /*
         // Cria o player
         player = PlayerEntity(position: CGPoint(x: 50, y: 100))
         if let playerNode = player?.spriteNode {
