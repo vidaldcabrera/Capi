@@ -27,44 +27,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     
     func didBegin(_ contact: SKPhysicsContact) {
-        let bodyA = contact.bodyA
-        let bodyB = contact.bodyB
-        var spiderNode: SKNode?
-        var otherNode: SKNode?
-        
-        
-        guard let nodeA = bodyA.node, let nodeB = bodyB.node else {
-            return
-        }
-        
-        
-        if nodeA.name == "spider" {
-            spiderNode = nodeA
-            otherNode = nodeB
-        } else if nodeB.name == "spider" {
-            spiderNode = nodeB
-            otherNode = nodeA
-        } else {
-            return // nenhum dos dois é aranha
-        }
-    
-        
-        guard let spiderEntity = spiderNode?.entity as? SpiderEntity else {
-            return
-        }
-        
-        
-        if let stateMachineComponent = spiderEntity.component(ofType: StateMachineComponent.self) {
-            if otherNode?.name == "player" {
-                if !(stateMachineComponent.stateMachine.currentState is SpiderAttackState) {
-                    print("colidiu")
-                    stateMachineComponent.stateMachine.enter(SpiderAttackState.self)
-                }
-            } else if otherNode?.name == "playerAttack" {
-                print("atacoueste")
-                stateMachineComponent.stateMachine.enter(SpiderDeadState.self)
-            }
-        }
+        handleSpiderContact(contact)
     }
     
     
@@ -148,6 +111,51 @@ extension GameScene {
         addChild(attackNode)
     }
     */
+    
+    func handleSpiderContact(_ contact: SKPhysicsContact){
+        
+        let bodyA = contact.bodyA
+        let bodyB = contact.bodyB
+        var spiderNode: SKNode?
+        var otherNode: SKNode?
+        
+        
+        guard let nodeA = bodyA.node, let nodeB = bodyB.node else {
+            return
+        }
+        
+        
+        if nodeA.name == "spider" {
+            spiderNode = nodeA
+            otherNode = nodeB
+        } else if nodeB.name == "spider" {
+            spiderNode = nodeB
+            otherNode = nodeA
+        } else {
+            return // nenhum dos dois é aranha
+        }
+    
+        
+        guard let spiderEntity = spiderNode?.entity as? SpiderEntity else {
+            return
+        }
+        
+        
+        if let stateMachineComponent = spiderEntity.component(ofType: StateMachineComponent.self) {
+            if otherNode?.name == "player" {
+                if !(stateMachineComponent.stateMachine.currentState is SpiderAttackState) {
+                    print("colidiu")
+                    stateMachineComponent.stateMachine.enter(SpiderAttackState.self)
+                }
+            } else if otherNode?.name == "playerAttack" {
+                print("atacoueste")
+                stateMachineComponent.stateMachine.enter(SpiderDeadState.self)
+            }
+        }
+        
+    }
+    
+    
     
     func createSpider() {
         let spiderTexture = SKTexture(imageNamed: "hat-man-idle-1")
