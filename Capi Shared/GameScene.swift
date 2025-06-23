@@ -64,6 +64,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func didBegin(_ contact: SKPhysicsContact) {
+        handleMosquitoContact(contact)
+        
+    }
+}
+
+extension GameScene {
+    func handleMosquitoContact(_ contact: SKPhysicsContact){
+        
         let bodyA = contact.bodyA
         let bodyB = contact.bodyB
         
@@ -87,6 +95,5 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 mosquitoEntity.mosquitoStateMachine.enter(AttackingState.self)
             }
         }
-        
     }
 }
