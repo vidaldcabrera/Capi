@@ -30,13 +30,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             physicsBody.isDynamic = false
             chao.physicsBody = physicsBody
         }
-        
+        /*
         // Cria o player
         player = PlayerEntity(position: CGPoint(x: 50, y: 100))
         if let playerNode = player?.spriteNode {
             addChild(playerNode)
         }
-        
+        */
         // Cria o mosquito e adiciona na cena
         mosquito = MosquitoEntity(position: CGPoint(x: 100, y: 100))
         
