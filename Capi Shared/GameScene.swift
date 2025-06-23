@@ -4,7 +4,7 @@ import GameplayKit
 class GameScene: SKScene, SKPhysicsContactDelegate {
     
     var entities: [GKEntity] = []
-    var player: SKSpriteNode!
+    // var player: SKSpriteNode!
     private var lastTapTime: TimeInterval = 0
     private let doubleTapMaxDelay: TimeInterval = 0.3
     
@@ -19,10 +19,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     
     func setUpScene() {
-        backgroundColor = .cyan
-        buildGround()
-        createPlayer()
-        createPlayerAttack()
+        //buildGround()
+        // createPlayer()
+        // createPlayerAttack()
         createSpider()
     }
     
@@ -84,6 +83,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 }
 
 extension GameScene {
+    /*
     func buildGround() {
         guard let chao = childNode(withName: "chao") as? SKTileMapNode else {
             return
@@ -147,6 +147,7 @@ extension GameScene {
         // Adiciona à cena
         addChild(attackNode)
     }
+    */
     
     func createSpider() {
         let spiderTexture = SKTexture(imageNamed: "hat-man-idle-1")
@@ -159,7 +160,7 @@ extension GameScene {
         }
         entities.append(spider)
     }
-
+    /*
     func performPlayerAttack() {
         let attackNode = SKSpriteNode(color: .clear, size: CGSize(width: 30, height: 30))
         attackNode.position = CGPoint(x: player.position.x, y: player.position.y)
@@ -202,6 +203,6 @@ extension GameScene {
         
         lastTapTime = currentTime
     }
-
+     */
     
 }
