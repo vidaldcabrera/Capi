@@ -61,6 +61,7 @@
 		E529CB462DFB03760037D5CB /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 2C6CF7482DE4B65200771D67 /* GameScene.sks */; };
 		E529CB482DFB04100037D5CB /* chaodomundo.sks in Resources */ = {isa = PBXBuildFile; fileRef = E529CB472DFB04100037D5CB /* chaodomundo.sks */; };
 		E529CB492DFB04100037D5CB /* chaodomundo.sks in Resources */ = {isa = PBXBuildFile; fileRef = E529CB472DFB04100037D5CB /* chaodomundo.sks */; };
+		E541371D2E099ADE0001E6BC /* PhysicsCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = E541371C2E099ADE0001E6BC /* PhysicsCategory.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -123,6 +124,7 @@
 		2C6CF78F2DE4B65700771D67 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		2C6CF7912DE4B65800771D67 /* Capi_macOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Capi_macOS.entitlements; sourceTree = "<group>"; };
 		E529CB472DFB04100037D5CB /* chaodomundo.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = chaodomundo.sks; sourceTree = "<group>"; };
+		E541371C2E099ADE0001E6BC /* PhysicsCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhysicsCategory.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -186,6 +188,7 @@
 			children = (
 				225860592DF860730024E3E8 /* SKTexture+Array.swift */,
 				2258605B2DF860970024E3E8 /* SKTileMapNode.swift */,
+				E541371C2E099ADE0001E6BC /* PhysicsCategory.swift */,
 			);
 			name = Tools;
 			sourceTree = "<group>";
@@ -404,6 +407,7 @@
 				2258603B2DF85F0C0024E3E8 /* ProjectTilesComponent.swift in Sources */,
 				225860412DF85F3B0024E3E8 /* UpdateComponent.swift in Sources */,
 				225860572DF860190024E3E8 /* LightComponent.swift in Sources */,
+				E541371D2E099ADE0001E6BC /* PhysicsCategory.swift in Sources */,
 				2258604D2DF85FB80024E3E8 /* SpeakComponent.swift in Sources */,
 				2258605A2DF860730024E3E8 /* SKTexture+Array.swift in Sources */,
 				289F16312E02FFDC0073C874 /* AttackingState.swift in Sources */,

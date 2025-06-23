@@ -34,7 +34,7 @@ class BatEntity: GKEntity {
         
         spriteNode.physicsBody?.categoryBitMask = PhysicsCategory.bat
         spriteNode.physicsBody?.contactTestBitMask = PhysicsCategory.player
-        spriteNode.physicsBody?.collisionBitMask = PhysicsCategory.chao
+        spriteNode.physicsBody?.collisionBitMask = PhysicsCategory.ground
 
         
         // Estados

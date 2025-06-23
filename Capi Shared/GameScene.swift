@@ -20,25 +20,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     func setUpScene() {
         backgroundColor = .cyan
         
-        // Configurar o chãos
-        chao = childNode(withName: "chao") as? SKTileMapNode
-        if let chao = chao {
-            let physicsBody = SKPhysicsBody(edgeLoopFrom: chao.frame)
-            physicsBody.categoryBitMask = PhysicsCategory.chao
-            physicsBody.contactTestBitMask = PhysicsCategory.player | PhysicsCategory.bat
-            physicsBody.collisionBitMask = PhysicsCategory.player | PhysicsCategory.bat
-            physicsBody.isDynamic = false
-            chao.physicsBody = physicsBody
-        }
-        
-        // Cria o player
-        player = PlayerEntity(position: CGPoint(x: 25, y: 100))
-        if let playerNode = player?.spriteNode {
-            addChild(playerNode)
-        }
+
+
         
         // Cria o mosquito e adiciona na cena
-        bat = BatEntity(position: CGPoint(x: 100, y: 100))
+        bat = BatEntity(position: CGPoint(x: -100, y: 100))
         
         if let batNode = bat?.spriteNode {
             addChild(batNode)
@@ -64,6 +50,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func didBegin(_ contact: SKPhysicsContact) {
+        handleBatContact(contact)
+    }
+}
+
+extension GameScene {
+    
+    func handleBatContact(_ contact: SKPhysicsContact){
+        
         let bodyA = contact.bodyA
         let bodyB = contact.bodyB
         
@@ -89,4 +83,5 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
         
     }
+    
 }
