@@ -2,9 +2,9 @@ import Foundation
 import SpriteKit
 import GameplayKit
 
-enum Direction: CGFloat {
+enum Direction: CGFloat{
     case right = 1
-    case left  = -1
+    case left = -1
     case none = 0
 }
 
@@ -13,6 +13,7 @@ class MovementComponent: GKComponent {
     var node: SKNode?
     var speed: CGFloat
     var direction: Direction = .none
+    
     var animationComp: AnimationComponent?
     
     init(speed: CGFloat) {
@@ -21,7 +22,7 @@ class MovementComponent: GKComponent {
     }
     
     required init?(coder: NSCoder) {
-        fatalError("init coder has not been implemented")
+        fatalError("init(coder:) has not been implemented")
     }
     
     override func didAddToEntity() {
@@ -39,8 +40,11 @@ class MovementComponent: GKComponent {
         if(direction == .none) {
             animationComp?.playIdle()
         } else {
+            
             node?.xScale = abs(node?.xScale ?? 1) * direction.rawValue
+            
             animationComp?.playRun()
         }
     }
+    
 }
