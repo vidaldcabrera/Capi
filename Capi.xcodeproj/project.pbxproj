@@ -36,12 +36,12 @@
 		225860612DF860F40024E3E8 /* scene1.sks in Resources */ = {isa = PBXBuildFile; fileRef = 225860602DF860F40024E3E8 /* scene1.sks */; };
 		289F162B2E02FE1F0073C874 /* BatEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289F162A2E02FE1F0073C874 /* BatEntity.swift */; };
 		289F162C2E02FE250073C874 /* BatEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289F162A2E02FE1F0073C874 /* BatEntity.swift */; };
-		289F162F2E02FFCA0073C874 /* FlyingState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289F162E2E02FFCA0073C874 /* FlyingState.swift */; };
-		289F16312E02FFDC0073C874 /* AttackingState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289F16302E02FFDC0073C874 /* AttackingState.swift */; };
-		289F16322E02FFDC0073C874 /* AttackingState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289F16302E02FFDC0073C874 /* AttackingState.swift */; };
-		289F16342E02FFEA0073C874 /* DyingState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289F16332E02FFEA0073C874 /* DyingState.swift */; };
-		289F16352E02FFEA0073C874 /* DyingState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289F16332E02FFEA0073C874 /* DyingState.swift */; };
-		289F16362E02FFEF0073C874 /* FlyingState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289F162E2E02FFCA0073C874 /* FlyingState.swift */; };
+		289F162F2E02FFCA0073C874 /* BatFlyingState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289F162E2E02FFCA0073C874 /* BatFlyingState.swift */; };
+		289F16312E02FFDC0073C874 /* BatAttackingState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289F16302E02FFDC0073C874 /* BatAttackingState.swift */; };
+		289F16322E02FFDC0073C874 /* BatAttackingState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289F16302E02FFDC0073C874 /* BatAttackingState.swift */; };
+		289F16342E02FFEA0073C874 /* BatDyingState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289F16332E02FFEA0073C874 /* BatDyingState.swift */; };
+		289F16352E02FFEA0073C874 /* BatDyingState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289F16332E02FFEA0073C874 /* BatDyingState.swift */; };
+		289F16362E02FFEF0073C874 /* BatFlyingState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289F162E2E02FFCA0073C874 /* BatFlyingState.swift */; };
 		289F16372E02FFF40073C874 /* PhysicsComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225860542DF85FFF0024E3E8 /* PhysicsComponent.swift */; };
 		289F16382E02FFFB0073C874 /* PlayerEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2258602D2DF85E4F0024E3E8 /* PlayerEntity.swift */; };
 		2C6CF7532DE4B65700771D67 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6CF7522DE4B65700771D67 /* AppDelegate.swift */; };
@@ -106,9 +106,9 @@
 		2258605E2DF860DB0024E3E8 /* SceneTile.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = SceneTile.sks; sourceTree = "<group>"; };
 		225860602DF860F40024E3E8 /* scene1.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = scene1.sks; sourceTree = "<group>"; };
 		289F162A2E02FE1F0073C874 /* BatEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BatEntity.swift; sourceTree = "<group>"; };
-		289F162E2E02FFCA0073C874 /* FlyingState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlyingState.swift; sourceTree = "<group>"; };
-		289F16302E02FFDC0073C874 /* AttackingState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttackingState.swift; sourceTree = "<group>"; };
-		289F16332E02FFEA0073C874 /* DyingState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DyingState.swift; sourceTree = "<group>"; };
+		289F162E2E02FFCA0073C874 /* BatFlyingState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BatFlyingState.swift; sourceTree = "<group>"; };
+		289F16302E02FFDC0073C874 /* BatAttackingState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BatAttackingState.swift; sourceTree = "<group>"; };
+		289F16332E02FFEA0073C874 /* BatDyingState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BatDyingState.swift; sourceTree = "<group>"; };
 		2C6CF7472DE4B65200771D67 /* Actions.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Actions.sks; sourceTree = "<group>"; };
 		2C6CF7482DE4B65200771D67 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
 		2C6CF7492DE4B65200771D67 /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
@@ -205,9 +205,7 @@
 		289F162D2E02FFB30073C874 /* States */ = {
 			isa = PBXGroup;
 			children = (
-				289F162E2E02FFCA0073C874 /* FlyingState.swift */,
-				289F16302E02FFDC0073C874 /* AttackingState.swift */,
-				289F16332E02FFEA0073C874 /* DyingState.swift */,
+				E5A9DFD72E0AC4D900494270 /* BatStates */,
 			);
 			path = States;
 			sourceTree = "<group>";
@@ -268,6 +266,16 @@
 				2C6CF7912DE4B65800771D67 /* Capi_macOS.entitlements */,
 			);
 			path = "Capi macOS";
+			sourceTree = "<group>";
+		};
+		E5A9DFD72E0AC4D900494270 /* BatStates */ = {
+			isa = PBXGroup;
+			children = (
+				289F162E2E02FFCA0073C874 /* BatFlyingState.swift */,
+				289F16302E02FFDC0073C874 /* BatAttackingState.swift */,
+				289F16332E02FFEA0073C874 /* BatDyingState.swift */,
+			);
+			path = BatStates;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -387,7 +395,7 @@
 				2258604B2DF85FA60024E3E8 /* SkillsComponent.swift in Sources */,
 				2C6CF7992DE4B65800771D67 /* GameScene.swift in Sources */,
 				2258603D2DF85F1F0024E3E8 /* CollisionComponent.swift in Sources */,
-				289F16342E02FFEA0073C874 /* DyingState.swift in Sources */,
+				289F16342E02FFEA0073C874 /* BatDyingState.swift in Sources */,
 				2258602A2DF85E2D0024E3E8 /* EnimiesEntity.swift in Sources */,
 				225860552DF85FFF0024E3E8 /* PhysicsComponent.swift in Sources */,
 				225860492DF85F970024E3E8 /* HUDComponent.swift in Sources */,
@@ -395,7 +403,7 @@
 				2258604F2DF85FC90024E3E8 /* LifeComponent.swift in Sources */,
 				225860432DF85F520024E3E8 /* PlayerInputComponent.swift in Sources */,
 				225860362DF85EC00024E3E8 /* GroundEntity.swift in Sources */,
-				289F162F2E02FFCA0073C874 /* FlyingState.swift in Sources */,
+				289F162F2E02FFCA0073C874 /* BatFlyingState.swift in Sources */,
 				2258603F2DF85F2D0024E3E8 /* DropComponent.swift in Sources */,
 				2C6CF7552DE4B65700771D67 /* GameViewController.swift in Sources */,
 				225860302DF85E650024E3E8 /* DinoSEntity.swift in Sources */,
@@ -410,7 +418,7 @@
 				E541371D2E099ADE0001E6BC /* PhysicsCategory.swift in Sources */,
 				2258604D2DF85FB80024E3E8 /* SpeakComponent.swift in Sources */,
 				2258605A2DF860730024E3E8 /* SKTexture+Array.swift in Sources */,
-				289F16312E02FFDC0073C874 /* AttackingState.swift in Sources */,
+				289F16312E02FFDC0073C874 /* BatAttackingState.swift in Sources */,
 				2258602C2DF85E3D0024E3E8 /* TrapEntity.swift in Sources */,
 				2C6CF7532DE4B65700771D67 /* AppDelegate.swift in Sources */,
 			);
@@ -422,12 +430,12 @@
 			files = (
 				2C6CF79C2DE4B65800771D67 /* GameScene.swift in Sources */,
 				2C6CF78D2DE4B65700771D67 /* GameViewController.swift in Sources */,
-				289F16322E02FFDC0073C874 /* AttackingState.swift in Sources */,
-				289F16352E02FFEA0073C874 /* DyingState.swift in Sources */,
+				289F16322E02FFDC0073C874 /* BatAttackingState.swift in Sources */,
+				289F16352E02FFEA0073C874 /* BatDyingState.swift in Sources */,
 				289F162C2E02FE250073C874 /* BatEntity.swift in Sources */,
 				2C6CF78B2DE4B65700771D67 /* AppDelegate.swift in Sources */,
 				289F16382E02FFFB0073C874 /* PlayerEntity.swift in Sources */,
-				289F16362E02FFEF0073C874 /* FlyingState.swift in Sources */,
+				289F16362E02FFEF0073C874 /* BatFlyingState.swift in Sources */,
 				289F16372E02FFF40073C874 /* PhysicsComponent.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
