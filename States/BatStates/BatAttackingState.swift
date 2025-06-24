@@ -2,7 +2,7 @@ import Foundation
 import SpriteKit
 import GameplayKit
 
-class AttackingState: GKState {
+class BatAttackingState: GKState {
 
     unowned let bat: BatEntity
 
@@ -23,18 +23,18 @@ class AttackingState: GKState {
 
             // Após a animação, volta para patrulha
             let returnToFly = SKAction.run { [weak self] in
-                self?.bat.batStateMachine.enter(FlyingState.self)
+                self?.bat.batStateMachine.enter(BatFlyingState.self)
             }
 
             let sequence = SKAction.sequence([attackAnimation, returnToFly])
             bat.spriteNode.run(sequence, withKey: "AttackAnimation")
         } else {
             // Se não tiver frames de ataque, apenas volta pro FlyingState
-            bat.batStateMachine.enter(FlyingState.self)
+            bat.batStateMachine.enter(BatFlyingState.self)
         }
     }
 
     override func isValidNextState(_ stateClass: AnyClass) -> Bool {
-        return stateClass == FlyingState.self || stateClass == DyingState.self
+        return stateClass == BatFlyingState.self || stateClass == BatDyingState.self
     }
 }

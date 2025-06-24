@@ -1,7 +1,7 @@
 import SpriteKit
 import GameplayKit
 
-class DyingState: GKState {
+class BatDyingState: GKState {
     unowned let bat: BatEntity
 
     init(bat: BatEntity) {

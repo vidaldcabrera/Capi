@@ -60,7 +60,7 @@ extension GameScene {
         
         let bodyA = contact.bodyA
         let bodyB = contact.bodyB
-        
+
         let firstBody: SKPhysicsBody
         let secondBody: SKPhysicsBody
         
@@ -78,7 +78,7 @@ extension GameScene {
             secondBody.categoryBitMask == PhysicsCategory.bat {
             
             if let batEntity = bat {
-                batEntity.batStateMachine.enter(AttackingState.self)
+                batEntity.batStateMachine.enter(BatAttackingState.self)
             }
         }
         

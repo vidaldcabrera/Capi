@@ -38,12 +38,12 @@ class BatEntity: GKEntity {
 
         
         // Estados
-        let fly = FlyingState(bat: self, leftLimit: position.x - 50, rightLimit: position.x + 50)
-        let attack = AttackingState(bat: self)
-        let death = DyingState(bat: self)
+        let fly = BatFlyingState(bat: self, leftLimit: position.x - 50, rightLimit: position.x + 50)
+        let attack = BatAttackingState(bat: self)
+        let death = BatDyingState(bat: self)
         
         batStateMachine = GKStateMachine(states: [fly, attack, death])
-        batStateMachine.enter(FlyingState.self)
+        batStateMachine.enter(BatFlyingState.self)
     }
     
     required init?(coder: NSCoder) {

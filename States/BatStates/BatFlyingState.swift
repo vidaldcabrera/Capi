@@ -9,7 +9,7 @@ import Foundation
 import SpriteKit
 import GameplayKit
 
-class FlyingState: GKState{
+class BatFlyingState: GKState{
     
     unowned let bat: BatEntity
         let leftLimit: CGFloat
@@ -60,6 +60,6 @@ class FlyingState: GKState{
         }
 
         override func isValidNextState(_ stateClass: AnyClass) -> Bool {
-            return stateClass == AttackingState.self || stateClass == DyingState.self
+            return stateClass == BatAttackingState.self || stateClass == BatDyingState.self
         }
     }
