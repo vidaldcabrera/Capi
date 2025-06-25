@@ -9,7 +9,7 @@ import Foundation
 import SpriteKit
 import GameplayKit
 
-class FlyingState: GKState{
+class MosquitoFlyingState: GKState{
     
     unowned let mosquito: MosquitoEntity
         let leftLimit: CGFloat
@@ -48,7 +48,7 @@ class FlyingState: GKState{
         }
 
         override func isValidNextState(_ stateClass: AnyClass) -> Bool {
-            return stateClass == AttackingState.self || stateClass == DyingState.self
+            return stateClass == MosquitoAttackingState.self || stateClass == MosquitoDyingState.self
         }
     }
 

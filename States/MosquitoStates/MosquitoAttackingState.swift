@@ -2,7 +2,7 @@ import Foundation
 import SpriteKit
 import GameplayKit
 
-class AttackingState: GKState {
+class MosquitoAttackingState: GKState {
 
     unowned let mosquito: MosquitoEntity
 
@@ -23,18 +23,18 @@ class AttackingState: GKState {
 
             // Após a animação, volta para patrulha
             let returnToFly = SKAction.run { [weak self] in
-                self?.mosquito.mosquitoStateMachine.enter(FlyingState.self)
+                self?.mosquito.mosquitoStateMachine.enter(MosquitoFlyingState.self)
             }
 
             let sequence = SKAction.sequence([attackAnimation, returnToFly])
             mosquito.spriteNode.run(sequence, withKey: "AttackAnimation")
         } else {
             // Se não tiver frames de ataque, apenas volta pro FlyingState
-            mosquito.mosquitoStateMachine.enter(FlyingState.self)
+            mosquito.mosquitoStateMachine.enter(MosquitoFlyingState.self)
         }
     }
 
     override func isValidNextState(_ stateClass: AnyClass) -> Bool {
-        return stateClass == FlyingState.self || stateClass == DyingState.self
+        return stateClass == MosquitoFlyingState.self || stateClass == MosquitoDyingState.self
     }
 }

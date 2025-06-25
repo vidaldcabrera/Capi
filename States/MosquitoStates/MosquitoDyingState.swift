@@ -3,7 +3,7 @@ import GameplayKit
 
 
 
-class DyingState: GKState {
+class MosquitoDyingState: GKState {
     unowned let mosquito: MosquitoEntity
 
     init(mosquito: MosquitoEntity) {

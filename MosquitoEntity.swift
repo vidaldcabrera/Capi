@@ -32,16 +32,16 @@ class MosquitoEntity: GKEntity {
         
         spriteNode.physicsBody?.categoryBitMask = PhysicsCategory.mosquito
         spriteNode.physicsBody?.contactTestBitMask = PhysicsCategory.player
-        spriteNode.physicsBody?.collisionBitMask = PhysicsCategory.chao
+        spriteNode.physicsBody?.collisionBitMask = PhysicsCategory.ground
 
         
         // Estados
-        let fly = FlyingState(mosquito: self, leftLimit: position.x - 50, rightLimit: position.x + 50)
-        let attack = AttackingState(mosquito: self)
-        let death = DyingState(mosquito: self)
+        let fly = MosquitoFlyingState(mosquito: self, leftLimit: position.x - 50, rightLimit: position.x + 50)
+        let attack = MosquitoAttackingState(mosquito: self)
+        let death = MosquitoDyingState(mosquito: self)
         
         mosquitoStateMachine = GKStateMachine(states: [fly, attack, death])
-        mosquitoStateMachine.enter(FlyingState.self)
+        mosquitoStateMachine.enter(MosquitoFlyingState.self)
     }
     
     required init?(coder: NSCoder) {

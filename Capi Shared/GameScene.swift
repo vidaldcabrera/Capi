@@ -5,9 +5,7 @@ import Foundation
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
     
-    var chao: SKTileMapNode?
     var mosquito: MosquitoEntity?
-    var player: PlayerEntity?
     
     class func newGameScene() -> GameScene {
         guard let scene = SKScene(fileNamed: "GameScene") as? GameScene else {
@@ -20,22 +18,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     func setUpScene() {
         backgroundColor = .cyan
         
-        // Configurar o chãos
-        chao = childNode(withName: "chao") as? SKTileMapNode
-        if let chao = chao {
-            let physicsBody = SKPhysicsBody(edgeLoopFrom: chao.frame)
-            physicsBody.categoryBitMask = PhysicsCategory.chao
-            physicsBody.contactTestBitMask = PhysicsCategory.player | PhysicsCategory.mosquito
-            physicsBody.collisionBitMask = PhysicsCategory.player | PhysicsCategory.mosquito
-            physicsBody.isDynamic = false
-            chao.physicsBody = physicsBody
-        }
         
-        // Cria o player
-        player = PlayerEntity(position: CGPoint(x: 50, y: 100))
-        if let playerNode = player?.spriteNode {
-            addChild(playerNode)
-        }
         
         // Cria o mosquito e adiciona na cena
         mosquito = MosquitoEntity(position: CGPoint(x: 100, y: 100))
@@ -43,6 +26,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         if let mosquitoNode = mosquito?.spriteNode {
             addChild(mosquitoNode)
         }
+    }
+    
+    func didBegin(_ contact: SKPhysicsContact) {
+        handleMosquitoContact(contact)
     }
     
     override func didMove(to view: SKView) {
@@ -54,6 +41,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     private var lastUpdateTime: TimeInterval = 0
     
     override func update(_ currentTime: TimeInterval) {
+
         var deltaTime = currentTime - lastUpdateTime
         if lastUpdateTime == 0 {
             deltaTime = 0
@@ -62,8 +50,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         mosquito?.mosquitoStateMachine.update(deltaTime: deltaTime)
     }
-    
-    func didBegin(_ contact: SKPhysicsContact) {
+}
+
+extension GameScene {
+
+    func handleMosquitoContact(_ contact: SKPhysicsContact){
         let bodyA = contact.bodyA
         let bodyB = contact.bodyB
         
@@ -84,9 +75,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             secondBody.categoryBitMask == PhysicsCategory.mosquito {
             
             if let mosquitoEntity = mosquito {
-                mosquitoEntity.mosquitoStateMachine.enter(AttackingState.self)
+                mosquitoEntity.mosquitoStateMachine.enter(MosquitoAttackingState.self)
             }
         }
-        
     }
+    
 }

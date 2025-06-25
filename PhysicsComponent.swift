@@ -1,13 +1,34 @@
-
 import SpriteKit
 import GameplayKit
-import Foundation
 
-struct PhysicsCategory {
-    static let none: UInt32 = 0
-    static let player: UInt32 = 0x1 << 0
-    static let mosquito: UInt32 = 0x1 << 1
-    static let chao: UInt32 = 0x1 << 2
-    // Adicione outras categorias se quiser
+class PhysicsComponent: GKComponent {
+    var body: SKPhysicsBody?
+    
+    override init() {
+        super.init()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    func configurePhysicsBody(for node: SKNode, size: CGSize,
+                              affectedByGravity: Bool = false,
+                              allowsRotation: Bool = false,
+                              isDynamic: Bool = true,
+                              categoryBitMask: UInt32,
+                              contactTestBitMask: UInt32,
+                              collisionBitMask: UInt32)
+    {
+        let physicsBody = SKPhysicsBody(rectangleOf: size)
+        physicsBody.affectedByGravity = affectedByGravity
+        physicsBody.allowsRotation = allowsRotation
+        physicsBody.isDynamic = isDynamic
+        physicsBody.categoryBitMask = categoryBitMask
+        physicsBody.contactTestBitMask = contactTestBitMask
+        physicsBody.collisionBitMask = collisionBitMask
+        
+        node.physicsBody = physicsBody
+        self.body = physicsBody
+    }
 }
-
