@@ -4,6 +4,7 @@ import GameplayKit
 class GameScene: SKScene, SKPhysicsContactDelegate {
     
     var entities: [GKEntity] = []
+    var bat: BatEntity?
     private var lastTapTime: TimeInterval = 0
     private let doubleTapMaxDelay: TimeInterval = 0.3
     
@@ -18,14 +19,23 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     
     func setUpScene() {
+        backgroundColor = .cyan
         // createPlayer()
         // createPlayerAttack()
         createSpider()
+        
+        // Cria o mosquito e adiciona na cena
+        bat = BatEntity(position: CGPoint(x: -100, y: 100))
+        
+        if let batNode = bat?.spriteNode {
+            addChild(batNode)
+        }
     }
     
     
     func didBegin(_ contact: SKPhysicsContact) {
         handleSpiderContact(contact)
+        handleBatContact(contact)
     }
     
     
@@ -34,17 +44,51 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         setUpScene()
     }
     
-    
+    private var lastUpdateTime: TimeInterval = 0
+
     override func update(_ currentTime: TimeInterval) {
         
         for entity in entities {
             entity.update(deltaTime: currentTime)
         }
+        var deltaTime = currentTime - lastUpdateTime
+        if lastUpdateTime == 0 {
+            deltaTime = 0
+        }
+        lastUpdateTime = currentTime
+        bat?.batStateMachine.update(deltaTime: deltaTime)
     }
 }
 
 extension GameScene {
 
+    func handleBatContact(_ contact: SKPhysicsContact){
+        
+        let bodyA = contact.bodyA
+        let bodyB = contact.bodyB
+
+        let firstBody: SKPhysicsBody
+        let secondBody: SKPhysicsBody
+        
+        // Garante sempre a mesma ordem: menor categoria primeiro
+        if bodyA.categoryBitMask < bodyB.categoryBitMask {
+            firstBody = bodyA
+            secondBody = bodyB
+        } else {
+            firstBody = bodyB
+            secondBody = bodyA
+        }
+        
+        // Checa: Player tocando o morcego
+        if firstBody.categoryBitMask == PhysicsCategory.player &&
+            secondBody.categoryBitMask == PhysicsCategory.bat {
+            
+            if let batEntity = bat {
+                batEntity.batStateMachine.enter(BatAttackingState.self)
+            }
+        }
+        
+    }
     
     func handleSpiderContact(_ contact: SKPhysicsContact){
         

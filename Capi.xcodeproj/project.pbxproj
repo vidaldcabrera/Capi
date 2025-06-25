@@ -34,6 +34,10 @@
 		2258605C2DF860970024E3E8 /* SKTileMapNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2258605B2DF860970024E3E8 /* SKTileMapNode.swift */; };
 		2258605F2DF860DB0024E3E8 /* SceneTile.sks in Resources */ = {isa = PBXBuildFile; fileRef = 2258605E2DF860DB0024E3E8 /* SceneTile.sks */; };
 		225860612DF860F40024E3E8 /* scene1.sks in Resources */ = {isa = PBXBuildFile; fileRef = 225860602DF860F40024E3E8 /* scene1.sks */; };
+		289F162B2E02FE1F0073C874 /* BatEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289F162A2E02FE1F0073C874 /* BatEntity.swift */; };
+		289F162C2E02FE250073C874 /* BatEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289F162A2E02FE1F0073C874 /* BatEntity.swift */; };
+		289F16372E02FFF40073C874 /* PhysicsComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225860542DF85FFF0024E3E8 /* PhysicsComponent.swift */; };
+		289F16382E02FFFB0073C874 /* PlayerEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2258602D2DF85E4F0024E3E8 /* PlayerEntity.swift */; };
 		2C6CF7532DE4B65700771D67 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6CF7522DE4B65700771D67 /* AppDelegate.swift */; };
 		2C6CF7552DE4B65700771D67 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6CF7542DE4B65700771D67 /* GameViewController.swift */; };
 		2C6CF7582DE4B65700771D67 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2C6CF7562DE4B65700771D67 /* Main.storyboard */; };
@@ -66,6 +70,13 @@
 		E529CB5C2DFB188B0037D5CB /* StateMachineComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = E529CB5A2DFB188B0037D5CB /* StateMachineComponent.swift */; };
 		E529CB5E2DFB18EA0037D5CB /* RenderComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = E529CB5D2DFB18EA0037D5CB /* RenderComponent.swift */; };
 		E529CB5F2DFB18EA0037D5CB /* RenderComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = E529CB5D2DFB18EA0037D5CB /* RenderComponent.swift */; };
+		E54B66772E0C32B3005446D6 /* BatDyingState.swift in Sources */ = {isa = PBXBuildFile; fileRef = E54B666F2E0C32B3005446D6 /* BatDyingState.swift */; };
+		E54B66782E0C32B3005446D6 /* BatAttackingState.swift in Sources */ = {isa = PBXBuildFile; fileRef = E54B66702E0C32B3005446D6 /* BatAttackingState.swift */; };
+		E54B66792E0C32B3005446D6 /* BatFlyingState.swift in Sources */ = {isa = PBXBuildFile; fileRef = E54B66712E0C32B3005446D6 /* BatFlyingState.swift */; };
+		E54B667A2E0C32B3005446D6 /* SpiderIdleState.swift in Sources */ = {isa = PBXBuildFile; fileRef = E54B66732E0C32B3005446D6 /* SpiderIdleState.swift */; };
+		E54B667B2E0C32B3005446D6 /* SpiderAttackState.swift in Sources */ = {isa = PBXBuildFile; fileRef = E54B66742E0C32B3005446D6 /* SpiderAttackState.swift */; };
+		E54B667C2E0C32B3005446D6 /* SpiderDeadState.swift in Sources */ = {isa = PBXBuildFile; fileRef = E54B66752E0C32B3005446D6 /* SpiderDeadState.swift */; };
+		E54B667D2E0C32B3005446D6 /* SpiderMoveState.swift in Sources */ = {isa = PBXBuildFile; fileRef = E54B66762E0C32B3005446D6 /* SpiderMoveState.swift */; };
 		E587DCEC2E01B13D000EE182 /* CollisionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E587DCEB2E01B13D000EE182 /* CollisionHandler.swift */; };
 /* End PBXBuildFile section */
 
@@ -110,6 +121,7 @@
 		2258605B2DF860970024E3E8 /* SKTileMapNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKTileMapNode.swift; sourceTree = "<group>"; };
 		2258605E2DF860DB0024E3E8 /* SceneTile.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = SceneTile.sks; sourceTree = "<group>"; };
 		225860602DF860F40024E3E8 /* scene1.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = scene1.sks; sourceTree = "<group>"; };
+		289F162A2E02FE1F0073C874 /* BatEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BatEntity.swift; sourceTree = "<group>"; };
 		2C6CF7472DE4B65200771D67 /* Actions.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Actions.sks; sourceTree = "<group>"; };
 		2C6CF7482DE4B65200771D67 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
 		2C6CF7492DE4B65200771D67 /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
@@ -133,6 +145,13 @@
 		E529CB572DFB186C0037D5CB /* SpiderDeadState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpiderDeadState.swift; sourceTree = "<group>"; };
 		E529CB5A2DFB188B0037D5CB /* StateMachineComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateMachineComponent.swift; sourceTree = "<group>"; };
 		E529CB5D2DFB18EA0037D5CB /* RenderComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RenderComponent.swift; sourceTree = "<group>"; };
+		E54B666F2E0C32B3005446D6 /* BatDyingState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BatDyingState.swift; sourceTree = "<group>"; };
+		E54B66702E0C32B3005446D6 /* BatAttackingState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BatAttackingState.swift; sourceTree = "<group>"; };
+		E54B66712E0C32B3005446D6 /* BatFlyingState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BatFlyingState.swift; sourceTree = "<group>"; };
+		E54B66732E0C32B3005446D6 /* SpiderIdleState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpiderIdleState.swift; sourceTree = "<group>"; };
+		E54B66742E0C32B3005446D6 /* SpiderAttackState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpiderAttackState.swift; sourceTree = "<group>"; };
+		E54B66752E0C32B3005446D6 /* SpiderDeadState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpiderDeadState.swift; sourceTree = "<group>"; };
+		E54B66762E0C32B3005446D6 /* SpiderMoveState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpiderMoveState.swift; sourceTree = "<group>"; };
 		E587DCEB2E01B13D000EE182 /* CollisionHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollisionHandler.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -165,6 +184,7 @@
 				225860332DF85EA50024E3E8 /* SnakeEntity.swift */,
 				225860352DF85EC00024E3E8 /* GroundEntity.swift */,
 				225860372DF85EE20024E3E8 /* SceneEntity.swift */,
+				289F162A2E02FE1F0073C874 /* BatEntity.swift */,
 				E529CB4A2DFB16DC0037D5CB /* SpiderEntity.swift */,
 			);
 			name = Entities;
@@ -213,9 +233,19 @@
 			name = Scene;
 			sourceTree = "<group>";
 		};
+		289F162D2E02FFB30073C874 /* States */ = {
+			isa = PBXGroup;
+			children = (
+				E54B666E2E0C32B3005446D6 /* BatStates */,
+				E54B66722E0C32B3005446D6 /* SpiderStates */,
+			);
+			path = States;
+			sourceTree = "<group>";
+		};
 		2C6CF7412DE4B65200771D67 = {
 			isa = PBXGroup;
 			children = (
+				289F162D2E02FFB30073C874 /* States */,
 				E587DCEA2E01B108000EE182 /* Protocols */,
 				E529CB4D2DFB18050037D5CB /* States */,
 				2258605D2DF860A40024E3E8 /* Scene */,
@@ -278,6 +308,27 @@
 				E58D08022E0C1F6D00BAF186 /* SpiderStates */,
 			);
 			path = States;
+			sourceTree = "<group>";
+		};
+		E54B666E2E0C32B3005446D6 /* BatStates */ = {
+			isa = PBXGroup;
+			children = (
+				E54B666F2E0C32B3005446D6 /* BatDyingState.swift */,
+				E54B66702E0C32B3005446D6 /* BatAttackingState.swift */,
+				E54B66712E0C32B3005446D6 /* BatFlyingState.swift */,
+			);
+			path = BatStates;
+			sourceTree = "<group>";
+		};
+		E54B66722E0C32B3005446D6 /* SpiderStates */ = {
+			isa = PBXGroup;
+			children = (
+				E54B66732E0C32B3005446D6 /* SpiderIdleState.swift */,
+				E54B66742E0C32B3005446D6 /* SpiderAttackState.swift */,
+				E54B66752E0C32B3005446D6 /* SpiderDeadState.swift */,
+				E54B66762E0C32B3005446D6 /* SpiderMoveState.swift */,
+			);
+			path = SpiderStates;
 			sourceTree = "<group>";
 		};
 		E587DCEA2E01B108000EE182 /* Protocols */ = {
@@ -409,6 +460,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E54B66782E0C32B3005446D6 /* BatAttackingState.swift in Sources */,
 				225860532DF85FEB0024E3E8 /* BuyComponent.swift in Sources */,
 				225860512DF85FDE0024E3E8 /* AnimationComponent.swift in Sources */,
 				2258605C2DF860970024E3E8 /* SKTileMapNode.swift in Sources */,
@@ -418,6 +470,7 @@
 				2258603D2DF85F1F0024E3E8 /* CollisionComponent.swift in Sources */,
 				2258602A2DF85E2D0024E3E8 /* EnimiesEntity.swift in Sources */,
 				225860552DF85FFF0024E3E8 /* PhysicsComponent.swift in Sources */,
+				E54B667C2E0C32B3005446D6 /* SpiderDeadState.swift in Sources */,
 				225860492DF85F970024E3E8 /* HUDComponent.swift in Sources */,
 				225860342DF85EA50024E3E8 /* SnakeEntity.swift in Sources */,
 				E529CB5E2DFB18EA0037D5CB /* RenderComponent.swift in Sources */,
@@ -428,11 +481,15 @@
 				E529CB5B2DFB188B0037D5CB /* StateMachineComponent.swift in Sources */,
 				2C6CF7552DE4B65700771D67 /* GameViewController.swift in Sources */,
 				225860302DF85E650024E3E8 /* DinoSEntity.swift in Sources */,
+				E54B667D2E0C32B3005446D6 /* SpiderMoveState.swift in Sources */,
 				225860452DF85F690024E3E8 /* MovementComponent.swift in Sources */,
 				E529CB552DFB184E0037D5CB /* SpiderAttackState.swift in Sources */,
 				E50A03D42DFC533F00070C32 /* PhysicsCategory.swift in Sources */,
 				E529CB4F2DFB18170037D5CB /* SpiderIdleState.swift in Sources */,
 				225860322DF85E760024E3E8 /* ItensEntity.swift in Sources */,
+				E54B66792E0C32B3005446D6 /* BatFlyingState.swift in Sources */,
+				289F162B2E02FE1F0073C874 /* BatEntity.swift in Sources */,
+				E54B66772E0C32B3005446D6 /* BatDyingState.swift in Sources */,
 				E529CB582DFB186C0037D5CB /* SpiderDeadState.swift in Sources */,
 				225860472DF85F840024E3E8 /* TextComponent.swift in Sources */,
 				E587DCEC2E01B13D000EE182 /* CollisionHandler.swift in Sources */,
@@ -441,6 +498,8 @@
 				225860412DF85F3B0024E3E8 /* UpdateComponent.swift in Sources */,
 				E529CB522DFB18310037D5CB /* SpiderMoveState.swift in Sources */,
 				225860572DF860190024E3E8 /* LightComponent.swift in Sources */,
+				E54B667B2E0C32B3005446D6 /* SpiderAttackState.swift in Sources */,
+				E54B667A2E0C32B3005446D6 /* SpiderIdleState.swift in Sources */,
 				2258604D2DF85FB80024E3E8 /* SpeakComponent.swift in Sources */,
 				E529CB4B2DFB16DC0037D5CB /* SpiderEntity.swift in Sources */,
 				2258605A2DF860730024E3E8 /* SKTexture+Array.swift in Sources */,
@@ -459,10 +518,13 @@
 				E529CB562DFB184E0037D5CB /* SpiderAttackState.swift in Sources */,
 				E529CB4C2DFB16DC0037D5CB /* SpiderEntity.swift in Sources */,
 				2C6CF78D2DE4B65700771D67 /* GameViewController.swift in Sources */,
+				289F162C2E02FE250073C874 /* BatEntity.swift in Sources */,
 				E529CB532DFB18310037D5CB /* SpiderMoveState.swift in Sources */,
 				E529CB502DFB18170037D5CB /* SpiderIdleState.swift in Sources */,
 				E529CB592DFB186C0037D5CB /* SpiderDeadState.swift in Sources */,
 				2C6CF78B2DE4B65700771D67 /* AppDelegate.swift in Sources */,
+				289F16382E02FFFB0073C874 /* PlayerEntity.swift in Sources */,
+				289F16372E02FFF40073C874 /* PhysicsComponent.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
