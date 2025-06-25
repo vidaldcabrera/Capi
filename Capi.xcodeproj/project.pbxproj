@@ -275,10 +275,7 @@
 		E529CB4D2DFB18050037D5CB /* States */ = {
 			isa = PBXGroup;
 			children = (
-				E529CB4E2DFB18170037D5CB /* SpiderIdleState.swift */,
-				E529CB512DFB18310037D5CB /* SpiderMoveState.swift */,
-				E529CB542DFB184E0037D5CB /* SpiderAttackState.swift */,
-				E529CB572DFB186C0037D5CB /* SpiderDeadState.swift */,
+				E58D08022E0C1F6D00BAF186 /* SpiderStates */,
 			);
 			path = States;
 			sourceTree = "<group>";
@@ -289,6 +286,17 @@
 				E587DCEB2E01B13D000EE182 /* CollisionHandler.swift */,
 			);
 			path = Protocols;
+			sourceTree = "<group>";
+		};
+		E58D08022E0C1F6D00BAF186 /* SpiderStates */ = {
+			isa = PBXGroup;
+			children = (
+				E529CB4E2DFB18170037D5CB /* SpiderIdleState.swift */,
+				E529CB512DFB18310037D5CB /* SpiderMoveState.swift */,
+				E529CB542DFB184E0037D5CB /* SpiderAttackState.swift */,
+				E529CB572DFB186C0037D5CB /* SpiderDeadState.swift */,
+			);
+			path = SpiderStates;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
