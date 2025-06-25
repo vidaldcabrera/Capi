@@ -12,7 +12,7 @@ class GroundEntity: GKEntity {
         
         let body = SKPhysicsBody(rectangleOf: size)
         body.isDynamic = false
-        body.affectedByGravity = false 
+       // body.affectedByGravity = false
         self.addComponent(PhysicsComponent(physicsBody: body))
     }
     

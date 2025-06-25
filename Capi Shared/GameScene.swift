@@ -11,27 +11,31 @@ class GameScene: SKScene {
         // 1) Define o tamanho baseado na tela
         let size = UIScreen.main.bounds.size
         let scene = GameScene(size: size)
-        scene.scaleMode = .aspectFill
+       
 
         return scene
     }
-    
-    override func sceneDidLoad() {
-        super.sceneDidLoad()
+   
+    override func didMove(to view: SKView) {
+        self.physicsWorld.gravity = CGVector(dx: 0, dy: -9.8)
+        
+      
+
         entityManager = SKEntityManager(scene: self)
+
         let playerEntity = PlayerEntity()
         entityManager?.add(entity: playerEntity)
         self.playerEntity = playerEntity
-        
+
         let sceneEntity = SceneEntity(named: "Scene1", entityManager: entityManager!)
         entityManager?.add(entity: sceneEntity)
-        
+
         let cameraNode = SKCameraNode()
         self.addChild(cameraNode)
         self.camera = cameraNode
-        
-        self.camera?.setScale(2.5)
+        self.camera?.setScale(1)
     }
+
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         if let location = touches.first?.location(in: self) {
@@ -49,18 +53,43 @@ class GameScene: SKScene {
         playerEntity?.moveComponent?.change(direction: .none)
     }
     
+    let cameraOffset = CGPoint(x: 50, y: 50)
+    let cameraLerpFactor: CGFloat = 0.4
+
     override func update(_ currentTime: TimeInterval) {
-        if (self.lastUpdatedTime == 0) {
+        if self.lastUpdatedTime == 0 {
             self.lastUpdatedTime = currentTime
         }
-        
+
         let dt = currentTime - self.lastUpdatedTime
-        
+
         if let entities = entityManager?.entities {
             for entity in entities {
                 entity.update(deltaTime: dt)
             }
         }
+
         self.lastUpdatedTime = currentTime
+
+        // 🟢 Suavização da câmera
+        if let playerNode = playerEntity?.component(ofType: GKSKNodeComponent.self)?.node,
+           let camera = self.camera {
+
+            let targetPosition = CGPoint(
+                x: playerNode.position.x + cameraOffset.x,
+                y: playerNode.position.y + cameraOffset.y
+            )
+
+            let currentPosition = camera.position
+
+            let lerpedPosition = CGPoint(
+                x: currentPosition.x + (targetPosition.x - currentPosition.x) * cameraLerpFactor,
+                y: currentPosition.y + (targetPosition.y - currentPosition.y) * cameraLerpFactor
+            )
+
+            camera.position = lerpedPosition
+        }
     }
 }
+
+

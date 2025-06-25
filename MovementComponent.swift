@@ -15,6 +15,8 @@ class MovementComponent: GKComponent {
     var direction: Direction = .none
     var animationComp: AnimationComponent?
     
+    var isJumping = false
+    
     init(speed: CGFloat) {
         self.speed = speed
         super.init()
@@ -43,4 +45,15 @@ class MovementComponent: GKComponent {
             animationComp?.playRun()
         }
     }
+    
+    public func jump() {
+            guard let body = node?.physicsBody else { return }
+
+            // Verifica se está no chão (velocidade Y muito pequena)
+            let isOnGround = abs(body.velocity.dy) < 1.0
+
+            if isOnGround {
+                body.applyImpulse(CGVector(dx: 0, dy: 30))
+            }
+        }
 }
