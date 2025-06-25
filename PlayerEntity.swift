@@ -11,7 +11,7 @@ class PlayerEntity: GKEntity {
     override init() {
         super.init()
         let node = SKSpriteNode(imageNamed: "idle1.png")
-        node.anchorPoint = .init(x: 0.46, y: 0.3)
+        node.anchorPoint = .init(x: 0.46, y: 0.25)
         self.addComponent(GKSKNodeComponent(node: node))
         
         let size: CGSize = .init(width: 32, height: 32)
@@ -26,6 +26,18 @@ class PlayerEntity: GKEntity {
         
         let moveComp = MovementComponent(speed: 3)
         self.addComponent(moveComp)
+        
+        // MARK: - Pulo
+        let jumpAtlas = SKTextureAtlas(named: "capijump")
+        let jumpFrames: [SKTexture] = (1...8).map { i in
+            jumpAtlas.textureNamed("jump\(i)")
+        }
+        let jumpComp = JumpComponent(
+            node: node,
+            frames: jumpFrames,
+            impulse: CGVector(dx: 0, dy: 350)
+        )
+        self.addComponent(jumpComp)
     }
     
     required init?(coder: NSCoder) {

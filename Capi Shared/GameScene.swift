@@ -35,9 +35,9 @@ class GameScene: SKScene {
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         captureInput(touches: touches)
     }
-   
+    
     override func update(_ currentTime: TimeInterval) {
-
+        
         if (self.lastUpdateTime == 0) {
             self.lastUpdateTime = currentTime
         }
@@ -54,8 +54,19 @@ class GameScene: SKScene {
     }
     
     public func captureInput(touches: Set<UITouch>) {
-        if let location = touches.first?.location(in: self) {
-            if location.x <= 0 {
+        guard let location = touches.first?.location(in: self) else { return }
+        
+        // Acima de 60% da altura, pula
+        if location.y > size.height * 0.6 {
+            playerEntity?.moveComponent?.change(direction: .none)
+            playerEntity?
+                .component(ofType: JumpComponent.self)?
+                .jump()
+            return
+        }
+        
+        // Movimento
+        if location.x <= frame.midX {
                 // Cliquei mais para esquerdo
                 playerEntity?.moveComponent?.change(direction: .left)
             } else {
@@ -64,4 +75,3 @@ class GameScene: SKScene {
             }
         }
     }
-}
