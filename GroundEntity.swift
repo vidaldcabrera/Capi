@@ -3,6 +3,7 @@ import GameplayKit
 import SpriteKit
 
 class GroundEntity: GKEntity {
+    
     init(size: CGSize, position: CGPoint) {
         super.init()
         
@@ -12,11 +13,12 @@ class GroundEntity: GKEntity {
         
         let body = SKPhysicsBody(rectangleOf: size)
         body.isDynamic = false
-       // body.affectedByGravity = false
+
         self.addComponent(PhysicsComponent(physicsBody: body))
     }
     
     required init?(coder: NSCoder) {
-        fatalError("init coder has not bee implemented")
+        fatalError("init(coder:) has not been implemented")
     }
+    
 }

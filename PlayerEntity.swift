@@ -11,6 +11,7 @@ class PlayerEntity: GKEntity {
     override init() {
         super.init()
         let node = SKSpriteNode(imageNamed: "idle1.png")
+
         node.anchorPoint = .init(x: 0.5, y: 0.20)
         node.setScale(1)
         self.addComponent(GKSKNodeComponent(node: node))
@@ -21,6 +22,7 @@ class PlayerEntity: GKEntity {
         self.addComponent(PhysicsComponent(physicsBody: body))
         body.isDynamic = true
         body.affectedByGravity = true
+
         body.allowsRotation = false
         
         let animationComp = AnimationComponent(
@@ -30,10 +32,23 @@ class PlayerEntity: GKEntity {
         
         let moveComponent = MovementComponent(speed: 3)
         self.addComponent(moveComponent)
+
         
+        // MARK: - Pulo
+        let jumpAtlas = SKTextureAtlas(named: "capijump")
+        let jumpFrames: [SKTexture] = (1...8).map { i in
+            jumpAtlas.textureNamed("jump\(i)")
+        }
+        let jumpComp = JumpComponent(
+            node: node,
+            frames: jumpFrames,
+            impulse: CGVector(dx: 0, dy: 350)
+        )
+        self.addComponent(jumpComp)
     }
     
     required init?(coder: NSCoder) {
-        fatalError("init coder has not bee implemented")
+        fatalError("init(coder:) has not been implemented")
     }
+    
 }

@@ -6,18 +6,19 @@ class AnimationComponent: GKComponent {
     
     var idleAction: SKAction
     var runAction: SKAction
+    
     var node: SKNode?
     
     var isRun = false
     
     init(idleAction: SKAction, runAction: SKAction) {
         self.idleAction = idleAction
-        self.runAction  = runAction
+        self.runAction = runAction
         super.init()
     }
     
     required init?(coder: NSCoder) {
-        fatalError("init coder has not been implemented")
+        fatalError("init(coder:) has not been implemented")
     }
     
     override func didAddToEntity() {
@@ -36,4 +37,5 @@ class AnimationComponent: GKComponent {
         }
         isRun = true
     }
+    
 }

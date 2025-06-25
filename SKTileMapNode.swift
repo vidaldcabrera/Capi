@@ -1,12 +1,16 @@
+
 import Foundation
 import SpriteKit
 
 extension SKTileMapNode {
     
-    func addPhyisicsToTileMap(entityManager: SKEntityManager) {
+    func addPhysicsToTileMap(entityManager: SKEntityManager)
+    {
+        
         let tileMap = self
+        
         let tileSize = tileMap.tileSize
-            
+        
         for col in 0..<tileMap.numberOfColumns {
             
             for row in 0..<tileMap.numberOfRows {
@@ -16,7 +20,7 @@ extension SKTileMapNode {
                     tileDefinition.textures[0].filteringMode = .nearest
                     
                     if(tileDefinition.userData?["noPhysics"] != nil) { continue }
-        
+                
                     let tilePosition = self.centerOfTile(atColumn: col, row: row)
                     
                     let groundEntity = GroundEntity(size: tileSize, position: tilePosition)
@@ -24,6 +28,5 @@ extension SKTileMapNode {
                 }
             }
         }
-        
     }
 }

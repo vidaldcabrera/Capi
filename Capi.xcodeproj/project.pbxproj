@@ -32,6 +32,8 @@
 		2258605A2DF860730024E3E8 /* SKTexture+Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225860592DF860730024E3E8 /* SKTexture+Array.swift */; };
 		2258605C2DF860970024E3E8 /* SKTileMapNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2258605B2DF860970024E3E8 /* SKTileMapNode.swift */; };
 		2258605F2DF860DB0024E3E8 /* SceneTile.sks in Resources */ = {isa = PBXBuildFile; fileRef = 2258605E2DF860DB0024E3E8 /* SceneTile.sks */; };
+		2C3BA4AB2E0ACCF9008A30F3 /* PhysicsCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3BA4AA2E0ACCF9008A30F3 /* PhysicsCategory.swift */; };
+		2C3BA4AD2E0ACD88008A30F3 /* JumpComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3BA4AC2E0ACD88008A30F3 /* JumpComponent.swift */; };
 		2C6CF7532DE4B65700771D67 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6CF7522DE4B65700771D67 /* AppDelegate.swift */; };
 		2C6CF7552DE4B65700771D67 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6CF7542DE4B65700771D67 /* GameViewController.swift */; };
 		2C6CF7582DE4B65700771D67 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2C6CF7562DE4B65700771D67 /* Main.storyboard */; };
@@ -90,6 +92,11 @@
 		225860592DF860730024E3E8 /* SKTexture+Array.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SKTexture+Array.swift"; sourceTree = "<group>"; };
 		2258605B2DF860970024E3E8 /* SKTileMapNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKTileMapNode.swift; sourceTree = "<group>"; };
 		2258605E2DF860DB0024E3E8 /* SceneTile.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = SceneTile.sks; sourceTree = "<group>"; };
+
+		2C3BA4AA2E0ACCF9008A30F3 /* PhysicsCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhysicsCategory.swift; sourceTree = "<group>"; };
+		2C3BA4AC2E0ACD88008A30F3 /* JumpComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JumpComponent.swift; sourceTree = "<group>"; };
+		2C6CF7482DE4B65200771D67 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
+
 		2C6CF7492DE4B65200771D67 /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
 		2C6CF74A2DE4B65700771D67 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2C6CF74F2DE4B65700771D67 /* Capi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Capi.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -159,6 +166,7 @@
 				225860522DF85FEB0024E3E8 /* BuyComponent.swift */,
 				225860542DF85FFF0024E3E8 /* PhysicsComponent.swift */,
 				225860562DF860190024E3E8 /* LightComponent.swift */,
+				2C3BA4AC2E0ACD88008A30F3 /* JumpComponent.swift */,
 			);
 			name = Components;
 			sourceTree = "<group>";
@@ -168,6 +176,7 @@
 			children = (
 				225860592DF860730024E3E8 /* SKTexture+Array.swift */,
 				2258605B2DF860970024E3E8 /* SKTileMapNode.swift */,
+				2C3BA4AA2E0ACCF9008A30F3 /* PhysicsCategory.swift */,
 			);
 			name = Tools;
 			sourceTree = "<group>";
@@ -343,6 +352,7 @@
 				225860532DF85FEB0024E3E8 /* BuyComponent.swift in Sources */,
 				2C8C1DD72DFB19F7005603D6 /* PlayerEntity.swift in Sources */,
 				225860512DF85FDE0024E3E8 /* AnimationComponent.swift in Sources */,
+				2C3BA4AD2E0ACD88008A30F3 /* JumpComponent.swift in Sources */,
 				2258605C2DF860970024E3E8 /* SKTileMapNode.swift in Sources */,
 				225860382DF85EE20024E3E8 /* SceneEntity.swift in Sources */,
 				2258604B2DF85FA60024E3E8 /* SkillsComponent.swift in Sources */,
@@ -367,6 +377,7 @@
 				225860572DF860190024E3E8 /* LightComponent.swift in Sources */,
 				2258604D2DF85FB80024E3E8 /* SpeakComponent.swift in Sources */,
 				2258605A2DF860730024E3E8 /* SKTexture+Array.swift in Sources */,
+				2C3BA4AB2E0ACCF9008A30F3 /* PhysicsCategory.swift in Sources */,
 				2258602C2DF85E3D0024E3E8 /* TrapEntity.swift in Sources */,
 				2C6CF7532DE4B65700771D67 /* AppDelegate.swift in Sources */,
 			);

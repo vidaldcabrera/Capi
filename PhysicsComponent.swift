@@ -12,7 +12,7 @@ class PhysicsComponent: GKComponent {
     }
     
     required init?(coder: NSCoder) {
-        fatalError("init coder has not bee implemented")
+        fatalError("init(coder:) has not been implemented")
     }
     
     override func didAddToEntity() {
@@ -20,4 +20,5 @@ class PhysicsComponent: GKComponent {
             node.physicsBody = self.body
         }
     }
+    
 }
