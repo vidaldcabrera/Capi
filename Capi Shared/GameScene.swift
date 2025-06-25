@@ -5,9 +5,7 @@ import Foundation
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
     
-    var chao: SKTileMapNode?
     var bat: BatEntity?
-    var player: PlayerEntity?
     
     class func newGameScene() -> GameScene {
         guard let scene = SKScene(fileNamed: "GameScene") as? GameScene else {
@@ -19,10 +17,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     func setUpScene() {
         backgroundColor = .cyan
-        
-
-
-        
         // Cria o mosquito e adiciona na cena
         bat = BatEntity(position: CGPoint(x: -100, y: 100))
         
@@ -45,8 +39,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             deltaTime = 0
         }
         lastUpdateTime = currentTime
-        
         bat?.batStateMachine.update(deltaTime: deltaTime)
+        
     }
     
     func didBegin(_ contact: SKPhysicsContact) {
@@ -73,7 +67,7 @@ extension GameScene {
             secondBody = bodyA
         }
         
-        // Checa: Player tocando Mosquito
+        // Checa: Player tocando o morcego
         if firstBody.categoryBitMask == PhysicsCategory.player &&
             secondBody.categoryBitMask == PhysicsCategory.bat {
             
