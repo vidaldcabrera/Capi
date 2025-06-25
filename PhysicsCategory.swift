@@ -11,4 +11,3 @@ struct PhysicsCategory {
     static let ground: UInt32 = 0x1 << 4         // 0b1_0000
     static let bat: UInt32 = 0x1 << 5
 }
-

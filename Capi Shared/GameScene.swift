@@ -1,8 +1,11 @@
 import SpriteKit
 import GameplayKit
+import Foundation
+
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
     
+    var mosquito: MosquitoEntity?
     var entities: [GKEntity] = []
     var bat: BatEntity?
     private var lastTapTime: TimeInterval = 0
@@ -30,12 +33,20 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         if let batNode = bat?.spriteNode {
             addChild(batNode)
         }
+        
+        // Cria o mosquito e adiciona na cena
+        mosquito = MosquitoEntity(position: CGPoint(x: 100, y: 100))
+        
+        if let mosquitoNode = mosquito?.spriteNode {
+            addChild(mosquitoNode)
+        }
     }
     
     
     func didBegin(_ contact: SKPhysicsContact) {
         handleSpiderContact(contact)
         handleBatContact(contact)
+        handleMosquitoContact(contact)
     }
     
     
@@ -57,6 +68,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
         lastUpdateTime = currentTime
         bat?.batStateMachine.update(deltaTime: deltaTime)
+        mosquito?.mosquitoStateMachine.update(deltaTime: deltaTime)
     }
 }
 
@@ -130,9 +142,33 @@ extension GameScene {
                 stateMachineComponent.stateMachine.enter(SpiderDeadState.self)
             }
         }
-        
     }
-    
+
+    func handleMosquitoContact(_ contact: SKPhysicsContact){
+        let bodyA = contact.bodyA
+        let bodyB = contact.bodyB
+        
+        let firstBody: SKPhysicsBody
+        let secondBody: SKPhysicsBody
+        
+        // Garante sempre a mesma ordem: menor categoria primeiro
+        if bodyA.categoryBitMask < bodyB.categoryBitMask {
+            firstBody = bodyA
+            secondBody = bodyB
+        } else {
+            firstBody = bodyB
+            secondBody = bodyA
+        }
+        
+        // Checa: Player tocando Mosquito
+        if firstBody.categoryBitMask == PhysicsCategory.player &&
+            secondBody.categoryBitMask == PhysicsCategory.mosquito {
+            
+            if let mosquitoEntity = mosquito {
+                mosquitoEntity.mosquitoStateMachine.enter(MosquitoAttackingState.self)
+            }
+        }
+    }
     
     
     func createSpider() {
