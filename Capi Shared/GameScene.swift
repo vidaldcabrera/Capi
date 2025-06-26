@@ -28,14 +28,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         createSpider()
         
         // Cria o mosquito e adiciona na cena
-        bat = BatEntity(position: CGPoint(x: -100, y: 100))
+        bat = BatEntity(position: CGPoint(x: -100, y: 50))
         
         if let batNode = bat?.spriteNode {
             addChild(batNode)
         }
         
         // Cria o mosquito e adiciona na cena
-        mosquito = MosquitoEntity(position: CGPoint(x: 100, y: 100))
+        mosquito = MosquitoEntity(position: CGPoint(x: 100, y: 50))
         
         if let mosquitoNode = mosquito?.spriteNode {
             addChild(mosquitoNode)
@@ -173,7 +173,7 @@ extension GameScene {
     
     func createSpider() {
         let spiderTexture = SKTexture(imageNamed: "hat-man-idle-1")
-        let spider = SpiderEntity(texture: spiderTexture, position: CGPoint(x: -30, y: -300))
+        let spider = SpiderEntity(texture: spiderTexture, position: CGPoint(x: -30, y: -30))
         
         if let node = spider.component(ofType: RenderComponent.self)?.node {
             node.name = "spider"
