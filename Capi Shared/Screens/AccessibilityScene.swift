@@ -1,15 +1,9 @@
-//
-//  SettingsPauseScene.swift
-//  Capi iOS
-//
-//  Created by Gabriella Tomoda on 23/06/25.
-//
+
 
 import Foundation
 import SpriteKit
 
-class SettingsPauseScene: SKScene {
-
+class AccessibilityScene: SKScene {
     override func didMove(to view: SKView) {
         backgroundColor = .clear
         self.isUserInteractionEnabled = true
@@ -26,14 +20,18 @@ class SettingsPauseScene: SKScene {
         box.setScale(1.5)
         box.zPosition = 14
         addChild(box)
-
+        
         // Título
-        let title = SKSpriteNode(imageNamed: "settings_txt")
+        let title = SKSpriteNode(imageNamed: "accessibility_txt")
         title.position = CGPoint(x: frame.midX, y: frame.midY + 150)
         title.zPosition = 15
         addChild(title)
+
         
-        // Texto "Pausado"
+        
+        
+        
+        // Texto
         let audio = SKSpriteNode(imageNamed: "audio_txt")
         audio.position = CGPoint(x: frame.midX - 100, y: frame.midY + 60)
         audio.zPosition = 15
@@ -62,6 +60,13 @@ class SettingsPauseScene: SKScene {
         accessibilityButton.zPosition = 15
         addChild(accessibilityButton)
 
+        
+        
+        
+        
+        
+        
+        
         // Back Button (voltar para PauseScene)
         let backButton = SKSpriteNode(imageNamed: "back_button")
         backButton.name = "back"
@@ -70,18 +75,7 @@ class SettingsPauseScene: SKScene {
         backButton.zPosition = 15
         addChild(backButton)
 
-        // Sliders são simulados por sprites, por enquanto
-        let audioBar = SKSpriteNode(imageNamed: "slider")
-        audioBar.position = CGPoint(x: frame.midX + 80, y: frame.midY + 60)
-        audioBar.setScale(0.8)
-        audioBar.zPosition = 15
-        addChild(audioBar)
 
-        let musicBar = SKSpriteNode(imageNamed: "slider")
-        musicBar.position = CGPoint(x: frame.midX + 80, y: frame.midY)
-        musicBar.setScale(0.8)
-        musicBar.zPosition = 15
-        addChild(musicBar)
     }
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -90,25 +84,15 @@ class SettingsPauseScene: SKScene {
         let nodes = nodes(at: location)
 
         for node in nodes {
-            switch node.name {
-            case "back":
-                let pauseScene = PauseScene(size: self.size)
-                pauseScene.scaleMode = .aspectFill
-                view?.presentScene(pauseScene, transition: .fade(withDuration: 0.3))
-            case "controls":
-                let controlsScene = ControlSettingsScene(size: self.size)
-                controlsScene.scaleMode = .aspectFill
-                view?.presentScene(controlsScene, transition: .fade(withDuration: 0.5))
-                break
-            case "accessibility":
-                // abrir tela de acessiessa classebilidade se quiser
-                let acessScene = AccessibilityScene(size: self.size)
-                acessScene.scaleMode = .aspectFill
-                view?.presentScene(acessScene, transition: .fade(withDuration: 0.5))
-
-                break
-            default:
-                break
+            if node.name == "backButton" {
+                if let pauseScene = PauseScene(fileNamed: "PauseScene") {
+                    pauseScene.scaleMode = .aspectFill
+                    view?.presentScene(pauseScene, transition: .fade(withDuration: 0.5))
+                } else {
+                    let pauseScene = PauseScene(size: self.size)
+                    pauseScene.scaleMode = .aspectFill
+                    view?.presentScene(pauseScene, transition: .fade(withDuration: 0.5))
+                }
             }
         }
     }
