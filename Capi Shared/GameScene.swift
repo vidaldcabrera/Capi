@@ -31,10 +31,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.anchorPoint = CGPoint(x: 0.5, y: 0.5)
         backgroundColor = .black
 
-        createBackground()
-        createCloud()
-        createTitle()
-        initButtons()
+        createBackground(to: view)
+        createCloud(to: view)
+        createTitle(to: view)
+        initButtons(to: view)
         createSpider()
         createBat()
         createMosquito()
@@ -51,7 +51,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     override func didMove(to view: SKView) {
         physicsWorld.contactDelegate = self
-        setUpScene(view)
+        setUpScene(to: view)
     }
     
     private var lastUpdateTime: TimeInterval = 0
@@ -211,7 +211,7 @@ extension GameScene {
         }
     }
 
-    func createBackground() {
+    func createBackground(to view: SKView) {
 
         let background = SKSpriteNode(imageNamed: "map")
         background.position = .zero
@@ -222,7 +222,7 @@ extension GameScene {
 
     }
 
-    func createCloud(){
+    func createCloud(to view: SKView){
         let cloud = SKSpriteNode(imageNamed: "cloud")
         cloud.position = .zero
         cloud.size = view.frame.size
@@ -231,7 +231,7 @@ extension GameScene {
         addChild(cloud)
     }
 
-    func createTitle(){
+    func createTitle(to view: SKView){
         let title = SKSpriteNode(imageNamed: "title")
         title.position = CGPoint(x: 0, y: view.frame.height * 0.45)
         title.setScale(proportionalScale(view: view, multiplier: 0.7))
@@ -239,7 +239,7 @@ extension GameScene {
         addChild(title)
     }
 
-    func initButtons(){
+    func initButtons(to view: SKView){
         let buttons: [(String, CGFloat, () -> Void)] = [
             ("start_button", 0.1, {
                 let scene = LevelScene(size: self.size)
