@@ -20,8 +20,6 @@ class HUDOverlay: SKNode {
     func setupHUD(for sceneSize: CGSize) {
         let size = sceneSize
         let verticalOffset: CGFloat = size.height * 0.25
-        let hudBaseScale: CGFloat = 1.0
-
 
         // ====== VIDAS ======
         for i in 0..<GameState.shared.lives {
@@ -72,10 +70,10 @@ class HUDOverlay: SKNode {
 
             if let layout = savedLayouts.first(where: { $0.name == name }) {
                 button.position = layout.position(in: sceneSize)
-                button.setScale(layout.scale * hudBaseScale)
+                button.setScale(layout.scale) // <- Corrigido aqui
             } else {
                 button.position = defaultPositions[name]!
-                button.setScale(hudBaseScale)
+                button.setScale(1.0)
             }
 
             button.zPosition = 100
@@ -208,17 +206,31 @@ class HUDOverlayPreview: SKNode {
             addChild(button)
         }
 
-        // Visual extra
         let box = SKSpriteNode(imageNamed: "control_box")
         box.position = CGPoint(x: frame.midX, y: frame.midY + 40)
         box.zPosition = -100
         addChild(box)
 
-        let rightSizeBar = SKSpriteNode(imageNamed: "slider")
-        rightSizeBar.position = CGPoint(x: frame.midX - 525, y: frame.midY + 60)
-        rightSizeBar.setScale(0.8)
-        rightSizeBar.zPosition = 1000
-        addChild(rightSizeBar)
+        // SLIDERS
+
+        let sliderConfigs: [(name: String, pos: CGPoint)] = [
+            ("right", CGPoint(x: frame.midX - 525, y: frame.midY + 60)),
+            ("left", CGPoint(x: frame.midX - 525, y: frame.midY - 60)),
+            ("jump", CGPoint(x: frame.midX + 525, y: frame.midY + 60)),
+            ("action", CGPoint(x: frame.midX + 525, y: frame.midY - 60))
+        ]
+
+        for (name, pos) in sliderConfigs {
+            let slider = CustomSlider(trackImage: "bar", thumbImage: "thumb", min: 0.5, max: 2.0, initial: 1.0)
+            slider.position = pos
+            slider.onValueChanged = { value in
+                if let button = self.childNode(withName: name) as? SKSpriteNode {
+                    button.setScale(value)
+                    self.buttonScales[name] = value
+                }
+            }
+            addChild(slider)
+        }
     }
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -250,7 +262,12 @@ class HUDOverlayPreview: SKNode {
             buttonPositions[name] = location
         }
     }
-
+//
+//    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+//        draggingNode = nil
+//        saveLayoutToUserDefaults()
+//    }
+    
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         guard let touch = touches.first else { return }
         let location = touch.location(in: self)
@@ -269,6 +286,7 @@ class HUDOverlayPreview: SKNode {
         saveLayoutToUserDefaults()
     }
 
+
     override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
         draggingNode = nil
     }
@@ -282,6 +300,9 @@ class HUDOverlayPreview: SKNode {
 
         if let data = try? JSONEncoder().encode(layouts) {
             UserDefaults.standard.set(data, forKey: "buttonLayout")
+            print("✅ Layout salvo com sucesso:", layouts)
+        } else {
+            print("❌ Erro ao salvar layout.")
         }
     }
 
@@ -290,6 +311,7 @@ class HUDOverlayPreview: SKNode {
               let layouts = try? JSONDecoder().decode([ButtonLayout].self, from: data) else {
             return []
         }
+        print("📦 Layout carregado:", layouts)
         return layouts
     }
 

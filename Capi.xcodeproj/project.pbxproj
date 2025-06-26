@@ -15,6 +15,7 @@
 		2241F3902E097E3D006413EF /* SettingsPauseScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2241F38F2E097E3D006413EF /* SettingsPauseScene.swift */; };
 		2241F3922E098353006413EF /* GameState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2241F3912E098353006413EF /* GameState.swift */; };
 		2241F3942E0990EF006413EF /* ControlSettingsScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2241F3932E0990EF006413EF /* ControlSettingsScene.swift */; };
+		2241F39C2E0D892B006413EF /* CustomSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2241F39B2E0D892B006413EF /* CustomSlider.swift */; };
 		2258602A2DF85E2D0024E3E8 /* EnimiesEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225860292DF85E2D0024E3E8 /* EnimiesEntity.swift */; };
 		2258602C2DF85E3D0024E3E8 /* TrapEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2258602B2DF85E3D0024E3E8 /* TrapEntity.swift */; };
 		2258602E2DF85E4F0024E3E8 /* PlayerEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2258602D2DF85E4F0024E3E8 /* PlayerEntity.swift */; };
@@ -87,6 +88,7 @@
 		2241F38F2E097E3D006413EF /* SettingsPauseScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsPauseScene.swift; sourceTree = "<group>"; };
 		2241F3912E098353006413EF /* GameState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameState.swift; sourceTree = "<group>"; };
 		2241F3932E0990EF006413EF /* ControlSettingsScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlSettingsScene.swift; sourceTree = "<group>"; };
+		2241F39B2E0D892B006413EF /* CustomSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSlider.swift; sourceTree = "<group>"; };
 		225860292DF85E2D0024E3E8 /* EnimiesEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnimiesEntity.swift; sourceTree = "<group>"; };
 		2258602B2DF85E3D0024E3E8 /* TrapEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrapEntity.swift; sourceTree = "<group>"; };
 		2258602D2DF85E4F0024E3E8 /* PlayerEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerEntity.swift; sourceTree = "<group>"; };
@@ -167,6 +169,7 @@
 				225860372DF85EE20024E3E8 /* SceneEntity.swift */,
 				22E4513E2DF9EAD600765DCE /* ButtonEntity.swift */,
 				2241F3892E096600006413EF /* InventoryEntity.swift */,
+				2241F39B2E0D892B006413EF /* CustomSlider.swift */,
 			);
 			name = Entities;
 			sourceTree = "<group>";
@@ -416,6 +419,7 @@
 				2241F38E2E096728006413EF /* PauseScene.swift in Sources */,
 				225860302DF85E650024E3E8 /* DinoSEntity.swift in Sources */,
 				225860452DF85F690024E3E8 /* MovimentComponent.swift in Sources */,
+				2241F39C2E0D892B006413EF /* CustomSlider.swift in Sources */,
 				225860322DF85E760024E3E8 /* ItensEntity.swift in Sources */,
 				225860472DF85F840024E3E8 /* TextComponent.swift in Sources */,
 				2258602E2DF85E4F0024E3E8 /* PlayerEntity.swift in Sources */,
