@@ -19,8 +19,8 @@ class HUDOverlay: SKNode {
 
     func setupHUD(for sceneSize: CGSize) {
         let size = sceneSize
-        let savedPositions = HUDOverlayPreview.loadLayoutFromUserDefaults()
         let verticalOffset: CGFloat = size.height * 0.25
+        let hudBaseScale: CGFloat = 1.0
 
 
         // ====== VIDAS ======
@@ -35,10 +35,9 @@ class HUDOverlay: SKNode {
             addChild(heart)
         }
 
-
         // ====== FRUTA E SCORE ======
         let fruitIcon = SKSpriteNode(imageNamed: "fruit_static")
-        fruitIcon.position = CGPoint(x: -50, y: size.height/2 - verticalOffset * 1.05 )
+        fruitIcon.position = CGPoint(x: -50, y: size.height/2 - verticalOffset * 1.05)
         fruitIcon.zPosition = 100
         addChild(fruitIcon)
 
@@ -65,15 +64,6 @@ class HUDOverlay: SKNode {
             ("action", "action_button")
         ]
 
-//        for (name, image) in buttonConfigs {
-//            let button = SKSpriteNode(imageNamed: image)
-//            button.name = name
-//            button.position = savedPositions[name] ?? defaultPositions[name]!
-//            button.zPosition = 100
-//            addChild(button)
-//        }
-        
- 
         let savedLayouts = HUDOverlayPreview.loadLayoutFromUserDefaults()
 
         for (name, image) in buttonConfigs {
@@ -82,8 +72,10 @@ class HUDOverlay: SKNode {
 
             if let layout = savedLayouts.first(where: { $0.name == name }) {
                 button.position = layout.position(in: sceneSize)
+                button.setScale(layout.scale * hudBaseScale)
             } else {
                 button.position = defaultPositions[name]!
+                button.setScale(hudBaseScale)
             }
 
             button.zPosition = 100
@@ -102,13 +94,8 @@ class HUDOverlay: SKNode {
         inventoryButton.position = CGPoint(x: size.width/2 - 200, y: size.height/2 - verticalOffset * 1.1)
         inventoryButton.zPosition = 100
         addChild(inventoryButton)
-        
-//        updateScore(to: GameState.shared.score)
-//        updateLives(to: GameState.shared.lives)
-
     }
 
-    // ====== TOUCH: PAUSE BUTTON ======
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         guard let touch = touches.first else { return }
         let location = touch.location(in: self)
@@ -126,12 +113,10 @@ class HUDOverlay: SKNode {
         }
     }
 
-    // ====== ATUALIZAR SCORE ======
     func updateScore(to value: Int) {
-        //scoreLabel.text = String(format: "%06d", value)
+        scoreLabel.text = String(format: "%06d", value)
     }
 
-    // ====== ATUALIZAR VIDAS ======
     func updateLives(to value: Int) {
         children.filter { $0.name == "heart" }.forEach { $0.removeFromParent() }
         guard let scene = self.scene else { return }
@@ -151,7 +136,6 @@ class HUDOverlay: SKNode {
 }
 
 
-
 // =======HUD.PREVIEW======
 
 
@@ -162,21 +146,22 @@ struct ButtonLayout: Codable {
     var name: String
     var xPercent: CGFloat
     var yPercent: CGFloat
+    var scale: CGFloat  // <-- novo campo
 
-    init(name: String, position: CGPoint, in size: CGSize) {
+    init(name: String, position: CGPoint, in size: CGSize, scale: CGFloat = 1.0) {
         self.name = name
         self.xPercent = (position.x + size.width / 2) / size.width
-        self.yPercent = (position.y + size.height / 2) / size.height
+        self.yPercent = (position.y + size.height / 2) / size.height * 0.7
+        self.scale = scale
     }
 
     func position(in size: CGSize) -> CGPoint {
         CGPoint(
             x: xPercent * size.width - size.width / 2,
-            y: yPercent * size.height - size.height / 2
+            y: yPercent * size.height - size.height * 0.7 / 2
         )
     }
 }
-
 
 // HUDOverlayPreview.swift
 import SpriteKit
@@ -184,22 +169,21 @@ import SpriteKit
 class HUDOverlayPreview: SKNode {
     private var draggingNode: SKSpriteNode?
     private var buttonPositions: [String: CGPoint] = [:]
+    private var buttonScales: [String: CGFloat] = [:]
     private let panelSize: CGSize
+    private let previewBaseScale: CGFloat
 
     init(panelSize: CGSize) {
         self.panelSize = panelSize
+        self.previewBaseScale = min(panelSize.width, panelSize.height) / 600
         super.init()
         self.isUserInteractionEnabled = true
 
-        let pw = panelSize.width
-        let ph = panelSize.height
-        let buttonScale = min(pw, ph) / 600
-
         let defaultPositions = [
-            "left": CGPoint(x: -pw/2 + 50, y: -ph/2 + 60),
-            "right": CGPoint(x: -pw/2 + 180, y: -ph/2 + 60),
-            "jump": CGPoint(x: pw/2 - 120, y: -ph/2 + 150),
-            "action": CGPoint(x: pw/2 - 200, y: -ph/2 + 60)
+            "left": CGPoint(x: -panelSize.width/2 + 50, y: -panelSize.height/2 + 60),
+            "right": CGPoint(x: -panelSize.width/2 + 180, y: -panelSize.height/2 + 60),
+            "jump": CGPoint(x: panelSize.width/2 - 120, y: -panelSize.height/2 + 150),
+            "action": CGPoint(x: panelSize.width/2 - 200, y: -panelSize.height/2 + 60)
         ]
 
         let savedLayouts = HUDOverlayPreview.loadLayoutFromUserDefaults()
@@ -207,18 +191,34 @@ class HUDOverlayPreview: SKNode {
         for (name, defaultPosition) in defaultPositions {
             let button = SKSpriteNode(imageNamed: "\(name)_button")
             button.name = name
-            button.setScale(buttonScale)
 
             if let layout = savedLayouts.first(where: { $0.name == name }) {
                 button.position = layout.position(in: panelSize)
+                let realScale = layout.scale * previewBaseScale
+                button.setScale(realScale)
+                buttonScales[name] = realScale
             } else {
                 button.position = defaultPosition
+                button.setScale(previewBaseScale)
+                buttonScales[name] = previewBaseScale
             }
 
             button.zPosition = 1
             buttonPositions[name] = button.position
             addChild(button)
         }
+
+        // Visual extra
+        let box = SKSpriteNode(imageNamed: "control_box")
+        box.position = CGPoint(x: frame.midX, y: frame.midY + 40)
+        box.zPosition = -100
+        addChild(box)
+
+        let rightSizeBar = SKSpriteNode(imageNamed: "slider")
+        rightSizeBar.position = CGPoint(x: frame.midX - 525, y: frame.midY + 60)
+        rightSizeBar.setScale(0.8)
+        rightSizeBar.zPosition = 1000
+        addChild(rightSizeBar)
     }
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -238,10 +238,11 @@ class HUDOverlayPreview: SKNode {
 
         let halfWidth = panelSize.width / 2
         let halfHeight = panelSize.height / 2
-        let padding: CGFloat = 40
+        let paddingX: CGFloat = 40
+        let paddingY: CGFloat = 40
 
-        location.x = max(-halfWidth + padding, min(location.x, halfWidth - padding))
-        location.y = max(-halfHeight + padding, min(location.y, halfHeight - padding))
+        location.x = max(-halfWidth + paddingX, min(location.x, halfWidth - paddingX))
+        location.y = max(-halfHeight + paddingY, min(location.y, halfHeight - paddingY))
 
         node.position = location
 
@@ -251,6 +252,19 @@ class HUDOverlayPreview: SKNode {
     }
 
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        guard let touch = touches.first else { return }
+        let location = touch.location(in: self)
+
+        if let node = atPoint(location) as? SKSpriteNode,
+           let name = node.name,
+           ["left", "right", "jump", "action"].contains(name) {
+            let current = buttonScales[name] ?? previewBaseScale
+            let newScale = current < previewBaseScale * 1.5 ? current + 0.1 : previewBaseScale
+            node.setScale(newScale)
+            buttonScales[name] = newScale
+            buttonPositions[name] = node.position
+        }
+
         draggingNode = nil
         saveLayoutToUserDefaults()
     }
@@ -260,9 +274,12 @@ class HUDOverlayPreview: SKNode {
     }
 
     func saveLayoutToUserDefaults() {
-        let layouts = buttonPositions.map {
-            ButtonLayout(name: $0.key, position: $0.value, in: panelSize)
+        let layouts = buttonPositions.map { (name, position) -> ButtonLayout in
+            let realScale = buttonScales[name] ?? previewBaseScale
+            let relativeScale = realScale / previewBaseScale
+            return ButtonLayout(name: name, position: position, in: panelSize, scale: relativeScale)
         }
+
         if let data = try? JSONEncoder().encode(layouts) {
             UserDefaults.standard.set(data, forKey: "buttonLayout")
         }
@@ -280,8 +297,3 @@ class HUDOverlayPreview: SKNode {
         fatalError("init(coder:) has not been implemented")
     }
 }
-
-
-// Uso no HUDOverlay.swift
-// (exemplo dentro de setupHUD)
-

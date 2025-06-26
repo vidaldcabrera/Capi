@@ -20,7 +20,8 @@ class ControlSettingsScene: SKScene {
         panel.fillColor = .blue
         
 //        panel.strokeColor = .black
-        panel.position = CGPoint(x: frame.midX, y: frame.midY)
+        panel.position = CGPoint(x: frame.midX, y: frame.midY - 40)
+
 
         panel.zPosition = 15
         addChild(panel)
@@ -50,7 +51,7 @@ class ControlSettingsScene: SKScene {
         backButton.zPosition = 30
         addChild(backButton)
         
-        let hudPreview = HUDOverlayPreview(panelSize: panel.frame.size )
+        let hudPreview = HUDOverlayPreview(panelSize: panel.frame.size)
         hudPreview.position = CGPoint.zero
         hudPreview.zPosition = 16
         panel.addChild(hudPreview)
@@ -62,6 +63,7 @@ class ControlSettingsScene: SKScene {
 //        leftButton.setScale(buttonScale)
 //        leftButton.zPosition = 1
 //        panel.addChild(leftButton)
+        
 //
 //        let rightButton = SKSpriteNode(imageNamed: "right_button")
 //        rightButton.position = CGPoint(x: -pw/2 + 220, y: -ph/2 + 120)
@@ -95,7 +97,7 @@ class ControlSettingsScene: SKScene {
         let location = touch.location(in: self)
         let nodes = nodes(at: location)
 
-        for node in nodes { // NAO TA VOLTANDO PRO SETTINGS
+        for node in nodes { 
             if node.name == "backButton" {
                 if let pauseScene = PauseScene(fileNamed: "PauseScene") {
                     pauseScene.scaleMode = .aspectFill
