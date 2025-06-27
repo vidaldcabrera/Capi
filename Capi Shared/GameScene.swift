@@ -37,35 +37,36 @@ class GameScene: SKScene {
         title.zPosition = 0
         addChild(title)
 
-        let buttons: [(String, CGFloat, () -> Void)] = [
-            ("start_button", 0.1, {
+        let buttons: [(String, String, CGFloat, () -> Void)] = [
+            ("start_button", "Iniciar jogo", 0.1, {
                 let scene = LevelScene(size: self.size)
                 scene.scaleMode = .aspectFill
                 self.view?.presentScene(scene, transition: .fade(withDuration: 1))
             }),
-            ("options_button", -0.14, {
+            ("options_button", "Configurações", -0.14, {
                 let scene = SettingsScene(size: self.size)
                 scene.scaleMode = .aspectFill
                 self.view?.presentScene(scene, transition: .fade(withDuration: 1))
             }),
-            ("difficulty_button", -0.37, {
+            ("difficulty_button", "Dificuldade", -0.37, {
                 let scene = DifficultyScene(size: self.size)
                 scene.scaleMode = .aspectFill
                 self.view?.presentScene(scene, transition: .fade(withDuration: 1))
             }),
-            ("credits_button", -0.6, {
+            ("credits_button", "Créditos", -0.6, {
                 let scene = CreditsScene(size: self.size)
                 scene.scaleMode = .aspectFill
                 self.view?.presentScene(scene, transition: .fade(withDuration: 1))
             })
         ]
 
-        for (name, relativeY, action) in buttons {
+        for (name, label, relativeY, action) in buttons {
             let button = ButtonEntity(
                 imageNamed: name,
                 position: CGPoint(x: 0, y: view.frame.height * relativeY),
                 name: name,
-                action: action
+                action: action,
+                label: label
             )
             entityManager.add(entity: button)
             if let node = button.component(ofType: GKSKNodeComponent.self)?.node {

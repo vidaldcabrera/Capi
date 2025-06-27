@@ -76,10 +76,14 @@ class LevelScene: SKScene {
         let nodesAtPoint = nodes(at: location)
         for node in nodesAtPoint {
             if node.name == "level_1" {
+                VoiceOverManager.shared.speak("Fase um")
+
                 let gameplayScene = GamePlayScene(size: self.size)
                 gameplayScene.scaleMode = .aspectFill
                 self.view?.presentScene(gameplayScene, transition: .fade(withDuration: 1))
             }  else if node.name == "backButton" {
+                VoiceOverManager.shared.speak("Voltar")
+
                 let gameScene = GameScene(size: self.size)
                 gameScene.scaleMode = .aspectFill
                 self.view?.presentScene(gameScene, transition: .fade(withDuration: 1))

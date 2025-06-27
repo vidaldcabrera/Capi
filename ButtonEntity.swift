@@ -9,7 +9,7 @@ import SpriteKit
 import GameplayKit
 
 class ButtonEntity: GKEntity {
-    init(imageNamed: String, position: CGPoint, name: String, action: @escaping () -> Void) {
+    init(imageNamed: String, position: CGPoint, name: String, action: @escaping () -> Void, label: String) {
         super.init()
 
         let spriteNode = SKSpriteNode(imageNamed: imageNamed)
@@ -18,7 +18,7 @@ class ButtonEntity: GKEntity {
         spriteNode.zPosition = 10
 
         let nodeComponent = GKSKNodeComponent(node: spriteNode)
-        let buttonComponent = ButtonComponent(node: spriteNode, action: action)
+        let buttonComponent = ButtonComponent(node: spriteNode, label: label, action: action)
 
         addComponent(nodeComponent)
         addComponent(buttonComponent)

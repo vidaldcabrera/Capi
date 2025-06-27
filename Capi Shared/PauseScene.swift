@@ -74,23 +74,31 @@ class PauseScene: SKScene {
         for node in nodes {
             switch node.name {
             case "resumeButton":
-                print("ahhh")
+                VoiceOverManager.shared.speak("Jogo retomado")
                 let resumeScene = GamePlayScene(size: self.size)
                 resumeScene.scaleMode = .aspectFill
                 view?.presentScene(resumeScene, transition: .fade(withDuration: 0.5))
 
             case "restartButton":
+                VoiceOverManager.shared.speak("Jogo reiniciado")
+
                 let restartScene = GameScene(size: self.size)
                 restartScene.scaleMode = .aspectFill
                 view?.presentScene(restartScene, transition: .fade(withDuration: 0.6))
 
             case "settingsButton":
+                VoiceOverManager.shared.speak("Configurações")
+
                 let settingsPauseScene = SettingsPauseScene(size: self.size)
                 settingsPauseScene.scaleMode = .aspectFill
                 view?.presentScene(settingsPauseScene, transition: .fade(withDuration: 0.6))
 
             case "quitButton":
-                exit(0)
+                VoiceOverManager.shared.speak("Saindo do jogo")
+
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1.2) {
+                    exit(0)
+                }
 
             default:
                 break

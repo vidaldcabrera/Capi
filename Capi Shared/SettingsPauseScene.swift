@@ -92,16 +92,22 @@ class SettingsPauseScene: SKScene {
         for node in nodes {
             switch node.name {
             case "back":
+                VoiceOverManager.shared.speak("Voltar")
+
                 let pauseScene = PauseScene(size: self.size)
                 pauseScene.scaleMode = .aspectFill
                 view?.presentScene(pauseScene, transition: .fade(withDuration: 0.3))
             case "controls":
+                VoiceOverManager.shared.speak("Configurar controles")
+
                 let controlsScene = ControlSettingsScene(size: self.size)
                 controlsScene.scaleMode = .aspectFill
                 view?.presentScene(controlsScene, transition: .fade(withDuration: 0.5))
                 break
             case "accessibility":
                 // abrir tela de acessiessa classebilidade se quiser
+                VoiceOverManager.shared.speak("Acessibilidade")
+
                 let acessScene = AccessibilityScene(size: self.size)
                 acessScene.scaleMode = .aspectFill
                 view?.presentScene(acessScene, transition: .fade(withDuration: 0.5))

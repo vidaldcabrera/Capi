@@ -97,6 +97,8 @@ class ControlSettingsScene: SKScene {
 
         for node in nodes { // NAO TA VOLTANDO PRO SETTINGS
             if node.name == "backButton" {
+                VoiceOverManager.shared.speak("Voltar")
+
                 if let pauseScene = PauseScene(fileNamed: "PauseScene") {
                     pauseScene.scaleMode = .aspectFill
                     view?.presentScene(pauseScene, transition: .fade(withDuration: 0.5))

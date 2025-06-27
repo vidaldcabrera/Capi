@@ -39,14 +39,15 @@ class AccessibilityScene: SKScene {
 
 
 
-        // Accessibility Button
-        let accessibilityButton = SKSpriteNode(imageNamed: "accessibility_button")
-        accessibilityButton.name = "accessibility"
+        // Button VoiceOver enable e disable
+        let accessibilityButton = SKSpriteNode(imageNamed: "disanable_button")
+        accessibilityButton.name = "voiceover"
         accessibilityButton.position = CGPoint(x: frame.midX + 100, y: frame.midY + 60)
         accessibilityButton.setScale(0.8)
         accessibilityButton.zPosition = 15
         addChild(accessibilityButton)
-
+        // Atualiza para refletir o estado salvo
+        VoiceOverManager.shared.updateAccessibilityButton(accessibilityButton)
         
         
         
@@ -72,6 +73,8 @@ class AccessibilityScene: SKScene {
 
         for node in nodes {
             if node.name == "back" {
+                VoiceOverManager.shared.speak("Voltar")
+
                 if let settingsPauseScene = SettingsPauseScene(fileNamed: "SettingsPauseScene") {
                     settingsPauseScene.scaleMode = .aspectFill
                     view?.presentScene(settingsPauseScene, transition: .fade(withDuration: 0.5))
@@ -81,6 +84,22 @@ class AccessibilityScene: SKScene {
                     view?.presentScene(settingsPauseScene, transition: .fade(withDuration: 0.5))
                 }
             }
+            
+            else if node.name == "voiceover" {
+                
+                let newStatus = !VoiceOverManager.shared.isVoiceOverEnabled
+                let statusMessage = newStatus ? "Narrador ativado" : "Narrador desativado"
+
+                VoiceOverManager.shared.speak(statusMessage, force: true)
+                VoiceOverManager.shared.isVoiceOverEnabled = newStatus
+
+                if let button = node as? SKSpriteNode {
+                    VoiceOverManager.shared.updateAccessibilityButton(button)
+                }
+            }
+
+
+
         }
     }
 }
