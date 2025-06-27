@@ -11,7 +11,7 @@ import SpriteKit
 class PauseScene: SKScene {
 
     override func didMove(to view: SKView) {
-        backgroundColor = .black
+//        backgroundColor = .black
         self.isUserInteractionEnabled = true
 
         // Fundo escuro com transparência
@@ -74,7 +74,7 @@ class PauseScene: SKScene {
         for node in nodes {
             switch node.name {
             case "resumeButton":
-                print("ahhh")
+//                print("ahhh")
                 let resumeScene = GamePlayScene(size: self.size)
                 resumeScene.scaleMode = .aspectFill
                 view?.presentScene(resumeScene, transition: .fade(withDuration: 0.5))

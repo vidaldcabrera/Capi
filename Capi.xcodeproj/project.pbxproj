@@ -16,6 +16,7 @@
 		2241F3922E098353006413EF /* GameState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2241F3912E098353006413EF /* GameState.swift */; };
 		2241F3942E0990EF006413EF /* ControlSettingsScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2241F3932E0990EF006413EF /* ControlSettingsScene.swift */; };
 		2241F39C2E0D892B006413EF /* CustomSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2241F39B2E0D892B006413EF /* CustomSlider.swift */; };
+		2241F39E2E0EBD7E006413EF /* InventoryScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2241F39D2E0EBD7E006413EF /* InventoryScene.swift */; };
 		2258602A2DF85E2D0024E3E8 /* EnimiesEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225860292DF85E2D0024E3E8 /* EnimiesEntity.swift */; };
 		2258602C2DF85E3D0024E3E8 /* TrapEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2258602B2DF85E3D0024E3E8 /* TrapEntity.swift */; };
 		2258602E2DF85E4F0024E3E8 /* PlayerEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2258602D2DF85E4F0024E3E8 /* PlayerEntity.swift */; };
@@ -89,6 +90,7 @@
 		2241F3912E098353006413EF /* GameState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameState.swift; sourceTree = "<group>"; };
 		2241F3932E0990EF006413EF /* ControlSettingsScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlSettingsScene.swift; sourceTree = "<group>"; };
 		2241F39B2E0D892B006413EF /* CustomSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSlider.swift; sourceTree = "<group>"; };
+		2241F39D2E0EBD7E006413EF /* InventoryScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InventoryScene.swift; sourceTree = "<group>"; };
 		225860292DF85E2D0024E3E8 /* EnimiesEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnimiesEntity.swift; sourceTree = "<group>"; };
 		2258602B2DF85E3D0024E3E8 /* TrapEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrapEntity.swift; sourceTree = "<group>"; };
 		2258602D2DF85E4F0024E3E8 /* PlayerEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerEntity.swift; sourceTree = "<group>"; };
@@ -245,6 +247,7 @@
 				2241F38F2E097E3D006413EF /* SettingsPauseScene.swift */,
 				2241F3912E098353006413EF /* GameState.swift */,
 				2241F3932E0990EF006413EF /* ControlSettingsScene.swift */,
+				2241F39D2E0EBD7E006413EF /* InventoryScene.swift */,
 			);
 			path = "Capi Shared";
 			sourceTree = "<group>";
@@ -423,6 +426,7 @@
 				225860322DF85E760024E3E8 /* ItensEntity.swift in Sources */,
 				225860472DF85F840024E3E8 /* TextComponent.swift in Sources */,
 				2258602E2DF85E4F0024E3E8 /* PlayerEntity.swift in Sources */,
+				2241F39E2E0EBD7E006413EF /* InventoryScene.swift in Sources */,
 				2258603B2DF85F0C0024E3E8 /* ProjectTilesComponent.swift in Sources */,
 				225860412DF85F3B0024E3E8 /* UpdateComponent.swift in Sources */,
 				225860572DF860190024E3E8 /* LightComponent.swift in Sources */,

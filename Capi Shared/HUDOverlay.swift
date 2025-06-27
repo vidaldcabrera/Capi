@@ -108,6 +108,15 @@ class HUDOverlay: SKNode {
                     scene.view?.presentScene(pauseScene, transition: .fade(withDuration: 0.3))
                 }
             }
+            
+            if node.name == "inventory" {
+                GameState.shared.playerPosition = self.scene?.childNode(withName: "player")?.position ?? .zero
+                if let scene = self.scene {
+                    let inventoryScene = InventoryScene(size: scene.size)
+                    inventoryScene.scaleMode = .aspectFill
+                    scene.view?.presentScene(inventoryScene, transition: .fade(withDuration: 0.3))
+                }
+            }
         }
     }
 
