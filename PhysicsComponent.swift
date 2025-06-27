@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import SpriteKit
 import GameplayKit
 
@@ -5,6 +6,18 @@ class PhysicsComponent: GKComponent {
     var body: SKPhysicsBody?
     
     override init() {
+=======
+import Foundation
+import GameplayKit
+import SpriteKit
+
+class PhysicsComponent: GKComponent {
+    
+    var body: SKPhysicsBody
+    
+    init(physicsBody: SKPhysicsBody) {
+        self.body = physicsBody
+>>>>>>> feature/capi-mec
         super.init()
     }
     
@@ -12,6 +25,7 @@ class PhysicsComponent: GKComponent {
         fatalError("init(coder:) has not been implemented")
     }
     
+<<<<<<< HEAD
     func configurePhysicsBody(for node: SKNode, size: CGSize,
                               affectedByGravity: Bool = false,
                               allowsRotation: Bool = false,
@@ -31,4 +45,12 @@ class PhysicsComponent: GKComponent {
         node.physicsBody = physicsBody
         self.body = physicsBody
     }
+=======
+    override func didAddToEntity() {
+        if let node = self.entity?.component(ofType: GKSKNodeComponent.self)?.node {
+            node.physicsBody = self.body
+        }
+    }
+    
+>>>>>>> feature/capi-mec
 }

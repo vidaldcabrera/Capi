@@ -1,8 +1,24 @@
-//
-//  GroundEntity.swift
-//  Capi iOS
-//
-//  Created by Gabriella Tomoda on 10/06/25.
-//
-
 import Foundation
+import GameplayKit
+import SpriteKit
+
+class GroundEntity: GKEntity {
+    
+    init(size: CGSize, position: CGPoint) {
+        super.init()
+        
+        let node = SKSpriteNode(color: .clear, size: size)
+        node.position = position
+        self.addComponent(GKSKNodeComponent(node: node))
+        
+        let body = SKPhysicsBody(rectangleOf: size)
+        body.isDynamic = false
+
+        self.addComponent(PhysicsComponent(physicsBody: body))
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+}

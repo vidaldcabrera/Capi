@@ -1,5 +1,6 @@
 import Foundation
 import SpriteKit
+<<<<<<< HEAD
 import GameplayKit
 
 struct PhysicsCategory {
@@ -11,3 +12,13 @@ struct PhysicsCategory {
     static let ground: UInt32 = 0x1 << 4         // 0b1_0000
     static let bat: UInt32 = 0x1 << 5
 }
+=======
+
+struct PhysicsCategory {
+    static let none: UInt = 0
+    static let player: UInt32 = 0x1 << 0
+    static let ground: UInt32 = 0x1 << 1
+}
+
+
+>>>>>>> feature/capi-mec

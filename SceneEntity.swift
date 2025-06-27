@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 
 //
@@ -5,11 +6,14 @@
 //  Capi iOS
 //
 
+=======
+>>>>>>> feature/capi-mec
 import Foundation
 import GameplayKit
 import SpriteKit
 
 class SceneEntity: GKEntity {
+<<<<<<< HEAD
     init(named: String, entityManager: SKEntityManager) {
         super.init()
 
@@ -18,10 +22,24 @@ class SceneEntity: GKEntity {
         }
     }
 
+=======
+    init(named: String, entityManager: SKEntityManager){
+        super.init()
+        if let sceneNode = SKReferenceNode(fileNamed: named) {
+            self.addComponent(GKSKNodeComponent(node: sceneNode))
+            
+            if let tileMapNode = sceneNode.childNode(withName: "*/Ground") as? SKTileMapNode {
+                tileMapNode.addPhysicsToTileMap(entityManager: entityManager)
+            }
+        }
+    }
+    
+>>>>>>> feature/capi-mec
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 }
+<<<<<<< HEAD
 //class SceneEntity: GKEntity {
 //    init(named: String, entityManager: SKEntityManager) {
 //        super.init()
@@ -91,3 +109,5 @@ class SceneEntity: GKEntity {
 //        }
 //    }
 //}
+=======
+>>>>>>> feature/capi-mec
