@@ -49,7 +49,58 @@ class SettingsScene: SKScene {
         box.setScale(proportionalScale(view: view, multiplier: 0.7))
         box.zPosition = 5
         addChild(box)
+        
+        // Título
+        let title = SKSpriteNode(imageNamed: "settings_txt")
+        title.position = CGPoint(x: frame.midX, y: frame.midY + 150)
+        title.zPosition = 15
+        addChild(title)
+        
+        // Texto "Pausado"
+        let audio = SKSpriteNode(imageNamed: "audio_txt")
+        audio.position = CGPoint(x: frame.midX - 100, y: frame.midY + 80)
+        audio.zPosition = 15
+        addChild(audio)
 
+        // Music Label
+
+        let music = SKSpriteNode(imageNamed: "music_txt")
+        music.name = "music"
+        music.position = CGPoint(x: frame.midX - 100, y: frame.midY + 10)
+        music.zPosition = 15
+        addChild(music)
+        
+        // Recupera o volume salvo (ou usa 0.5 como padrão)
+        let savedVolume = UserDefaults.standard.float(forKey: "musicVolume")
+        let initialVolume = savedVolume == 0 ? 0.5 : savedVolume
+
+        let volumeSlider = CustomSlider(
+            trackImage: "bar",
+            thumbImage: "thumb",
+            min: 0,
+            max: 1,
+            initial: CGFloat(initialVolume)
+        )
+
+        volumeSlider.position = CGPoint(x: frame.midX + 70, y: frame.midY + 10)
+        volumeSlider.zPosition = 20
+        addChild(volumeSlider)
+
+        // Atualiza o volume da música em tempo real
+        volumeSlider.onValueChanged = { newVolume in
+            MusicManager.shared.setVolume(to: newVolume)
+            UserDefaults.standard.set(Float(newVolume), forKey: "musicVolume")
+        }
+
+
+        //  language Button
+        let languageButton = SKSpriteNode(imageNamed: "language_button")
+        languageButton.name = "language_button"
+        languageButton.position = CGPoint(x: frame.midX, y: frame.midY - 70)
+        languageButton.setScale(0.8)
+        languageButton.zPosition = 15
+        addChild(languageButton)
+        
         let back = SKSpriteNode(imageNamed: "back_button")
         back.name = "backButton"
         back.position = CGPoint(x: 0, y: view.frame.height * -0.4)

@@ -17,6 +17,8 @@
 		2241F3942E0990EF006413EF /* ControlSettingsScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2241F3932E0990EF006413EF /* ControlSettingsScene.swift */; };
 		2241F39C2E0D892B006413EF /* CustomSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2241F39B2E0D892B006413EF /* CustomSlider.swift */; };
 		2241F39E2E0EBD7E006413EF /* InventoryScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2241F39D2E0EBD7E006413EF /* InventoryScene.swift */; };
+		2241F3A02E0ED90A006413EF /* MusicManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2241F39F2E0ED90A006413EF /* MusicManager.swift */; };
+		2241F3A22E0EDF1E006413EF /* background_music.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2241F3A12E0EDF1E006413EF /* background_music.mp3 */; };
 		2258602A2DF85E2D0024E3E8 /* EnimiesEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225860292DF85E2D0024E3E8 /* EnimiesEntity.swift */; };
 		2258602C2DF85E3D0024E3E8 /* TrapEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2258602B2DF85E3D0024E3E8 /* TrapEntity.swift */; };
 		2258602E2DF85E4F0024E3E8 /* PlayerEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2258602D2DF85E4F0024E3E8 /* PlayerEntity.swift */; };
@@ -91,6 +93,8 @@
 		2241F3932E0990EF006413EF /* ControlSettingsScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlSettingsScene.swift; sourceTree = "<group>"; };
 		2241F39B2E0D892B006413EF /* CustomSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSlider.swift; sourceTree = "<group>"; };
 		2241F39D2E0EBD7E006413EF /* InventoryScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InventoryScene.swift; sourceTree = "<group>"; };
+		2241F39F2E0ED90A006413EF /* MusicManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicManager.swift; sourceTree = "<group>"; };
+		2241F3A12E0EDF1E006413EF /* background_music.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = background_music.mp3; sourceTree = "<group>"; };
 		225860292DF85E2D0024E3E8 /* EnimiesEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnimiesEntity.swift; sourceTree = "<group>"; };
 		2258602B2DF85E3D0024E3E8 /* TrapEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrapEntity.swift; sourceTree = "<group>"; };
 		2258602D2DF85E4F0024E3E8 /* PlayerEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerEntity.swift; sourceTree = "<group>"; };
@@ -235,6 +239,7 @@
 		2C6CF7462DE4B65200771D67 /* Capi Shared */ = {
 			isa = PBXGroup;
 			children = (
+				2241F3A12E0EDF1E006413EF /* background_music.mp3 */,
 				2C6CF7472DE4B65200771D67 /* Actions.sks */,
 				2C6CF7482DE4B65200771D67 /* GameScene.sks */,
 				2C6CF7492DE4B65200771D67 /* GameScene.swift */,
@@ -248,6 +253,7 @@
 				2241F3912E098353006413EF /* GameState.swift */,
 				2241F3932E0990EF006413EF /* ControlSettingsScene.swift */,
 				2241F39D2E0EBD7E006413EF /* InventoryScene.swift */,
+				2241F39F2E0ED90A006413EF /* MusicManager.swift */,
 			);
 			path = "Capi Shared";
 			sourceTree = "<group>";
@@ -367,6 +373,7 @@
 				2C6CF7582DE4B65700771D67 /* Main.storyboard in Resources */,
 				2258605F2DF860DB0024E3E8 /* SceneTile.sks in Resources */,
 				225860612DF860F40024E3E8 /* scene1.sks in Resources */,
+				2241F3A22E0EDF1E006413EF /* background_music.mp3 in Resources */,
 				2C6CF7922DE4B65800771D67 /* Actions.sks in Resources */,
 				2C6CF75B2DE4B65700771D67 /* LaunchScreen.storyboard in Resources */,
 				2C6CF79D2DE4B65800771D67 /* Assets.xcassets in Resources */,
@@ -430,6 +437,7 @@
 				2258603B2DF85F0C0024E3E8 /* ProjectTilesComponent.swift in Sources */,
 				225860412DF85F3B0024E3E8 /* UpdateComponent.swift in Sources */,
 				225860572DF860190024E3E8 /* LightComponent.swift in Sources */,
+				2241F3A02E0ED90A006413EF /* MusicManager.swift in Sources */,
 				2258604D2DF85FB80024E3E8 /* SpeakComponent.swift in Sources */,
 				2241F3902E097E3D006413EF /* SettingsPauseScene.swift in Sources */,
 				2258605A2DF860730024E3E8 /* SKTexture+Array.swift in Sources */,

@@ -14,6 +14,14 @@ class GameScene: SKScene {
     var entityManager = SKEntityManager()
 
     override func didMove(to view: SKView) {
+        
+        MusicManager.shared.playMusic(named: "background_music")
+        
+        let savedVolume = UserDefaults.standard.float(forKey: "musicVolume")
+        let initialVolume = savedVolume == 0 ? 0.5 : savedVolume
+        MusicManager.shared.setVolume(to: CGFloat(initialVolume))
+
+        
         self.anchorPoint = CGPoint(x: 0.5, y: 0.5)
         backgroundColor = .black
 
