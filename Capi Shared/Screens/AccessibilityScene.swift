@@ -31,31 +31,18 @@ class AccessibilityScene: SKScene {
         
         
         
-        // Texto
-        let audio = SKSpriteNode(imageNamed: "audio_txt")
+        // VoiceOver
+        let audio = SKSpriteNode(imageNamed: "voiceover_txt")
         audio.position = CGPoint(x: frame.midX - 100, y: frame.midY + 60)
         audio.zPosition = 15
         addChild(audio)
 
-        // Music Label
 
-        let music = SKSpriteNode(imageNamed: "music_txt")
-        music.position = CGPoint(x: frame.midX - 100, y: frame.midY)
-        music.zPosition = 15
-        addChild(music)
-
-        // Controls Button
-        let controlsButton = SKSpriteNode(imageNamed: "controls_button")
-        controlsButton.name = "controls"
-        controlsButton.position = CGPoint(x: frame.midX - 80, y: frame.midY - 80)
-        controlsButton.setScale(0.8)
-        controlsButton.zPosition = 15
-        addChild(controlsButton)
 
         // Accessibility Button
         let accessibilityButton = SKSpriteNode(imageNamed: "accessibility_button")
         accessibilityButton.name = "accessibility"
-        accessibilityButton.position = CGPoint(x: frame.midX + 100, y: frame.midY - 80)
+        accessibilityButton.position = CGPoint(x: frame.midX + 100, y: frame.midY + 60)
         accessibilityButton.setScale(0.8)
         accessibilityButton.zPosition = 15
         addChild(accessibilityButton)
@@ -84,14 +71,14 @@ class AccessibilityScene: SKScene {
         let nodes = nodes(at: location)
 
         for node in nodes {
-            if node.name == "backButton" {
-                if let pauseScene = PauseScene(fileNamed: "PauseScene") {
-                    pauseScene.scaleMode = .aspectFill
-                    view?.presentScene(pauseScene, transition: .fade(withDuration: 0.5))
+            if node.name == "back" {
+                if let settingsPauseScene = SettingsPauseScene(fileNamed: "SettingsPauseScene") {
+                    settingsPauseScene.scaleMode = .aspectFill
+                    view?.presentScene(settingsPauseScene, transition: .fade(withDuration: 0.5))
                 } else {
-                    let pauseScene = PauseScene(size: self.size)
-                    pauseScene.scaleMode = .aspectFill
-                    view?.presentScene(pauseScene, transition: .fade(withDuration: 0.5))
+                    let settingsPauseScene = SettingsPauseScene(size: self.size)
+                    settingsPauseScene.scaleMode = .aspectFill
+                    view?.presentScene(settingsPauseScene, transition: .fade(withDuration: 0.5))
                 }
             }
         }
