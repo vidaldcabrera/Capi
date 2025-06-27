@@ -210,27 +210,79 @@ class HUDOverlayPreview: SKNode {
         box.position = CGPoint(x: frame.midX, y: frame.midY + 40)
         box.zPosition = -100
         addChild(box)
+        
+        let iconRight = SKSpriteNode(imageNamed: "right_button")
+        iconRight.position = CGPoint(x: frame.midX - 525, y: frame.midY + 130)
+        iconRight.setScale(0.6)
+        iconRight.zPosition = 100
+        addChild(iconRight)
+        
+        let iconLeft = SKSpriteNode(imageNamed: "left_button")
+        iconLeft.position = CGPoint(x: frame.midX - 525, y: frame.midY - 40)
+        iconLeft.setScale(0.6)
+        iconLeft.zPosition = 100
+        addChild(iconLeft)
+
+        let iconJump = SKSpriteNode(imageNamed: "jump_button")
+        iconJump .position = CGPoint(x: frame.midX + 525, y: frame.midY + 130)
+        iconJump .setScale(0.6)
+        iconJump .zPosition = 100
+        addChild(iconJump)
+
+        let iconAction = SKSpriteNode(imageNamed: "action_button")
+        iconAction .position = CGPoint(x: frame.midX + 525, y: frame.midY - 40)
+        iconAction .setScale(0.6)
+        iconAction .zPosition = 100
+        addChild(iconAction)
+
 
         // SLIDERS
 
         let sliderConfigs: [(name: String, pos: CGPoint)] = [
             ("right", CGPoint(x: frame.midX - 525, y: frame.midY + 60)),
-            ("left", CGPoint(x: frame.midX - 525, y: frame.midY - 60)),
+            ("left", CGPoint(x: frame.midX - 525, y: frame.midY - 110)),
             ("jump", CGPoint(x: frame.midX + 525, y: frame.midY + 60)),
-            ("action", CGPoint(x: frame.midX + 525, y: frame.midY - 60))
+            ("action", CGPoint(x: frame.midX + 525, y: frame.midY - 110))
         ]
 
+        
+        
+        
+        
         for (name, pos) in sliderConfigs {
-            let slider = CustomSlider(trackImage: "bar", thumbImage: "thumb", min: 0.5, max: 2.0, initial: 1.0)
+            let initialScale = buttonScales[name] ?? previewBaseScale
+            var previousValue = initialScale
+
+            let slider = CustomSlider(trackImage: "bar", thumbImage: "thumb", min: 0.5, max: 2.0, initial: initialScale)
             slider.position = pos
-            slider.onValueChanged = { value in
-                if let button = self.childNode(withName: name) as? SKSpriteNode {
-                    button.setScale(value)
-                    self.buttonScales[name] = value
+
+            slider.onValueChanged = { newValue in
+                guard let button = self.childNode(withName: name) as? SKSpriteNode else { return }
+
+                // Atualiza visualmente o botão da preview
+                button.setScale(newValue)
+
+                // Atualiza escala interna
+                self.buttonScales[name] = newValue
+
+                // === Fator de escala ===
+                let scaleFactor = newValue / previousValue
+                previousValue = newValue
+
+                // Aplica a mesma escala multiplicativa no botão do HUD, se existir
+                if let hud = self.scene?.childNode(withName: "HUD") as? HUDOverlay,
+                   let hudButton = hud.childNode(withName: name) as? SKSpriteNode {
+                    let currentHUDScale = hudButton.xScale // xScale = yScale aqui
+                    hudButton.setScale(currentHUDScale * scaleFactor)
+                    
                 }
+                self.saveLayoutToUserDefaults()
+
             }
+
             addChild(slider)
         }
+
     }
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -269,18 +321,18 @@ class HUDOverlayPreview: SKNode {
 //    }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        guard let touch = touches.first else { return }
-        let location = touch.location(in: self)
-
-        if let node = atPoint(location) as? SKSpriteNode,
-           let name = node.name,
-           ["left", "right", "jump", "action"].contains(name) {
-            let current = buttonScales[name] ?? previewBaseScale
-            let newScale = current < previewBaseScale * 1.5 ? current + 0.1 : previewBaseScale
-            node.setScale(newScale)
-            buttonScales[name] = newScale
-            buttonPositions[name] = node.position
-        }
+//        guard let touch = touches.first else { return }
+//        let location = touch.location(in: self)
+//
+//        if let node = atPoint(location) as? SKSpriteNode,
+//           let name = node.name,
+//           ["left", "right", "jump", "action"].contains(name) {
+//            let current = buttonScales[name] ?? previewBaseScale
+//            let newScale = current < previewBaseScale * 1.5 ? current + 0.1 : previewBaseScale
+//            node.setScale(newScale)
+//            buttonScales[name] = newScale
+//            buttonPositions[name] = node.position
+//        }
 
         draggingNode = nil
         saveLayoutToUserDefaults()

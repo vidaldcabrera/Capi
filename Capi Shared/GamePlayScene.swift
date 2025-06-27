@@ -25,6 +25,7 @@ class GamePlayScene: SKScene {
         addChild(player)
 
         let hud = HUDOverlay()
+        hud.name = "HUD"
 //        hud.updateScore(to: GameState.shared.score)
 //        hud.updateLives(to: GameState.shared.lives)
         hud.position = CGPoint(x: 0, y: 0)
