@@ -48,16 +48,16 @@ class MovementComponent: GKComponent {
             animationComp?.playRun()
         }
     }
-
+    
     public func jump() {
-            guard let body = node?.physicsBody else { return }
-
-            // Verifica se está no chão (velocidade Y muito pequena)
-            let isOnGround = abs(body.velocity.dy) < 1.0
-
-            if isOnGround {
-                body.applyImpulse(CGVector(dx: 0, dy: 30))
-            }
+        guard let body = node?.physicsBody else { return }
+        
+        // Verifica se está no chão (velocidade Y muito pequena)
+        let isOnGround = abs(body.velocity.dy) < 1.0
+        
+        if isOnGround {
+            body.applyImpulse(CGVector(dx: 0, dy: 30))
         }
-
+    }
+    
 }

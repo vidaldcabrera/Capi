@@ -37,7 +37,7 @@ class PlayerEntity: GKEntity {
         // MARK: - Pulo
         let jumpAtlas = SKTextureAtlas(named: "capijump")
         let jumpFrames: [SKTexture] = (1...8).map { i in
-            jumpAtlas.textureNamed("jump\(i)")
+            jumpAtlas.textureNamed("jump\(i).png")
         }
         let jumpComp = JumpComponent(
             node: node,
