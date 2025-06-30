@@ -72,13 +72,21 @@ class CustomSlider: SKNode {
     }
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        if let location = touches.first?.location(in: self) {
+        guard let touch = touches.first else { return }
+        let location = touch.location(in: self)
+
+        // Só começa se o toque estiver no thumb
+        if thumb.contains(location) {
             updateValue(for: location)
         }
     }
 
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-        if let location = touches.first?.location(in: self) {
+        guard let touch = touches.first else { return }
+        let location = touch.location(in: self)
+
+        // Só move se o dedo já estiver no thumb
+        if thumb.contains(location) {
             updateValue(for: location)
         }
     }

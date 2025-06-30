@@ -15,7 +15,7 @@ class SettingsPauseScene: SKScene {
         self.isUserInteractionEnabled = true
 
         // Fundo escuro transparente
-        let overlay = SKSpriteNode(color: UIColor.black.withAlphaComponent(0.7), size: size)
+        let overlay = SKSpriteNode(color: UIColor.clear.withAlphaComponent(0.7), size: size)
         overlay.position = CGPoint(x: frame.midX, y: frame.midY)
         overlay.zPosition = 12
         addChild(overlay)
@@ -115,18 +115,6 @@ class SettingsPauseScene: SKScene {
         backButton.zPosition = 15
         addChild(backButton)
 
-//        // Sliders são simulados por sprites, por enquanto
-//        let audioBar = SKSpriteNode(imageNamed: "slider")
-//        audioBar.position = CGPoint(x: frame.midX + 80, y: frame.midY + 60)
-//        audioBar.setScale(0.8)
-//        audioBar.zPosition = 15
-//        addChild(audioBar)
-//
-//        let musicBar = SKSpriteNode(imageNamed: "slider")
-//        musicBar.position = CGPoint(x: frame.midX + 80, y: frame.midY)
-//        musicBar.setScale(0.8)
-//        musicBar.zPosition = 15
-//        addChild(musicBar)
     }
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
