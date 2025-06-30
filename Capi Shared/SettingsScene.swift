@@ -64,6 +64,7 @@ class SettingsScene: SKScene {
         let touchedNode = atPoint(location)
 
         if touchedNode.name == "backButton" {
+            VoiceOverManager.shared.speak("Voltar")
             let scene = GameScene(size: self.size)
             scene.scaleMode = .aspectFill
             self.view?.presentScene(scene, transition: .fade(withDuration: 0.5))
@@ -126,6 +127,7 @@ class CreditsScene: SKScene {
         let touchedNode = atPoint(location)
 
         if touchedNode.name == "backButton" {
+            VoiceOverManager.shared.speak("Voltar")
             let scene = GameScene(size: self.size)
             scene.scaleMode = .aspectFill
             self.view?.presentScene(scene, transition: .fade(withDuration: 0.5))
@@ -192,6 +194,7 @@ class DifficultyScene: SKScene {
         let touchedNode = atPoint(location)
 
         if touchedNode.name == "backButton" {
+            VoiceOverManager.shared.speak("Voltar")
             let scene = GameScene(size: self.size)
             scene.scaleMode = .aspectFill
             self.view?.presentScene(scene, transition: .fade(withDuration: 0.5))

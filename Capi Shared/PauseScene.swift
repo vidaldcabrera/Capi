@@ -96,7 +96,7 @@ class PauseScene: SKScene {
             case "quitButton":
                 VoiceOverManager.shared.speak("Saindo do jogo")
 
-                DispatchQueue.main.asyncAfter(deadline: .now() + 1.2) {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1.3) {
                     exit(0)
                 }
 

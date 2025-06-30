@@ -99,13 +99,13 @@ class ControlSettingsScene: SKScene {
             if node.name == "backButton" {
                 VoiceOverManager.shared.speak("Voltar")
 
-                if let pauseScene = PauseScene(fileNamed: "PauseScene") {
-                    pauseScene.scaleMode = .aspectFill
-                    view?.presentScene(pauseScene, transition: .fade(withDuration: 0.5))
+                if let settingsPauseScene = SettingsPauseScene(fileNamed: "SettingsPauseScene") {
+                    settingsPauseScene.scaleMode = .aspectFill
+                    view?.presentScene(settingsPauseScene, transition: .fade(withDuration: 0.5))
                 } else {
-                    let pauseScene = PauseScene(size: self.size)
-                    pauseScene.scaleMode = .aspectFill
-                    view?.presentScene(pauseScene, transition: .fade(withDuration: 0.5))
+                    let settingsPauseScene = SettingsPauseScene(size: self.size)
+                    settingsPauseScene.scaleMode = .aspectFill
+                    view?.presentScene(settingsPauseScene, transition: .fade(withDuration: 0.5))
                 }
             }
         }

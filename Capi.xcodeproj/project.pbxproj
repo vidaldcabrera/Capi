@@ -65,6 +65,7 @@
 		2C6CF7A02DE4B65800771D67 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2C6CF74A2DE4B65700771D67 /* Assets.xcassets */; };
 		E517FFED2E0D6D6E0084DCF1 /* VoiceOverManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E517FFEC2E0D6D6E0084DCF1 /* VoiceOverManager.swift */; };
 		E517FFF02E0D710A0084DCF1 /* AccessibilityScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = E517FFEF2E0D710A0084DCF1 /* AccessibilityScene.swift */; };
+		E58841DF2E12AF1E00F98BBE /* MainMenuScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = E58841DE2E12AF1E00F98BBE /* MainMenuScene.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -137,6 +138,7 @@
 		2C6CF7912DE4B65800771D67 /* Capi_macOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Capi_macOS.entitlements; sourceTree = "<group>"; };
 		E517FFEC2E0D6D6E0084DCF1 /* VoiceOverManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoiceOverManager.swift; sourceTree = "<group>"; };
 		E517FFEF2E0D710A0084DCF1 /* AccessibilityScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessibilityScene.swift; sourceTree = "<group>"; };
+		E58841DE2E12AF1E00F98BBE /* MainMenuScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainMenuScene.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -235,6 +237,7 @@
 		2C6CF7462DE4B65200771D67 /* Capi Shared */ = {
 			isa = PBXGroup;
 			children = (
+				E58841DE2E12AF1E00F98BBE /* MainMenuScene.swift */,
 				E517FFEE2E0D70AB0084DCF1 /* Screens */,
 				2C6CF7472DE4B65200771D67 /* Actions.sks */,
 				2C6CF7482DE4B65200771D67 /* GameScene.sks */,
@@ -403,6 +406,7 @@
 			files = (
 				2241F3842E02E5D7006413EF /* LevelScene.swift in Sources */,
 				225860532DF85FEB0024E3E8 /* BuyComponent.swift in Sources */,
+				E58841DF2E12AF1E00F98BBE /* MainMenuScene.swift in Sources */,
 				225860512DF85FDE0024E3E8 /* AnimationComponent.swift in Sources */,
 				2258605C2DF860970024E3E8 /* SKTileMapNode.swift in Sources */,
 				225860382DF85EE20024E3E8 /* SceneEntity.swift in Sources */,
