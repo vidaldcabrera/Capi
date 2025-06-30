@@ -33,18 +33,63 @@ class SettingsPauseScene: SKScene {
         title.zPosition = 15
         addChild(title)
         
-        // Texto "Pausado"
+        // Texto "audio"
         let audio = SKSpriteNode(imageNamed: "audio_txt")
-        audio.position = CGPoint(x: frame.midX - 100, y: frame.midY + 60)
+        audio.position = CGPoint(x: frame.midX - 100, y: frame.midY + 75
+        )
         audio.zPosition = 15
         addChild(audio)
+        
+        // Recupera o volume salvo (ou usa 0.5 como padrão)
+        let savedAudioVolume = UserDefaults.standard.float(forKey: "musicVolume")
+        let initialAudioVolume = savedAudioVolume == 0 ? 0.5 : savedAudioVolume
+
+        let volumeAudioSlider = CustomSlider(
+            trackImage: "bar",
+            thumbImage: "thumb",
+            min: 0,
+            max: 1,
+            initial: CGFloat(initialAudioVolume)
+        )
+
+        volumeAudioSlider.position = CGPoint(x: frame.midX + 70, y: frame.midY + 70)
+        volumeAudioSlider.zPosition = 20
+        addChild(volumeAudioSlider)
+
+        // Atualiza o volume da música em tempo real
+        volumeAudioSlider.onValueChanged = { newVolume in
+            MusicManager.shared.setVolume(to: newVolume)
+            UserDefaults.standard.set(Float(newVolume), forKey: "musicVolume")
+        }
 
         // Music Label
-
         let music = SKSpriteNode(imageNamed: "music_txt")
         music.position = CGPoint(x: frame.midX - 100, y: frame.midY)
         music.zPosition = 15
         addChild(music)
+        
+        // Recupera o volume salvo (ou usa 0.5 como padrão)
+        let savedMusicVolume = UserDefaults.standard.float(forKey: "musicVolume")
+        let initialMusicVolume = savedMusicVolume == 0 ? 0.5 : savedMusicVolume
+
+        let volumeMusicSlider = CustomSlider(
+            trackImage: "bar",
+            thumbImage: "thumb",
+            min: 0,
+            max: 1,
+            initial: CGFloat(initialMusicVolume)
+        )
+
+        volumeMusicSlider.position = CGPoint(x: frame.midX + 70, y: frame.midY - 5
+        )
+        volumeMusicSlider.zPosition = 20
+        addChild(volumeMusicSlider)
+
+        // Atualiza o volume da música em tempo real
+        volumeMusicSlider.onValueChanged = { newVolume in
+            MusicManager.shared.setVolume(to: newVolume)
+            UserDefaults.standard.set(Float(newVolume), forKey: "musicVolume")
+        }
 
         // Controls Button
         let controlsButton = SKSpriteNode(imageNamed: "controls_button")
@@ -70,18 +115,18 @@ class SettingsPauseScene: SKScene {
         backButton.zPosition = 15
         addChild(backButton)
 
-        // Sliders são simulados por sprites, por enquanto
-        let audioBar = SKSpriteNode(imageNamed: "slider")
-        audioBar.position = CGPoint(x: frame.midX + 80, y: frame.midY + 60)
-        audioBar.setScale(0.8)
-        audioBar.zPosition = 15
-        addChild(audioBar)
-
-        let musicBar = SKSpriteNode(imageNamed: "slider")
-        musicBar.position = CGPoint(x: frame.midX + 80, y: frame.midY)
-        musicBar.setScale(0.8)
-        musicBar.zPosition = 15
-        addChild(musicBar)
+//        // Sliders são simulados por sprites, por enquanto
+//        let audioBar = SKSpriteNode(imageNamed: "slider")
+//        audioBar.position = CGPoint(x: frame.midX + 80, y: frame.midY + 60)
+//        audioBar.setScale(0.8)
+//        audioBar.zPosition = 15
+//        addChild(audioBar)
+//
+//        let musicBar = SKSpriteNode(imageNamed: "slider")
+//        musicBar.position = CGPoint(x: frame.midX + 80, y: frame.midY)
+//        musicBar.setScale(0.8)
+//        musicBar.zPosition = 15
+//        addChild(musicBar)
     }
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {

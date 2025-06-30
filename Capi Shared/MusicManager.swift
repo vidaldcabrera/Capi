@@ -22,8 +22,8 @@ class MusicManager {
         do {
             audioPlayer = try AVAudioPlayer(contentsOf: url)
             audioPlayer?.numberOfLoops = -1  // Loop infinito
-            let savedVolume = UserDefaults.standard.float(forKey: "musicVolume")
-            audioPlayer?.volume = savedVolume == 0 ? 0.5 : savedVolume
+            let savedMusicVolume = UserDefaults.standard.float(forKey: "musicVolume")
+            audioPlayer?.volume = savedMusicVolume == 0 ? 0.5 : savedMusicVolume
             audioPlayer?.prepareToPlay()
             audioPlayer?.play()
         } catch {

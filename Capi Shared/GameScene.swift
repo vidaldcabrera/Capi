@@ -17,9 +17,9 @@ class GameScene: SKScene {
         
         MusicManager.shared.playMusic(named: "background_music")
         
-        let savedVolume = UserDefaults.standard.float(forKey: "musicVolume")
-        let initialVolume = savedVolume == 0 ? 0.5 : savedVolume
-        MusicManager.shared.setVolume(to: CGFloat(initialVolume))
+        let savedMusicVolume = UserDefaults.standard.float(forKey: "musicVolume")
+        let initialMusicVolume = savedMusicVolume == 0 ? 0.5 : savedMusicVolume
+        MusicManager.shared.setVolume(to: CGFloat(initialMusicVolume))
 
         
         self.anchorPoint = CGPoint(x: 0.5, y: 0.5)

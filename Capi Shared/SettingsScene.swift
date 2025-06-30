@@ -56,14 +56,37 @@ class SettingsScene: SKScene {
         title.zPosition = 15
         addChild(title)
         
-        // Texto "Pausado"
+        // audio label
         let audio = SKSpriteNode(imageNamed: "audio_txt")
         audio.position = CGPoint(x: frame.midX - 100, y: frame.midY + 80)
         audio.zPosition = 15
         addChild(audio)
+        
+        // Recupera o volume salvo (ou usa 0.5 como padrão)
+        let savedAudioVolume = UserDefaults.standard.float(forKey: "musicVolume")
+        let initialAudioVolume = savedAudioVolume == 0 ? 0.5 : savedAudioVolume
+
+        let volumeAudioSlider = CustomSlider(
+            trackImage: "bar",
+            thumbImage: "thumb",
+            min: 0,
+            max: 1,
+            initial: CGFloat(initialAudioVolume)
+        )
+
+        volumeAudioSlider.position = CGPoint(x: frame.midX + 70, y: frame.midY + 80)
+        volumeAudioSlider.zPosition = 20
+        addChild(volumeAudioSlider)
+
+        // Atualiza o volume da música em tempo real
+        volumeAudioSlider.onValueChanged = { newVolume in
+            MusicManager.shared.setVolume(to: newVolume)
+            UserDefaults.standard.set(Float(newVolume), forKey: "musicVolume")
+        }
+        
+        
 
         // Music Label
-
         let music = SKSpriteNode(imageNamed: "music_txt")
         music.name = "music"
         music.position = CGPoint(x: frame.midX - 100, y: frame.midY + 10)
@@ -71,23 +94,24 @@ class SettingsScene: SKScene {
         addChild(music)
         
         // Recupera o volume salvo (ou usa 0.5 como padrão)
-        let savedVolume = UserDefaults.standard.float(forKey: "musicVolume")
-        let initialVolume = savedVolume == 0 ? 0.5 : savedVolume
+        let savedMusicVolume = UserDefaults.standard.float(forKey: "musicVolume")
+        let initialMusicVolume = savedMusicVolume == 0 ? 0.5 : savedMusicVolume
 
-        let volumeSlider = CustomSlider(
+        let volumeMusicSlider = CustomSlider(
             trackImage: "bar",
             thumbImage: "thumb",
             min: 0,
             max: 1,
-            initial: CGFloat(initialVolume)
+            initial: CGFloat(initialMusicVolume)
         )
 
-        volumeSlider.position = CGPoint(x: frame.midX + 70, y: frame.midY + 10)
-        volumeSlider.zPosition = 20
-        addChild(volumeSlider)
+        volumeMusicSlider.position = CGPoint(x: frame.midX + 70, y: frame.midY + 5
+        )
+        volumeMusicSlider.zPosition = 20
+        addChild(volumeMusicSlider)
 
         // Atualiza o volume da música em tempo real
-        volumeSlider.onValueChanged = { newVolume in
+        volumeMusicSlider.onValueChanged = { newVolume in
             MusicManager.shared.setVolume(to: newVolume)
             UserDefaults.standard.set(Float(newVolume), forKey: "musicVolume")
         }
