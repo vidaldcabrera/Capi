@@ -27,15 +27,18 @@ class AnimationComponent: GKComponent {
     }
     
     public func playIdle() {
+        node?.removeAllActions()
         node?.run(idleAction)
         isRun = false
     }
-    
+
     public func playRun() {
         if !isRun {
+            node?.removeAllActions()
             node?.run(runAction)
         }
         isRun = true
     }
+
     
 }

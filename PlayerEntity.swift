@@ -11,7 +11,7 @@ class PlayerEntity: GKEntity {
     override init() {
         super.init()
         let node = SKSpriteNode(imageNamed: "idle1.png")
-
+        
         node.anchorPoint = .init(x: 0.5, y: 0.20)
         node.setScale(1)
         self.addComponent(GKSKNodeComponent(node: node))
@@ -22,19 +22,26 @@ class PlayerEntity: GKEntity {
         self.addComponent(PhysicsComponent(physicsBody: body))
         body.isDynamic = true
         body.affectedByGravity = true
-
+        
         body.allowsRotation = false
         
+        body.categoryBitMask = CollisionCategory.player
+        body.contactTestBitMask = CollisionCategory.apple
+        // colide com tudo que tiver fisica
+        body.collisionBitMask = 0xFFFFFFFF
+        body.usesPreciseCollisionDetection = true
+        
+        
         let animationComp = AnimationComponent(
-            idleAction: .repeatForever(.animate(with: .init(withFormat: "idle%@.png", range: 1...7), timePerFrame: 0.1)),
+            idleAction: .repeatForever(.    animate(with: .init(withFormat: "idle%@.png", range: 1...7), timePerFrame: 0.1)),
             runAction: .repeatForever(.animate(with: .init(withFormat: "walk%@.png", range: 1...7), timePerFrame: 0.1)))
         self.addComponent(animationComp)
         
         let moveComponent = MovementComponent(speed: 3)
         self.addComponent(moveComponent)
-
         
-        // MARK: - Pulo
+        
+        // pulo 
         let jumpAtlas = SKTextureAtlas(named: "capijump")
         let jumpFrames: [SKTexture] = (1...8).map { i in
             jumpAtlas.textureNamed("jump\(i)")
