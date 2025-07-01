@@ -11,6 +11,7 @@ class GameViewController: UIViewController {
             let scene = GameScene.newGameScene()
             view.presentScene(scene)
             view.ignoresSiblingOrder = true
+
             
 #if DEBUG
             view.showsPhysics = true
