@@ -1,10 +1,3 @@
-//
-//  FlyingState.swift
-//  Capi iOS
-//
-//  Created by Aluno 23 on 16/06/25.
-//
-
 import Foundation
 import SpriteKit
 import GameplayKit
@@ -51,4 +44,3 @@ class MosquitoFlyingState: GKState{
             return stateClass == MosquitoAttackingState.self || stateClass == MosquitoDyingState.self
         }
     }
-

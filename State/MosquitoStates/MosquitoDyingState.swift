@@ -21,4 +21,3 @@ class MosquitoDyingState: GKState {
         mosquito.spriteNode.run(sequence, withKey: "Animation")
     }
 }
-

@@ -2,109 +2,94 @@ import Foundation
 import SpriteKit
 import GameplayKit
 
-enum Direction: CGFloat{
-    case right = 1
-    case left = -1
-    case none = 0
+enum Direction: CGFloat {
+    case right = 1, left = -1, none = 0
 }
 
 class MovementComponent: GKComponent {
-    
-    var direction: CGFloat = 1
-    let speed: CGFloat = 3
-    let offset: CGFloat = 100
-    var initialY: CGFloat?
-    var node: SKNode?
-    var speed: CGFloat
-    var direction: Direction = .none
-    var animationComp: AnimationComponent?
-    var isJumping = false
-    
-    
-    
-    func spiderVerticalMovement() {
-        guard let renderComponent = entity?.component(ofType: RenderComponent.self),
-              let animationComponent = entity?.component(ofType: AnimationComponent.self) else { return }
-        
-        let node = renderComponent.node
-        
-        if initialY == nil {
-            initialY = node.position.y
-        }
-        
-        guard let baseY = initialY else { return }
-        
-        // Troca a animação antes de começar a movimentar
-        let currentAnimation = direction > 0 ? "subindo" : "descendo"
-        animationComponent.runAnimation(named: currentAnimation)
-        
-        // Move
-        node.position.y += direction * speed
-        
-        // Verifica limites e inverte direção
-        if node.position.y >= baseY + offset {
-            node.position.y = baseY + offset
-            direction = -1
-        } else if node.position.y <= baseY - offset {
-            node.position.y = baseY - offset
-            direction = 1
-        }
-    }
-    
-    
-    func spiderIdleMovement(){
-        guard let animationComponent = entity?.component(ofType: AnimationComponent.self) else { return }
-        animationComponent.runAnimation(named: "parado")
-    }
-    
-    func spiderAttackMovement(){
-        guard let animationComponent = entity?.component(ofType: AnimationComponent.self) else { return }
-        animationComponent.runAnimation(named: "ataque")
-    }
-    
-    func spiderDeadMovement(){
-        guard let animationComponent = entity?.component(ofType: AnimationComponent.self) else { return }
-        animationComponent.runAnimation(named: "morte")
-    }
-    
-    
-    init(speed: CGFloat) {
+    /// Direção atual de movimento
+    private(set) var direction: Direction = .none
+    /// Velocidade de movimento
+    private let speed: CGFloat
+    init(speed: CGFloat = 3) {
         self.speed = speed
         super.init()
     }
-    
-    override func didAddToEntity() {
-        node = entity?.component(ofType: GKSKNodeComponent.self)?.node
-        animationComp = entity?.component(ofType: AnimationComponent.self)
+    /// Deslocamento para movimento vertical de aranha
+    private let offset: CGFloat = 100
+    /// Posição Y inicial para movimento vertical
+    private var initialY: CGFloat?
+
+    private var animationComp: AnimationComponent? {
+        entity?.component(ofType: AnimationComponent.self)
     }
-    
-    override func update(deltaTime seconds: TimeInterval) {
-        node?.position.x += direction.rawValue * speed
+    /// Nó de renderização (sprite ou outro) da entidade
+    private var renderNode: SKNode? {
+        entity?.component(ofType: GKSKNodeComponent.self)?.node
     }
-    
-    public func change(direction: Direction) {
-        self.direction = direction
-        
-        if(direction == .none) {
+
+    /// Altera a direção de movimento horizontal
+    func change(direction newDirection: Direction) {
+        guard direction != newDirection else { return }
+        direction = newDirection
+        if newDirection == .none {
             animationComp?.playIdle()
         } else {
-            
-            node?.xScale = abs(node?.xScale ?? 1) * direction.rawValue
-            
             animationComp?.playRun()
         }
     }
-    
-    public func jump() {
-        guard let body = node?.physicsBody else { return }
-        
-        // Verifica se está no chão (velocidade Y muito pequena)
+
+    /// Atualiza posição horizontal
+    override func update(deltaTime seconds: TimeInterval) {
+        guard let node = renderNode, direction != .none else { return }
+        node.position.x += direction.rawValue * speed
+        // Ajusta escala para refletir direção
+        node.xScale = abs(node.xScale) * direction.rawValue
+    }
+
+    /// Movimentação vertical oscilante (por exemplo, aranhas)
+    func spiderVerticalMovement() {
+        guard let node = renderNode else { return }
+        if initialY == nil { initialY = node.position.y }
+        let baseY = initialY!
+        node.position.y += direction.rawValue * speed
+        if node.position.y >= baseY + offset {
+            direction = .left
+        } else if node.position.y <= baseY - offset {
+            direction = .right
+        }
+    }
+
+    /// Executa pulo simples, verificando se está no chão
+    func jump() {
+        guard let body = renderNode?.physicsBody else { return }
         let isOnGround = abs(body.velocity.dy) < 1.0
-        
         if isOnGround {
+            // Impulso vertical
             body.applyImpulse(CGVector(dx: 0, dy: 30))
         }
     }
-    
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 }
 
+extension MovementComponent {
+  /// Chamada quando entra no estado “idle” da aranha
+  func spiderIdleMovement() {
+    spiderVerticalMovement()
+  }
+
+  /// Chamada quando entra no estado “attack” da aranha
+  func spiderAttackMovement() {
+    spiderVerticalMovement()
+  }
+
+  /// Chamada quando a aranha morre
+  func spiderDeadMovement() {
+    // por exemplo, para e remove as ações de oscilação
+    renderNode?.removeAllActions()
+    // ou qualquer outra limpeza que seja necessária
+  }
+}

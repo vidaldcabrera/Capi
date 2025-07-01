@@ -1,27 +1,23 @@
-//
-//  ButtonEntity.swift
-//  Capi iOS
-//
-//  Created by Gabriella Tomoda on 11/06/25.
-//
-
+import Foundation
 import SpriteKit
 import GameplayKit
 
 class ButtonEntity: GKEntity {
-    init(imageNamed: String, position: CGPoint, name: String, action: @escaping () -> Void) {
-        super.init()
+    let spriteNode: SKSpriteNode
+    private let component: ButtonComponent
 
-        let spriteNode = SKSpriteNode(imageNamed: imageNamed)
-        spriteNode.name = name
+    init(position: CGPoint, size: CGSize, title: String? = nil, action: @escaping () -> Void) {
+        // Configuração do sprite do botão
+        spriteNode = SKSpriteNode(color: .gray, size: size)
         spriteNode.position = position
-        spriteNode.zPosition = 10
+        spriteNode.name = "button"
 
-        let nodeComponent = GKSKNodeComponent(node: spriteNode)
-        let buttonComponent = ButtonComponent(node: spriteNode, action: action)
+        // Componente de botão com ação
+        component = ButtonComponent(node: spriteNode, title: title, action: action)
 
-        addComponent(nodeComponent)
-        addComponent(buttonComponent)
+        super.init()
+        addComponent(component)
+        addComponent(GKSKNodeComponent(node: spriteNode))
     }
 
     required init?(coder: NSCoder) {

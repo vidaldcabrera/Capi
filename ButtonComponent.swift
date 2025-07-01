@@ -1,35 +1,37 @@
-//
-//  ButtonComponent.swift
-//  Capi iOS
-//
-//  Created by Gabriella Tomoda on 17/06/25.
-//
-
+import Foundation
 import SpriteKit
 import GameplayKit
 
 class ButtonComponent: GKComponent {
-    private let sprite: SKSpriteNode
-    let action: () -> Void
+    unowned let node: SKSpriteNode
+    private let action: () -> Void
+    private let label: SKLabelNode?
 
-    init(node: SKSpriteNode, action: @escaping () -> Void) {
-        self.sprite = node
+    /// Inicializa com o sprite, ação e texto opcional
+    init(node: SKSpriteNode, title: String? = nil, action: @escaping () -> Void) {
+        self.node = node
         self.action = action
-        super.init()
-    }
-
-    /// Torna a função pública
-    public func handleTouch(location: CGPoint) {
-        if sprite.contains(location) {
-            sprite.run(SKAction.sequence([
-                SKAction.scale(to: 0.95, duration: 0.05),
-                SKAction.scale(to: 1.0, duration: 0.05)
-            ]))
-            action()
+        if let title = title {
+            let labelNode = SKLabelNode(text: title)
+            labelNode.fontName = "Helvetica"
+            labelNode.fontSize = 20
+            labelNode.fontColor = .white
+            labelNode.position = CGPoint(x: 0, y: -labelNode.frame.height / 2)
+            node.addChild(labelNode)
+            self.label = labelNode
+        } else {
+            self.label = nil
         }
+        super.init()
+        node.isUserInteractionEnabled = true
     }
 
-    required init?(coder: NSCoder) {
+    /// Verifica toque e executa ação
+    func didTouch() {
+        action()
+    }
+
+    required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 }
