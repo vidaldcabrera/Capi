@@ -34,19 +34,19 @@ class InventoryScene: SKScene {
         backButton.zPosition = 15
         addChild(backButton)
         
-        let activeTxt = SKSpriteNode(imageNamed: "active_txt")
-        activeTxt.name = "activeTxt"
-        activeTxt.position = CGPoint(x: frame.width/2 - 300, y: frame.height/2 + 130)
-        activeTxt.setScale(0.8)
-        activeTxt.zPosition = 15
-        addChild(activeTxt)
+
+        // Título
+        let localizedTitle = LocalizationManager.shared.localizedString(forKey: "active")
+        let titleLabel = FontFactory.makeTitle(localizedTitle, at: CGPoint(x: frame.width/2 - 300, y: frame.height/2 + 130))
+        titleLabel.zPosition = 15
+        addChild(titleLabel)
         
-        let availableTxt = SKSpriteNode(imageNamed: "available_txt")
-        availableTxt.name = "availableTxt"
-        availableTxt.position = CGPoint(x: frame.width/2 + 160, y: frame.height/2 + 130)
-        availableTxt.setScale(0.8)
-        availableTxt.zPosition = 15
-        addChild(availableTxt)
+        // Título
+        let localizedTitle2 = LocalizationManager.shared.localizedString(forKey: "available")
+        let titleLabel2 = FontFactory.makeTitle(localizedTitle2, at: CGPoint(x: frame.width/2 + 160, y: frame.height/2 + 130))
+        titleLabel2.zPosition = 15
+        addChild(titleLabel2)
+        
         
         let separator = SKSpriteNode(imageNamed: "separator")
         separator.name = "separator"
