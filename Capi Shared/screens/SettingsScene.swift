@@ -134,7 +134,7 @@ class SettingsScene: SKScene {
         
         
         let back = SKSpriteNode(imageNamed: "back_button")
-        back.name = "backButton"
+        back.name = "back"
         back.position = CGPoint(x: 0, y: view.frame.height * -0.4)
         back.setScale(proportionalScale(view: view, multiplier: 0.35))
         back.zPosition = 6
@@ -147,17 +147,29 @@ class SettingsScene: SKScene {
         let touchedNodes = nodes(at: location).sorted { $0.zPosition > $1.zPosition }
 
         for node in touchedNodes {
-            if node.name == "backButton" {
+            guard let nodeName = node.name else { continue }
+            if node.name == "back" {
+                VoiceOverManager.shared.speak(LocalizationManager.shared.localizedString(forKey: "back"))
                 let scene = GameScene(size: self.size)
                 scene.scaleMode = .aspectFill
                 self.view?.presentScene(scene, transition: .fade(withDuration: 0.5))
                 return
             } else if node.name == "language_button" {
+                handleButtonTouch(named: nodeName, at: location)
                 let scene = LanguageScene(size: self.size)
                 scene.scaleMode = .aspectFill
                 self.view?.presentScene(scene, transition: .fade(withDuration: 0.5))
                 return
             }
+        }
+    }
+    
+    func handleButtonTouch(named nodeName: String, at location: CGPoint) {
+        if let entity = entityManager.entities.first(where: {
+            $0.component(ofType: GKSKNodeComponent.self)?.node.name == nodeName
+        }),
+        let button = entity.component(ofType: ButtonComponent.self) {
+            button.handleTouch(location: location)
         }
     }
 

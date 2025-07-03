@@ -71,21 +71,26 @@ class LanguageScene: SKScene {
         let nodes = nodes(at: location)
 
         for node in nodes {
+            guard let nodeName = node.name else { continue }
             switch node.name {
             case "back":
+                VoiceOverManager.shared.speak(LocalizationManager.shared.localizedString(forKey: "back"))
                 let settingsScene = SettingsScene(size: self.size)
                 settingsScene.scaleMode = .aspectFill
                 view?.presentScene(settingsScene, transition: .fade(withDuration: 0.5))
 
             case "english":
+                handleButtonTouch(named: nodeName, at: location)
                 LocalizationManager.shared.selectedLanguage = "en"
                 reloadCurrentScene()
 
             case "portuguese":
+                handleButtonTouch(named: nodeName, at: location)
                 LocalizationManager.shared.selectedLanguage = "pt"
                 reloadCurrentScene()
 
             case "spanish":
+                handleButtonTouch(named: nodeName, at: location)
                 LocalizationManager.shared.selectedLanguage = "es"
                 reloadCurrentScene()
 
@@ -100,5 +105,15 @@ class LanguageScene: SKScene {
         newScene.scaleMode = .aspectFill
         view?.presentScene(newScene, transition: .fade(withDuration: 0.5))
     }
+    
+    func handleButtonTouch(named nodeName: String, at location: CGPoint) {
+        if let entity = entityManager.entities.first(where: {
+            $0.component(ofType: GKSKNodeComponent.self)?.node.name == nodeName
+        }),
+        let button = entity.component(ofType: ButtonComponent.self) {
+            button.handleTouch(location: location)
+        }
+    }
+
 }
 

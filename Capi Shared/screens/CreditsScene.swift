@@ -57,7 +57,7 @@ class CreditsScene: SKScene {
     
 
         let back = SKSpriteNode(imageNamed: "back_button")
-        back.name = "backButton"
+        back.name = "back"
         back.position = CGPoint(x: 0, y: view.frame.height * -0.4)
         back.setScale(proportionalScale(view: view, multiplier: 0.35))
         back.zPosition = 6
@@ -69,7 +69,8 @@ class CreditsScene: SKScene {
         let location = touch.location(in: self)
         let touchedNode = atPoint(location)
 
-        if touchedNode.name == "backButton" {
+        if touchedNode.name == "back" {
+            VoiceOverManager.shared.speak(LocalizationManager.shared.localizedString(forKey: "back"))
             let scene = GameScene(size: self.size)
             scene.scaleMode = .aspectFill
             self.view?.presentScene(scene, transition: .fade(withDuration: 0.5))

@@ -30,7 +30,6 @@ class VoiceOverManager {
 
     // Fala apenas se estiver ativado pelo app
     func speak(_ text: String) {
-        guard isVoiceOverEnabled else { return }
         speak(text, force: false)
     }
 
@@ -39,7 +38,7 @@ class VoiceOverManager {
         if !isVoiceOverEnabled && !force { return }
 
         let utterance = AVSpeechUtterance(string: text)
-        utterance.voice = AVSpeechSynthesisVoice(language: "pt-BR")
+        utterance.voice = AVSpeechSynthesisVoice(language: languageCodeToAVSpeechLanguage(LocalizationManager.shared.selectedLanguage))
         synthesizer.speak(utterance)
     }
 
@@ -55,5 +54,15 @@ class VoiceOverManager {
         let ativo = UIAccessibility.isVoiceOverRunning
         isVoiceOverEnabled = ativo
         print("VoiceOver do sistema mudou para: \(ativo)")
+    }
+
+    // Mapeia código da linguagem para o esperado pelo AVSpeechSynthesisVoice
+    private func languageCodeToAVSpeechLanguage(_ code: String) -> String {
+        switch code {
+        case "pt": return "pt-BR"
+        case "en": return "en-US"
+        case "es": return "es-ES"
+        default: return "en-US"  // fallback para inglês
+        }
     }
 }

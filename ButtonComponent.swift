@@ -12,8 +12,9 @@ class ButtonComponent: GKComponent {
     private let sprite: SKSpriteNode
     let title: String
     let action: () -> Void
-
-    init(node: SKSpriteNode, title: String, action: @escaping () -> Void) {
+    let label: String
+    
+    init(node: SKSpriteNode, title: String, label: String, action: @escaping () -> Void) {
         self.sprite = node
         self.title = title
         self.action = action

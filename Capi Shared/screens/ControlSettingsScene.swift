@@ -47,7 +47,7 @@ class ControlSettingsScene: SKScene {
         
                 
         let backButton = SKSpriteNode(imageNamed: "back_button")
-        backButton.name = "backButton"
+        backButton.name = "back"
         backButton.position = CGPoint(x: frame.width/2 - 570, y: frame.height/2 + 190)
         backButton.zPosition = 30
         addChild(backButton)
@@ -99,8 +99,8 @@ class ControlSettingsScene: SKScene {
         let nodes = nodes(at: location)
 
         for node in nodes { 
-            if node.name == "backButton" {
-                VoiceOverManager.shared.speak("Voltar")
+            if node.name == "back" {
+                VoiceOverManager.shared.speak(LocalizationManager.shared.localizedString(forKey: "back"))
 
                 if let settingsPauseScene = SettingsPauseScene(fileNamed: "SettingsPauseScene") {
                     settingsPauseScene.scaleMode = .aspectFill
