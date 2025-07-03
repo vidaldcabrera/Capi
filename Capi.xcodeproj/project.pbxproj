@@ -15,6 +15,10 @@
 		2241F3902E097E3D006413EF /* SettingsPauseScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2241F38F2E097E3D006413EF /* SettingsPauseScene.swift */; };
 		2241F3922E098353006413EF /* GameState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2241F3912E098353006413EF /* GameState.swift */; };
 		2241F3942E0990EF006413EF /* ControlSettingsScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2241F3932E0990EF006413EF /* ControlSettingsScene.swift */; };
+		2241F39C2E0D892B006413EF /* CustomSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2241F39B2E0D892B006413EF /* CustomSlider.swift */; };
+		2241F39E2E0EBD7E006413EF /* InventoryScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2241F39D2E0EBD7E006413EF /* InventoryScene.swift */; };
+		2241F3A02E0ED90A006413EF /* MusicManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2241F39F2E0ED90A006413EF /* MusicManager.swift */; };
+		2241F3A22E0EDF1E006413EF /* background_music.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2241F3A12E0EDF1E006413EF /* background_music.mp3 */; };
 		2258602A2DF85E2D0024E3E8 /* EnimiesEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225860292DF85E2D0024E3E8 /* EnimiesEntity.swift */; };
 		2258602C2DF85E3D0024E3E8 /* TrapEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2258602B2DF85E3D0024E3E8 /* TrapEntity.swift */; };
 		2258602E2DF85E4F0024E3E8 /* PlayerEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2258602D2DF85E4F0024E3E8 /* PlayerEntity.swift */; };
@@ -66,6 +70,16 @@
 		E517FFED2E0D6D6E0084DCF1 /* VoiceOverManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E517FFEC2E0D6D6E0084DCF1 /* VoiceOverManager.swift */; };
 		E517FFF02E0D710A0084DCF1 /* AccessibilityScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = E517FFEF2E0D710A0084DCF1 /* AccessibilityScene.swift */; };
 		E58841DF2E12AF1E00F98BBE /* MainMenuScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = E58841DE2E12AF1E00F98BBE /* MainMenuScene.swift */; };
+		E52109772E12D95E00AF9038 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E52109752E12D95E00AF9038 /* Localizable.strings */; };
+		E521C7582E12C4BF0061C095 /* LocalizationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E521C7572E12C4BF0061C095 /* LocalizationManager.swift */; };
+		E521C75D2E12C8A20061C095 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E521C75C2E12C8A20061C095 /* Localizable.strings */; };
+		E521C7602E12CE000061C095 /* LanguageScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = E521C75F2E12CE000061C095 /* LanguageScene.swift */; };
+		E59F760B2E140A8A003C4356 /* FontFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = E59F760A2E140A8A003C4356 /* FontFactory.swift */; };
+		E59F760E2E1410A7003C4356 /* VT323-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E59F760D2E1410A7003C4356 /* VT323-Regular.ttf */; };
+		E59F76112E141FF4003C4356 /* PressStart2P-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E59F76102E141FF4003C4356 /* PressStart2P-Regular.ttf */; };
+		E5A73A332E1553A0000D0481 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E5A73A312E1553A0000D0481 /* Localizable.strings */; };
+		E5A73A352E155706000D0481 /* DifficultyScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5A73A342E155706000D0481 /* DifficultyScene.swift */; };
+		E5A73A382E155BB5000D0481 /* CreditsScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5A73A372E155BB5000D0481 /* CreditsScene.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -90,6 +104,10 @@
 		2241F38F2E097E3D006413EF /* SettingsPauseScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsPauseScene.swift; sourceTree = "<group>"; };
 		2241F3912E098353006413EF /* GameState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameState.swift; sourceTree = "<group>"; };
 		2241F3932E0990EF006413EF /* ControlSettingsScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlSettingsScene.swift; sourceTree = "<group>"; };
+		2241F39B2E0D892B006413EF /* CustomSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSlider.swift; sourceTree = "<group>"; };
+		2241F39D2E0EBD7E006413EF /* InventoryScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InventoryScene.swift; sourceTree = "<group>"; };
+		2241F39F2E0ED90A006413EF /* MusicManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicManager.swift; sourceTree = "<group>"; };
+		2241F3A12E0EDF1E006413EF /* background_music.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = background_music.mp3; sourceTree = "<group>"; };
 		225860292DF85E2D0024E3E8 /* EnimiesEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnimiesEntity.swift; sourceTree = "<group>"; };
 		2258602B2DF85E3D0024E3E8 /* TrapEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrapEntity.swift; sourceTree = "<group>"; };
 		2258602D2DF85E4F0024E3E8 /* PlayerEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerEntity.swift; sourceTree = "<group>"; };
@@ -139,6 +157,17 @@
 		E517FFEC2E0D6D6E0084DCF1 /* VoiceOverManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoiceOverManager.swift; sourceTree = "<group>"; };
 		E517FFEF2E0D710A0084DCF1 /* AccessibilityScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessibilityScene.swift; sourceTree = "<group>"; };
 		E58841DE2E12AF1E00F98BBE /* MainMenuScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainMenuScene.swift; sourceTree = "<group>"; };
+		E52109762E12D95E00AF9038 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = Localizable.strings; sourceTree = "<group>"; };
+		E521C7572E12C4BF0061C095 /* LocalizationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizationManager.swift; sourceTree = "<group>"; };
+		E521C75C2E12C8A20061C095 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
+		E521C75F2E12CE000061C095 /* LanguageScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageScene.swift; sourceTree = "<group>"; };
+		E59F760A2E140A8A003C4356 /* FontFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontFactory.swift; sourceTree = "<group>"; };
+		E59F760D2E1410A7003C4356 /* VT323-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "VT323-Regular.ttf"; sourceTree = "<group>"; };
+		E59F760F2E1410E8003C4356 /* Capi-iOS-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Capi-iOS-Info.plist"; sourceTree = SOURCE_ROOT; };
+		E59F76102E141FF4003C4356 /* PressStart2P-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PressStart2P-Regular.ttf"; sourceTree = "<group>"; };
+		E5A73A322E1553A0000D0481 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = Localizable.strings; sourceTree = "<group>"; };
+		E5A73A342E155706000D0481 /* DifficultyScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DifficultyScene.swift; sourceTree = "<group>"; };
+		E5A73A372E155BB5000D0481 /* CreditsScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditsScene.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -173,6 +202,7 @@
 				225860372DF85EE20024E3E8 /* SceneEntity.swift */,
 				22E4513E2DF9EAD600765DCE /* ButtonEntity.swift */,
 				2241F3892E096600006413EF /* InventoryEntity.swift */,
+				2241F39B2E0D892B006413EF /* CustomSlider.swift */,
 			);
 			name = Entities;
 			sourceTree = "<group>";
@@ -206,6 +236,8 @@
 				225860592DF860730024E3E8 /* SKTexture+Array.swift */,
 				2258605B2DF860970024E3E8 /* SKTileMapNode.swift */,
 				E517FFEC2E0D6D6E0084DCF1 /* VoiceOverManager.swift */,
+				E521C7572E12C4BF0061C095 /* LocalizationManager.swift */,
+				E59F760A2E140A8A003C4356 /* FontFactory.swift */,
 			);
 			name = Tools;
 			sourceTree = "<group>";
@@ -223,6 +255,7 @@
 		2C6CF7412DE4B65200771D67 = {
 			isa = PBXGroup;
 			children = (
+				E521C75B2E12C8540061C095 /* Resources */,
 				2258605D2DF860A40024E3E8 /* Scene */,
 				225860582DF860490024E3E8 /* Tools */,
 				225860392DF85EED0024E3E8 /* Components */,
@@ -239,18 +272,17 @@
 			children = (
 				E58841DE2E12AF1E00F98BBE /* MainMenuScene.swift */,
 				E517FFEE2E0D70AB0084DCF1 /* Screens */,
+				E521C75E2E12CDDF0061C095 /* screens */,
+				2241F3A12E0EDF1E006413EF /* background_music.mp3 */,
 				2C6CF7472DE4B65200771D67 /* Actions.sks */,
 				2C6CF7482DE4B65200771D67 /* GameScene.sks */,
 				2C6CF7492DE4B65200771D67 /* GameScene.swift */,
 				2C6CF74A2DE4B65700771D67 /* Assets.xcassets */,
-				228F9D732E01B5A0002D2E71 /* SettingsScene.swift */,
 				2241F3832E02E5D7006413EF /* LevelScene.swift */,
 				2241F3852E02ED79006413EF /* HUDOverlay.swift */,
 				2241F3872E02EE6A006413EF /* GamePlayScene.swift */,
-				2241F38D2E096728006413EF /* PauseScene.swift */,
-				2241F38F2E097E3D006413EF /* SettingsPauseScene.swift */,
 				2241F3912E098353006413EF /* GameState.swift */,
-				2241F3932E0990EF006413EF /* ControlSettingsScene.swift */,
+				2241F39F2E0ED90A006413EF /* MusicManager.swift */,
 			);
 			path = "Capi Shared";
 			sourceTree = "<group>";
@@ -267,6 +299,7 @@
 		2C6CF7512DE4B65700771D67 /* Capi iOS */ = {
 			isa = PBXGroup;
 			children = (
+				E59F760F2E1410E8003C4356 /* Capi-iOS-Info.plist */,
 				2C6CF7522DE4B65700771D67 /* AppDelegate.swift */,
 				2C6CF7542DE4B65700771D67 /* GameViewController.swift */,
 				2C6CF7562DE4B65700771D67 /* Main.storyboard */,
@@ -292,6 +325,57 @@
 				E517FFEF2E0D710A0084DCF1 /* AccessibilityScene.swift */,
 			);
 			path = Screens;
+
+		};
+		E52109732E12D92100AF9038 /* pt.lproj */ = {
+			isa = PBXGroup;
+			children = (
+				E521C75C2E12C8A20061C095 /* Localizable.strings */,
+			);
+			path = pt.lproj;
+			sourceTree = "<group>";
+		};
+		E52109742E12D93B00AF9038 /* en.lproj */ = {
+			isa = PBXGroup;
+			children = (
+				E52109752E12D95E00AF9038 /* Localizable.strings */,
+			);
+			path = en.lproj;
+			sourceTree = "<group>";
+		};
+		E521C75B2E12C8540061C095 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				E5A73A302E155357000D0481 /* es.lproj */,
+				E59F760D2E1410A7003C4356 /* VT323-Regular.ttf */,
+				E59F76102E141FF4003C4356 /* PressStart2P-Regular.ttf */,
+				E52109742E12D93B00AF9038 /* en.lproj */,
+				E52109732E12D92100AF9038 /* pt.lproj */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		E521C75E2E12CDDF0061C095 /* screens */ = {
+			isa = PBXGroup;
+			children = (
+				E521C75F2E12CE000061C095 /* LanguageScene.swift */,
+				E5A73A342E155706000D0481 /* DifficultyScene.swift */,
+				E5A73A372E155BB5000D0481 /* CreditsScene.swift */,
+				228F9D732E01B5A0002D2E71 /* SettingsScene.swift */,
+				2241F38D2E096728006413EF /* PauseScene.swift */,
+				2241F3932E0990EF006413EF /* ControlSettingsScene.swift */,
+				2241F38F2E097E3D006413EF /* SettingsPauseScene.swift */,
+				2241F39D2E0EBD7E006413EF /* InventoryScene.swift */,
+			);
+			path = screens;
+			sourceTree = "<group>";
+		};
+		E5A73A302E155357000D0481 /* es.lproj */ = {
+			isa = PBXGroup;
+			children = (
+				E5A73A312E1553A0000D0481 /* Localizable.strings */,
+			);
+			path = es.lproj;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -357,6 +441,7 @@
 			knownRegions = (
 				en,
 				Base,
+				es,
 			);
 			mainGroup = 2C6CF7412DE4B65200771D67;
 			productRefGroup = 2C6CF7502DE4B65700771D67 /* Products */;
@@ -377,10 +462,16 @@
 				2C6CF7952DE4B65800771D67 /* GameScene.sks in Resources */,
 				2C6CF7582DE4B65700771D67 /* Main.storyboard in Resources */,
 				2258605F2DF860DB0024E3E8 /* SceneTile.sks in Resources */,
+				E5A73A332E1553A0000D0481 /* Localizable.strings in Resources */,
 				225860612DF860F40024E3E8 /* scene1.sks in Resources */,
+				E52109772E12D95E00AF9038 /* Localizable.strings in Resources */,
+				2241F3A22E0EDF1E006413EF /* background_music.mp3 in Resources */,
 				2C6CF7922DE4B65800771D67 /* Actions.sks in Resources */,
+				E59F76112E141FF4003C4356 /* PressStart2P-Regular.ttf in Resources */,
+				E521C75D2E12C8A20061C095 /* Localizable.strings in Resources */,
 				2C6CF75B2DE4B65700771D67 /* LaunchScreen.storyboard in Resources */,
 				2C6CF79D2DE4B65800771D67 /* Assets.xcassets in Resources */,
+				E59F760E2E1410A7003C4356 /* VT323-Regular.ttf in Resources */,
 				225860702DF9D0E50024E3E8 /* initialScene.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -404,6 +495,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E521C7582E12C4BF0061C095 /* LocalizationManager.swift in Sources */,
 				2241F3842E02E5D7006413EF /* LevelScene.swift in Sources */,
 				225860532DF85FEB0024E3E8 /* BuyComponent.swift in Sources */,
 				E58841DF2E12AF1E00F98BBE /* MainMenuScene.swift in Sources */,
@@ -421,9 +513,11 @@
 				22E4513F2DF9EAD600765DCE /* ButtonEntity.swift in Sources */,
 				2241F3862E02ED79006413EF /* HUDOverlay.swift in Sources */,
 				228F9D722E01B520002D2E71 /* ButtonComponent.swift in Sources */,
+				E521C7602E12CE000061C095 /* LanguageScene.swift in Sources */,
 				2241F3922E098353006413EF /* GameState.swift in Sources */,
 				2241F3882E02EE6A006413EF /* GamePlayScene.swift in Sources */,
 				225860492DF85F970024E3E8 /* HUDComponent.swift in Sources */,
+				E5A73A352E155706000D0481 /* DifficultyScene.swift in Sources */,
 				228F9D742E01B5A0002D2E71 /* SettingsScene.swift in Sources */,
 				225860342DF85EA50024E3E8 /* SnakeEntity.swift in Sources */,
 				2258604F2DF85FC90024E3E8 /* LifeComponent.swift in Sources */,
@@ -435,15 +529,20 @@
 				2241F38E2E096728006413EF /* PauseScene.swift in Sources */,
 				225860302DF85E650024E3E8 /* DinoSEntity.swift in Sources */,
 				225860452DF85F690024E3E8 /* MovimentComponent.swift in Sources */,
+				2241F39C2E0D892B006413EF /* CustomSlider.swift in Sources */,
 				225860322DF85E760024E3E8 /* ItensEntity.swift in Sources */,
 				225860472DF85F840024E3E8 /* TextComponent.swift in Sources */,
 				2258602E2DF85E4F0024E3E8 /* PlayerEntity.swift in Sources */,
+				2241F39E2E0EBD7E006413EF /* InventoryScene.swift in Sources */,
 				2258603B2DF85F0C0024E3E8 /* ProjectTilesComponent.swift in Sources */,
 				225860412DF85F3B0024E3E8 /* UpdateComponent.swift in Sources */,
 				225860572DF860190024E3E8 /* LightComponent.swift in Sources */,
+				2241F3A02E0ED90A006413EF /* MusicManager.swift in Sources */,
+				E5A73A382E155BB5000D0481 /* CreditsScene.swift in Sources */,
 				2258604D2DF85FB80024E3E8 /* SpeakComponent.swift in Sources */,
 				E517FFF02E0D710A0084DCF1 /* AccessibilityScene.swift in Sources */,
 				2241F3902E097E3D006413EF /* SettingsPauseScene.swift in Sources */,
+				E59F760B2E140A8A003C4356 /* FontFactory.swift in Sources */,
 				2258605A2DF860730024E3E8 /* SKTexture+Array.swift in Sources */,
 				2258602C2DF85E3D0024E3E8 /* TrapEntity.swift in Sources */,
 				2C6CF7532DE4B65700771D67 /* AppDelegate.swift in Sources */,
@@ -485,6 +584,22 @@
 				2C6CF78F2DE4B65700771D67 /* Base */,
 			);
 			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		E52109752E12D95E00AF9038 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E52109762E12D95E00AF9038 /* en */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+		E5A73A312E1553A0000D0481 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E5A73A322E1553A0000D0481 /* es */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -609,12 +724,13 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Capi-iOS-Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UIStatusBarHidden = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -638,12 +754,13 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Capi-iOS-Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UIStatusBarHidden = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

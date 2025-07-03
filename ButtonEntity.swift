@@ -9,16 +9,21 @@ import SpriteKit
 import GameplayKit
 
 class ButtonEntity: GKEntity {
-    init(imageNamed: String, position: CGPoint, name: String, action: @escaping () -> Void, label: String) {
+    init(imageNamed: String, position: CGPoint, name: String, title: String, action: @escaping () -> Void) {
         super.init()
 
         let spriteNode = SKSpriteNode(imageNamed: imageNamed)
         spriteNode.name = name
         spriteNode.position = position
-        spriteNode.zPosition = 10
+        spriteNode.zPosition = 15
 
+        // Adiciona texto centralizado sobre o botão
+        let label = FontFactory.makeButton(title, at: .zero) // posição relativa ao centro do sprite
+        label.zPosition = spriteNode.zPosition + 1
+        spriteNode.addChild(label)
+        
         let nodeComponent = GKSKNodeComponent(node: spriteNode)
-        let buttonComponent = ButtonComponent(node: spriteNode, label: label, action: action)
+        let buttonComponent = ButtonComponent(node: spriteNode, title: title, action: action)
 
         addComponent(nodeComponent)
         addComponent(buttonComponent)

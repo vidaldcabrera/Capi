@@ -10,11 +10,12 @@ import GameplayKit
 
 class ButtonComponent: GKComponent {
     private let sprite: SKSpriteNode
-    private let label: String
+    let title: String
     let action: () -> Void
 
-    init(node: SKSpriteNode, label: String, action: @escaping () -> Void) {
+    init(node: SKSpriteNode, title: String, action: @escaping () -> Void) {
         self.sprite = node
+        self.title = title
         self.action = action
         self.label = label
         super.init()
