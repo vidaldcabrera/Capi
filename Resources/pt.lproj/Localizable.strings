@@ -28,3 +28,7 @@
 "inventory" = "Inventário";
 "voiceover_enabled" = "Narrador ativado";
 "voiceover_disabled" = "Narrador desativado";
+"voiceoveron" = "Desativar";
+"voiceoveroff" = "Ativar";
+"accessibility" = "Acessibilidade";
+"voiceover" = "Narrador";

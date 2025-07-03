@@ -23,24 +23,20 @@ class AccessibilityScene: SKScene {
         box.setScale(1.5)
         box.zPosition = 14
         addChild(box)
-        
+    
+
         // Título
-        let title = SKSpriteNode(imageNamed: "accessibility_txt")
-        title.position = CGPoint(x: frame.midX, y: frame.midY + 150)
-        title.zPosition = 15
-        addChild(title)
+        let localizedTitle = LocalizationManager.shared.localizedString(forKey: "accessibility")
+        let titleLabel = FontFactory.makeTitle(localizedTitle, at: CGPoint(x: frame.midX, y: frame.midY + 150))
+        titleLabel.zPosition = 15
+        addChild(titleLabel)
+        
+    
 
-        
-        
-        
-        
-        // VoiceOver
-        let audio = SKSpriteNode(imageNamed: "voiceover_txt")
-        audio.position = CGPoint(x: frame.midX - 100, y: frame.midY + 60)
-        audio.zPosition = 15
-        addChild(audio)
-
-
+        let localizedSubtitle = LocalizationManager.shared.localizedString(forKey: "voiceover")
+        let subtitleLabel = FontFactory.makeSubtitle(localizedSubtitle, at: CGPoint(x: frame.midX - 100, y: frame.midY + 60))
+        subtitleLabel.zPosition = 15
+        addChild(subtitleLabel)
 
         // Button VoiceOver enable e disable
         let accessibilityButton = SKSpriteNode(imageNamed: "ButtonBoxUnselected")

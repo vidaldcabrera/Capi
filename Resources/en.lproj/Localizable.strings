@@ -28,3 +28,7 @@
 "inventory" = "Inventory";
 "voiceover_enabled" = "VoiceOver enabled";
 "voiceover_disabled" = "VoiceOver disabled";
+"voiceoveron" = "Disable";
+"voiceoveroff" = "Enable";
+"accessibility" = "Accessibility";
+"voiceover" = "VoiceOver";

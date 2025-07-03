@@ -45,21 +45,23 @@ class VoiceOverManager {
     // Atualiza a textura de um botão com base no estado do narrador
     func updateAccessibilityButton(_ button: SKSpriteNode) {
         let newImageName = isVoiceOverEnabled ? "ButtonBoxSelected" : "ButtonBoxUnselected"
-        let newText = isVoiceOverEnabled ? "enable" : "disable"
+        let titleKey = isVoiceOverEnabled ? "voiceoveron" : "voiceoveroff"
+        let newText = LocalizationManager.shared.localizedString(forKey: titleKey)
 
-        // Remove o label antigo, se existir
+        // Remove o label antigo
         button.childNode(withName: "voiceover_label")?.removeFromParent()
 
-        // Cria novo label com name
+        // Cria e adiciona o novo texto
         let text = FontFactory.makeButton(newText, at: .zero)
-        text.name = "voiceover_label" // IMPORTANTE
+        text.name = "voiceover_label"
         text.zPosition = 18
         button.addChild(text)
 
-        // Atualiza a textura
+        // Atualiza visual do botão
         button.texture = SKTexture(imageNamed: newImageName)
         button.setScale(0.8)
     }
+
 
 
     // Reage quando o sistema muda o estado do VoiceOver
