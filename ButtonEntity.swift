@@ -23,7 +23,7 @@ class ButtonEntity: GKEntity {
         spriteNode.addChild(label)
         
         let nodeComponent = GKSKNodeComponent(node: spriteNode)
-        let buttonComponent = ButtonComponent(node: spriteNode, title: title, action: action)
+        let buttonComponent = ButtonComponent(node: spriteNode, title: title, label: title, action: action)
 
         addComponent(nodeComponent)
         addComponent(buttonComponent)

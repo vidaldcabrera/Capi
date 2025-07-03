@@ -13,13 +13,13 @@ class InventoryScene: SKScene {
     override func didMove(to view: SKView) {
         //        backgroundColor = .black
         self.isUserInteractionEnabled = true
-
+        
         // Fundo escuro com transparência
         let overlay = SKSpriteNode(color: UIColor.black.withAlphaComponent(0.2), size: size)
         overlay.position = CGPoint(x: frame.midX, y: frame.midY)
         overlay.zPosition = 12
         addChild(overlay)
-
+        
         // Caixa
         let box = SKSpriteNode(imageNamed: "control_box")
         box.position = CGPoint(x: frame.midX, y: frame.midY)
@@ -34,7 +34,7 @@ class InventoryScene: SKScene {
         backButton.zPosition = 15
         addChild(backButton)
         
-
+        
         // Título
         let localizedTitle = LocalizationManager.shared.localizedString(forKey: "active")
         let titleLabel = FontFactory.makeTitle(localizedTitle, at: CGPoint(x: frame.width/2 - 300, y: frame.height/2 + 130))
@@ -72,7 +72,7 @@ class InventoryScene: SKScene {
         let startX = frame.width / 2 - 300
         let verticalSpacing: CGFloat = -130
         let scale: CGFloat = 0.8
-
+        
         for i in 2...5 {
             let button = SKSpriteNode(imageNamed: "ability_locked_button")
             button.name = "lockedButton_\(i)"
@@ -90,36 +90,36 @@ class InventoryScene: SKScene {
             button.zPosition = 15
             addChild(button)
         }
-
-
+        
+        
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         guard let touch = touches.first else { return }
         let location = touch.location(in: self)
         let nodes = nodes(at: location)
-
+        
         for node in nodes {
             switch node.name {
             case "backButton":
-//                print("ahhh")
+                VoiceOverManager.shared.speak(LocalizationManager.shared.localizedString(forKey: "back"))
                 let backScene = GamePlayScene(size: self.size)
                 backScene.scaleMode = .aspectFill
                 view?.presentScene(backScene, transition: .fade(withDuration: 0.5))
-
-//            case "restartButton":
-//                let restartScene = GameScene(size: self.size)
-//                restartScene.scaleMode = .aspectFill
-//                view?.presentScene(restartScene, transition: .fade(withDuration: 0.6))
-//
-//            case "settingsButton":
-//                let settingsPauseScene = SettingsPauseScene(size: self.size)
-//                settingsPauseScene.scaleMode = .aspectFill
-//                view?.presentScene(settingsPauseScene, transition: .fade(withDuration: 0.6))
-//
-//            case "quitButton":
-//                exit(0)
-
+                
+                //            case "restartButton":
+                //                let restartScene = GameScene(size: self.size)
+                //                restartScene.scaleMode = .aspectFill
+                //                view?.presentScene(restartScene, transition: .fade(withDuration: 0.6))
+                //
+                //            case "settingsButton":
+                //                let settingsPauseScene = SettingsPauseScene(size: self.size)
+                //                settingsPauseScene.scaleMode = .aspectFill
+                //                view?.presentScene(settingsPauseScene, transition: .fade(withDuration: 0.6))
+                //
+                //            case "quitButton":
+                //                exit(0)
+                
             default:
                 break
             }

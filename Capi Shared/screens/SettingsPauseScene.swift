@@ -133,22 +133,34 @@ class SettingsPauseScene: SKScene {
         let nodes = nodes(at: location)
 
         for node in nodes {
+            guard let nodeName = node.name else { continue }
             switch node.name {
             case "back":
+                VoiceOverManager.shared.speak(LocalizationManager.shared.localizedString(forKey: "back"))
                 let pauseScene = PauseScene(size: self.size)
                 pauseScene.scaleMode = .aspectFill
                 view?.presentScene(pauseScene, transition: .fade(withDuration: 0.3))
             case "controls":
+                handleButtonTouch(named: nodeName, at: location)
                 let controlsScene = ControlSettingsScene(size: self.size)
                 controlsScene.scaleMode = .aspectFill
                 view?.presentScene(controlsScene, transition: .fade(withDuration: 0.5))
                 break
             case "accessibility":
+                handleButtonTouch(named: nodeName, at: location)
                 // abrir tela de acessibilidade se quiser
                 break
             default:
                 break
             }
+        }
+    }
+    func handleButtonTouch(named nodeName: String, at location: CGPoint) {
+        if let entity = entityManager.entities.first(where: {
+            $0.component(ofType: GKSKNodeComponent.self)?.node.name == nodeName
+        }),
+        let button = entity.component(ofType: ButtonComponent.self) {
+            button.handleTouch(location: location)
         }
     }
 }

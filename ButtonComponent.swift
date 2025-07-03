@@ -12,17 +12,21 @@ class ButtonComponent: GKComponent {
     private let sprite: SKSpriteNode
     let title: String
     let action: () -> Void
-
-    init(node: SKSpriteNode, title: String, action: @escaping () -> Void) {
+    let label: String
+    
+    init(node: SKSpriteNode, title: String, label: String, action: @escaping () -> Void) {
         self.sprite = node
         self.title = title
         self.action = action
+        self.label = label
         super.init()
     }
+    
 
     /// Torna a função pública
     public func handleTouch(location: CGPoint) {
         if sprite.contains(location) {
+            VoiceOverManager.shared.speak(label)
             sprite.run(SKAction.sequence([
                 SKAction.scale(to: 0.95, duration: 0.05),
                 SKAction.scale(to: 1.0, duration: 0.05)

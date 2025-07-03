@@ -22,3 +22,7 @@
 "control_settings" = "Configuración de Controles";
 "active" = "Activo";
 "available" = "Disponible";
+"back" = "Volver";
+"level_1" = "Nivel 1";
+"pause" = "Pausa";
+"inventory" = "Inventario";

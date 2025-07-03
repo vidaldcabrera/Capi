@@ -70,6 +70,7 @@ class DifficultyScene: SKScene {
         for node in nodes {
             switch node.name {
             case "backButton":
+                VoiceOverManager.shared.speak(LocalizationManager.shared.localizedString(forKey: "back"))
                 let scene = GameScene(size: self.size)
                 scene.scaleMode = .aspectFill
                 self.view?.presentScene(scene, transition: .fade(withDuration: 0.5))

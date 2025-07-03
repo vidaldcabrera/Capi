@@ -101,6 +101,8 @@ class HUDOverlay: SKNode {
 
         for node in nodes {
             if node.name == "pause" {
+                VoiceOverManager.shared.speak(LocalizationManager.shared.localizedString(forKey: "pause"))
+
                 GameState.shared.playerPosition = self.scene?.childNode(withName: "player")?.position ?? .zero
                 if let scene = self.scene {
                     let pauseScene = PauseScene(size: scene.size)
@@ -110,6 +112,8 @@ class HUDOverlay: SKNode {
             }
             
             if node.name == "inventory" {
+                VoiceOverManager.shared.speak(LocalizationManager.shared.localizedString(forKey: "inventory"))
+
                 GameState.shared.playerPosition = self.scene?.childNode(withName: "player")?.position ?? .zero
                 if let scene = self.scene {
                     let inventoryScene = InventoryScene(size: scene.size)
