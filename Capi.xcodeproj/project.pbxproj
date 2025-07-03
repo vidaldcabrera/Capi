@@ -73,6 +73,7 @@
 		E521C75D2E12C8A20061C095 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E521C75C2E12C8A20061C095 /* Localizable.strings */; };
 		E521C7602E12CE000061C095 /* LanguageScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = E521C75F2E12CE000061C095 /* LanguageScene.swift */; };
 		E58841DF2E12AF1E00F98BBE /* MainMenuScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = E58841DE2E12AF1E00F98BBE /* MainMenuScene.swift */; };
+		E58B6AF42E16B6A300159710 /* AccessibilityScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = E58B6AF32E16B6A300159710 /* AccessibilityScene.swift */; };
 		E59F760B2E140A8A003C4356 /* FontFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = E59F760A2E140A8A003C4356 /* FontFactory.swift */; };
 		E59F760E2E1410A7003C4356 /* VT323-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E59F760D2E1410A7003C4356 /* VT323-Regular.ttf */; };
 		E59F76112E141FF4003C4356 /* PressStart2P-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E59F76102E141FF4003C4356 /* PressStart2P-Regular.ttf */; };
@@ -159,6 +160,7 @@
 		E521C75C2E12C8A20061C095 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		E521C75F2E12CE000061C095 /* LanguageScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageScene.swift; sourceTree = "<group>"; };
 		E58841DE2E12AF1E00F98BBE /* MainMenuScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainMenuScene.swift; sourceTree = "<group>"; };
+		E58B6AF32E16B6A300159710 /* AccessibilityScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AccessibilityScene.swift; path = "Capi Shared/Screens/AccessibilityScene.swift"; sourceTree = SOURCE_ROOT; };
 		E59F760A2E140A8A003C4356 /* FontFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontFactory.swift; sourceTree = "<group>"; };
 		E59F760D2E1410A7003C4356 /* VT323-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "VT323-Regular.ttf"; sourceTree = "<group>"; };
 		E59F760F2E1410E8003C4356 /* Capi-iOS-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Capi-iOS-Info.plist"; sourceTree = SOURCE_ROOT; };
@@ -347,6 +349,7 @@
 		E521C75E2E12CDDF0061C095 /* screens */ = {
 			isa = PBXGroup;
 			children = (
+				E58B6AF32E16B6A300159710 /* AccessibilityScene.swift */,
 				E521C75F2E12CE000061C095 /* LanguageScene.swift */,
 				E5A73A342E155706000D0481 /* DifficultyScene.swift */,
 				E5A73A372E155BB5000D0481 /* CreditsScene.swift */,
@@ -527,6 +530,7 @@
 				225860412DF85F3B0024E3E8 /* UpdateComponent.swift in Sources */,
 				225860572DF860190024E3E8 /* LightComponent.swift in Sources */,
 				2241F3A02E0ED90A006413EF /* MusicManager.swift in Sources */,
+				E58B6AF42E16B6A300159710 /* AccessibilityScene.swift in Sources */,
 				E5A73A382E155BB5000D0481 /* CreditsScene.swift in Sources */,
 				2258604D2DF85FB80024E3E8 /* SpeakComponent.swift in Sources */,
 				2241F3902E097E3D006413EF /* SettingsPauseScene.swift in Sources */,

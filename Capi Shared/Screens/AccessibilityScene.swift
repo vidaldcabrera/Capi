@@ -2,8 +2,11 @@
 
 import Foundation
 import SpriteKit
+import GameplayKit
 
 class AccessibilityScene: SKScene {
+    var entityManager = SKEntityManager()
+
     override func didMove(to view: SKView) {
         backgroundColor = .clear
         self.isUserInteractionEnabled = true
@@ -40,14 +43,18 @@ class AccessibilityScene: SKScene {
 
 
         // Button VoiceOver enable e disable
-        let accessibilityButton = SKSpriteNode(imageNamed: "disanable_button")
+        let accessibilityButton = SKSpriteNode(imageNamed: "ButtonBoxUnselected")
         accessibilityButton.name = "voiceover"
         accessibilityButton.position = CGPoint(x: frame.midX + 100, y: frame.midY + 60)
         accessibilityButton.setScale(0.8)
         accessibilityButton.zPosition = 15
         addChild(accessibilityButton)
+
         // Atualiza para refletir o estado salvo
         VoiceOverManager.shared.updateAccessibilityButton(accessibilityButton)
+
+    
+        
         
         
         
@@ -73,7 +80,7 @@ class AccessibilityScene: SKScene {
 
         for node in nodes {
             if node.name == "back" {
-                VoiceOverManager.shared.speak("Voltar")
+                VoiceOverManager.shared.speak(LocalizationManager.shared.localizedString(forKey: "back"))
 
                 if let settingsPauseScene = SettingsPauseScene(fileNamed: "SettingsPauseScene") {
                     settingsPauseScene.scaleMode = .aspectFill
@@ -88,7 +95,9 @@ class AccessibilityScene: SKScene {
             else if node.name == "voiceover" {
                 
                 let newStatus = !VoiceOverManager.shared.isVoiceOverEnabled
-                let statusMessage = newStatus ? "Narrador ativado" : "Narrador desativado"
+
+                let statusKey = newStatus ? "voiceover_enabled" : "voiceover_disabled"
+                let statusMessage = LocalizationManager.shared.localizedString(forKey: statusKey)
 
                 VoiceOverManager.shared.speak(statusMessage, force: true)
                 VoiceOverManager.shared.isVoiceOverEnabled = newStatus

@@ -148,7 +148,9 @@ class SettingsPauseScene: SKScene {
                 break
             case "accessibility":
                 handleButtonTouch(named: nodeName, at: location)
-                // abrir tela de acessibilidade se quiser
+                let accessibilityScene = AccessibilityScene(size: self.size)
+                accessibilityScene.scaleMode = .aspectFill
+                view?.presentScene(accessibilityScene, transition: .fade(withDuration: 0.5))
                 break
             default:
                 break

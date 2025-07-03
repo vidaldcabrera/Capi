@@ -26,3 +26,5 @@
 "level_1" = "Nivel 1";
 "pause" = "Pausa";
 "inventory" = "Inventario";
+"voiceover_enabled" = "Narrador activado";
+"voiceover_disabled" = "Narrador desactivado";
