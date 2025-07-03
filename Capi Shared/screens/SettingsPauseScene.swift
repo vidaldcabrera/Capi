@@ -1,14 +1,10 @@
-//
-//  SettingsPauseScene.swift
-//  Capi iOS
-//
-//  Created by Gabriella Tomoda on 23/06/25.
-//
-
 import Foundation
 import SpriteKit
+import GameplayKit
 
 class SettingsPauseScene: SKScene {
+    var entityManager = SKEntityManager()
+
 
     override func didMove(to view: SKView) {
         backgroundColor = .clear
@@ -28,17 +24,18 @@ class SettingsPauseScene: SKScene {
         addChild(box)
 
         // Título
-        let title = SKSpriteNode(imageNamed: "settings_txt")
-        title.position = CGPoint(x: frame.midX, y: frame.midY + 150)
-        title.zPosition = 15
-        addChild(title)
+        let localizedTitle = LocalizationManager.shared.localizedString(forKey: "settings")
+        let titleLabel = FontFactory.makeTitle(localizedTitle, at: CGPoint(x: frame.midX, y: frame.midY + 150))
+        titleLabel.zPosition = 15
+        addChild(titleLabel)
         
-        // Texto "audio"
-        let audio = SKSpriteNode(imageNamed: "audio_txt")
-        audio.position = CGPoint(x: frame.midX - 100, y: frame.midY + 75
-        )
-        audio.zPosition = 15
-        addChild(audio)
+        // subtitulo
+                                 
+        let localizedSubTitle1 = LocalizationManager.shared.localizedString(forKey: "audio")
+        let subTitleLabel1 = FontFactory.makeSubtitle(localizedSubTitle1, at: CGPoint(x: frame.midX - 100, y: frame.midY + 75))
+        subTitleLabel1.zPosition = 15
+        addChild(subTitleLabel1)
+                                 
         
         // Recupera o volume salvo (ou usa 0.5 como padrão)
         let savedAudioVolume = UserDefaults.standard.float(forKey: "musicVolume")
@@ -61,12 +58,15 @@ class SettingsPauseScene: SKScene {
             MusicManager.shared.setVolume(to: newVolume)
             UserDefaults.standard.set(Float(newVolume), forKey: "musicVolume")
         }
-
-        // Music Label
-        let music = SKSpriteNode(imageNamed: "music_txt")
-        music.position = CGPoint(x: frame.midX - 100, y: frame.midY)
-        music.zPosition = 15
-        addChild(music)
+        
+        
+        // subtitulo
+        let localizedSubTitle2 = LocalizationManager.shared.localizedString(forKey: "music")
+        let subTitleLabel2 = FontFactory.makeSubtitle(localizedSubTitle2, at: CGPoint(x: frame.midX - 100, y: frame.midY))
+        subTitleLabel2.zPosition = 15
+        addChild(subTitleLabel2)
+        
+        
         
         // Recupera o volume salvo (ou usa 0.5 como padrão)
         let savedMusicVolume = UserDefaults.standard.float(forKey: "musicVolume")
@@ -90,23 +90,33 @@ class SettingsPauseScene: SKScene {
             MusicManager.shared.setVolume(to: newVolume)
             UserDefaults.standard.set(Float(newVolume), forKey: "musicVolume")
         }
+        
+        
+        
+        
+        let buttons: [(String, String, CGFloat)] = [
+            ("ButtonBoxUnselected", "controls", -80),
+            ("ButtonBoxUnselected", "accessibility", 100)
+        ]
 
-        // Controls Button
-        let controlsButton = SKSpriteNode(imageNamed: "controls_button")
-        controlsButton.name = "controls"
-        controlsButton.position = CGPoint(x: frame.midX - 80, y: frame.midY - 80)
-        controlsButton.setScale(0.8)
-        controlsButton.zPosition = 15
-        addChild(controlsButton)
-
-        // Accessibility Button
-        let accessibilityButton = SKSpriteNode(imageNamed: "accessibility_button")
-        accessibilityButton.name = "accessibility"
-        accessibilityButton.position = CGPoint(x: frame.midX + 100, y: frame.midY - 80)
-        accessibilityButton.setScale(0.8)
-        accessibilityButton.zPosition = 15
-        addChild(accessibilityButton)
-
+        for (nomeImage, name, relativeY) in buttons {
+            let button = ButtonEntity(
+                imageNamed: nomeImage,
+                position: CGPoint(x: frame.midX + relativeY, y: frame.midY - 80),
+                name: name,
+                title: LocalizationManager.shared.localizedString(forKey: name),
+                action: {} // vazio, pois o toque é tratado no `touchesBegan`
+            )
+            entityManager.add(entity: button)
+            if let node = button.component(ofType: GKSKNodeComponent.self)?.node {
+                node.setScale(proportionalScale(view: view, multiplier: 0.4))
+                addChild(node)
+            }
+        }
+        
+        
+        
+        
         // Back Button (voltar para PauseScene)
         let backButton = SKSpriteNode(imageNamed: "back_button")
         backButton.name = "back"
