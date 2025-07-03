@@ -1,24 +1,20 @@
 import Foundation
-import GameplayKit
 import SpriteKit
+import GameplayKit
 
+/// Entidade que representa o chão baseado em um tile map
 class GroundEntity: GKEntity {
-    
-    init(size: CGSize, position: CGPoint) {
+    init(tileMap: SKTileMapNode) {
         super.init()
-        
-        let node = SKSpriteNode(color: .clear, size: size)
-        node.position = position
-        self.addComponent(GKSKNodeComponent(node: node))
-        
-        let body = SKPhysicsBody(rectangleOf: size)
-        body.isDynamic = false
 
-        self.addComponent(PhysicsComponent(physicsBody: body))
+        // Adiciona física ao tile map de chão
+        tileMap.addPhysicsToTileMap(entityManager: SKEntityManager(scene: tileMap.scene as! GameScene))
+
+        // Componente de nó para inserção na cena
+        addComponent(GKSKNodeComponent(node: tileMap))
     }
-    
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
 }

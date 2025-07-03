@@ -3,27 +3,31 @@ import SpriteKit
 import GameplayKit
 
 class AnimationComponent: GKComponent {
+    unowned let node: SKSpriteNode
+    private let idleAction: SKAction
+    private let runAction: SKAction
+    private var isRunning = false
+    private var animations: [String: SKAction] = [:]
     
-    var idleAction: SKAction
-    var runAction: SKAction
-    
-    var node: SKNode?
-    
-    var isRun = false
-    
-    init(idleAction: SKAction, runAction: SKAction) {
+    init(node: SKSpriteNode, idleAction: SKAction, runAction: SKAction) {
+        self.node = node
         self.idleAction = idleAction
         self.runAction = runAction
+        animations["idle"] = idleAction
+        animations["run"] = runAction
         super.init()
+        node.run(idleAction, withKey: "idle")
     }
     
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+    public func addAnimation(named name: String, action: SKAction) {
+        animations[name] = action
     }
     
-    override func didAddToEntity() {
-        node = entity?.component(ofType: GKSKNodeComponent.self)?.node
-        playIdle()
+    public func playAnimation(named name: String) {
+        guard let action = animations[name] else { return }
+        node.removeAllActions()
+        node.run(action, withKey: name)
+        // opcional: ajustar isRunning se for relevante
     }
     
     public func playIdle() {
@@ -41,4 +45,7 @@ class AnimationComponent: GKComponent {
     }
 
     
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 }
