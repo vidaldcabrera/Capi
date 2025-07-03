@@ -46,7 +46,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let cameraNode = SKCameraNode()
         self.addChild(cameraNode)
         self.camera = cameraNode
-        self.camera?.setScale(1)
+        self.camera?.setScale(0.8)
 
         // Aguarda um momento e inicia animação
         run(.wait(forDuration: 0.1)) { [weak self] in
@@ -70,7 +70,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     SKAction.removeFromParent()
                 ]))
 
-                run(SKAction.playSoundFileNamed("CollectSound.mp3", waitForCompletion: false))
+                
             }
         }
     }
