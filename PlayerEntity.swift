@@ -17,11 +17,13 @@ class PlayerEntity: GKEntity {
         // Configuração de física
         let body = SKPhysicsBody(rectangleOf: spriteNode.size)
         body.isDynamic = true
-        body.affectedByGravity = false
         body.categoryBitMask = PhysicsCategory.player
         body.contactTestBitMask = PhysicsCategory.mosquito | PhysicsCategory.bat
         body.collisionBitMask = PhysicsCategory.ground
         body.allowsRotation = false
+        
+        // MARK: -Debugando
+        body.affectedByGravity = false
         spriteNode.physicsBody = body
 
         super.init()
@@ -49,7 +51,7 @@ class PlayerEntity: GKEntity {
         let jumpComp = JumpComponent(
             node: spriteNode,
             frames: jumpFrames,
-            impulse: CGVector(dx: 0, dy: 350)
+            impulse: CGVector(dx: 0, dy: 50)
         )
         addComponent(jumpComp)
     }
