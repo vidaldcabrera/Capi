@@ -47,7 +47,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         // Adiciona o jogador a cena
         entityManager?.add(entity: player)
         
-        player.component(ofType: AnimationComponent)
+        // player.component(ofType: AnimationComponent)
         
         createSpider()
         createBat()
@@ -59,12 +59,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         addChild(cameraNode)
         camera = cameraNode
-        camera?.setScale(0.8)
+        camera?.setScale(1.8)
         
         // Aguarda um momento e inicia animação
         run(.wait(forDuration: 0.1)) { [weak self] in
             self?.animateCollectibles()
-        }    }
+        }
+        
+        
+    }
     
     
     func didBegin(_ contact: SKPhysicsContact) {
@@ -100,7 +103,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
         let dt = currentTime - lastUpdatedTime
 
-        entityManager?.entities.forEach { $0.update(deltaTime: dt) }
+        entityManager?.update(dt)
+
 
         updateCameraFollow()
 

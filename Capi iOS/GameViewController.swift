@@ -55,7 +55,8 @@ class GameViewController: UIViewController {
             case "d":
                 gameScene.playerEntity?.moveComponent?.change(direction: Direction.right)
             case " ":
-                gameScene.playerEntity?.moveComponent?.jump()
+                gameScene.playerEntity?.component(ofType: JumpComponent.self)?.jump()
+
             default:
                 break
             }

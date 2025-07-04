@@ -16,7 +16,7 @@ class PlayerEntity: GKEntity {
 
         spriteNode = SKSpriteNode(imageNamed: "idle1.png")
         spriteNode.anchorPoint = CGPoint(x: 0.5, y: 0.2)
-        spriteNode.setScale(1)
+        spriteNode.setScale(0.8)
         spriteNode.name = "player"
         
         // Física
@@ -26,9 +26,11 @@ class PlayerEntity: GKEntity {
         body.allowsRotation = false
         body.usesPreciseCollisionDetection = true
         
-        body.categoryBitMask = PhysicsCategory.player
+        body.categoryBitMask = CollisionCategory.player
         body.contactTestBitMask = PhysicsCategory.mosquito | PhysicsCategory.bat | CollisionCategory.apple
-        body.collisionBitMask = 0xFFFFFFFF
+        //body.collisionBitMask = 0xFFFFFFFF
+        body.collisionBitMask = PhysicsCategory.ground
+
         
         spriteNode.physicsBody = body
         

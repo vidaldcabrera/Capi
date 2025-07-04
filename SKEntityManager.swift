@@ -20,4 +20,11 @@ class SKEntityManager {
     func remove(entity: GKEntity) {
         entities.remove(entity)
     }
+    
+    func update(_ deltaTime: TimeInterval) {
+        for entity in entities {
+            entity.update(deltaTime: deltaTime)
+        }
+    }
+
 }

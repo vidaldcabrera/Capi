@@ -27,7 +27,7 @@ class MovementComponent: GKComponent {
     private var renderNode: SKNode? {
         entity?.component(ofType: GKSKNodeComponent.self)?.node
     }
-z
+
     /// Altera a direção de movimento horizontal
     func change(direction newDirection: Direction) {
         guard direction != newDirection else { return }
@@ -42,9 +42,21 @@ z
     /// Atualiza posição horizontal
     override func update(deltaTime seconds: TimeInterval) {
         guard let node = renderNode, direction != .none else { return }
+        print("Movendo jogador: \(direction)")
         node.position.x += direction.rawValue * speed
         // Ajusta escala para refletir direção
-        node.xScale = abs(node.xScale) * direction.rawValue
+  //      node.xScale = abs(node.xScale) * direction.rawValue
+        
+        switch direction {
+            case .left:
+                node.position.x -= speed
+                node.xScale = -1
+            case .right:
+                node.position.x += speed
+                node.xScale = 1
+            case .none:
+                break
+            }
     }
 
     /// Movimentação vertical oscilante (por exemplo, aranhas)

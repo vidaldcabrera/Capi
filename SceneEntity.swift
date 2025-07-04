@@ -7,6 +7,7 @@ class SceneEntity: GKEntity {
         super.init()
         
         if let sceneNode = SKReferenceNode(fileNamed: fileName) {
+            
             self.addComponent(GKSKNodeComponent(node: sceneNode))
             
             // Só adiciona física ao tilemap "Ground", se existir
