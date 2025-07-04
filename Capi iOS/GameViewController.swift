@@ -22,8 +22,16 @@ class GameViewController: UIViewController {
             
             
         }
+        
+        // Habilita entrada de teclado
+        becomeFirstResponder()
     }
-    
+    // Suporte a orientação paisagem esquerda em iPhone
+    override var shouldAutorotate: Bool { true }
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+        UIDevice.current.userInterfaceIdiom == .phone ? .landscapeLeft : .all
+    }
+
     // Ativa suporte a teclado
     override var canBecomeFirstResponder: Bool {
         return true
@@ -36,36 +44,38 @@ class GameViewController: UIViewController {
     
     // Tecla pressionada
     override func pressesBegan(_ presses: Set<UIPress>, with event: UIPressesEvent?) {
-        guard let key = presses.first?.key else { return }
-        
-        if let skView = self.view as? SKView,
-           let gameScene = skView.scene as? GameScene {
+        guard let key = presses.first?.key,
+              let skView = view as? SKView,
+              let gameScene = skView.scene as? GameScene else { return }
+
+
             switch key.charactersIgnoringModifiers.lowercased() {
             case "a":
-                gameScene.playerEntity?.moveComponent?.change(direction: .left)
+                gameScene.playerEntity?.moveComponent?.change(direction: Direction.left)
             case "d":
-                gameScene.playerEntity?.moveComponent?.change(direction: .right)
+                gameScene.playerEntity?.moveComponent?.change(direction: Direction.right)
             case " ":
                 gameScene.playerEntity?.moveComponent?.jump()
             default:
                 break
             }
-        }
+        
     }
     
     // Tecla solta
     override func pressesEnded(_ presses: Set<UIPress>, with event: UIPressesEvent?) {
-        guard let key = presses.first?.key else { return }
+         guard let key = presses.first?.key,
+              let skView = view as? SKView,
+              let gameScene = skView.scene as? GameScene else { return }
         
-        if let skView = self.view as? SKView,
-           let gameScene = skView.scene as? GameScene {
+  
             switch key.charactersIgnoringModifiers.lowercased() {
             case "a", "d":
-                gameScene.playerEntity?.moveComponent?.change(direction: .none)
+                gameScene.playerEntity?.moveComponent?.change(direction: Direction.none)
             default:
                 break
             }
-        }
+        
     }
     
 }

@@ -3,42 +3,32 @@ import SpriteKit
 import GameplayKit
 
 class JumpComponent: GKComponent {
-    weak var node: SKSpriteNode?
+    unowned let node: SKSpriteNode
     private let jumpFrames: [SKTexture]
-    private let jumpImpulse: CGVector
-    private var isJumping = false
-    
-    init(node: SKSpriteNode,
-         frames: [SKTexture],
-         impulse: CGVector = CGVector(dx: 0, dy: 300)) {
+    private let impulse: CGVector
+
+    /// Inicializa com o nó, frames de animação e vetor de impulso
+    init(node: SKSpriteNode, frames: [SKTexture], impulse: CGVector) {
         self.node = node
         self.jumpFrames = frames
-        self.jumpImpulse = impulse
+        self.impulse = impulse
         super.init()
     }
-    required init?(coder aDecoder: NSCoder) {fatalError()}
-    
-    func canJump() -> Bool {
-        guard let body = node?.physicsBody else { return false}
-        return abs(body.velocity.dy) < 1.0 && !isJumping
-    }
-    
+
+    /// Executa o pulo: animação e física
     func jump() {
-        guard canJump(), let node = node else { return }
-        isJumping = true
-        
-        // Impulso vertical
-        node.physicsBody?.applyImpulse(jumpImpulse)
-        
+        guard let dy = node.physicsBody?.velocity.dy, abs(dy) < 1.0 else { return }
+ // Não pula no ar
+
+        // Aplica impulso
+        node.physicsBody?.applyImpulse(impulse)
+
         // Animação de pulo
-        let jump = SKAction.animate(
-            with: jumpFrames,
-            timePerFrame: 0.1,
-            resize: false,
-            restore: false
-        )
-        node.run(jump) { [weak self] in
-            self?.isJumping = false
-        }
+        let jumpAnimation = SKAction.animate(with: jumpFrames, timePerFrame: 0.08)
+        node.run(jumpAnimation, withKey: "jump")
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
 }
