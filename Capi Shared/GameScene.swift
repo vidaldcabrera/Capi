@@ -16,7 +16,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let scene = GameScene(size: size)
         return scene
     }
-    
+
     override func didMove(to view: SKView) {
         physicsWorld.contactDelegate = self
         physicsWorld.gravity = CGVector(dx: 0, dy: -9.8)
