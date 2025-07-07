@@ -46,7 +46,7 @@ class PlayerEntity: GKEntity {
         
         let jumpAtlas = SKTextureAtlas(named: "capijump")
         let jumpFrames = (1...8).map { jumpAtlas.textureNamed("jump\($0).png") }
-        let jumpComp = JumpComponent(node: spriteNode, frames: jumpFrames, impulse: CGVector(dx: 0, dy: 350))
+        let jumpComp = JumpComponent(node: spriteNode, frames: jumpFrames, impulse: CGVector(dx: 0, dy: 150))
         addComponent(jumpComp)
     }
 
