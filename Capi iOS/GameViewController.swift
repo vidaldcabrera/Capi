@@ -7,21 +7,23 @@ class GameViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if let view = self.view as? SKView {
-            let scene = GameScene.newGameScene()
-            view.presentScene(scene)
-            view.ignoresSiblingOrder = true
-
-            
-            #if DEBUG
-            view.showsPhysics = true
-            view.showsFPS = true
-            view.showsNodeCount = true
-            
-            #endif
-            
-            
-        }
+        if let scene = GKScene(fileNamed: "GameScene") {
+              // Get the SKScene from the loaded GKScene
+              if let sceneNode = scene.rootNode as! GameScene? {
+                // Set the scale mode to scale to fit the window
+                sceneNode.scaleMode = .aspectFill
+                // Present the scene
+                if let view = self.view as! SKView? {
+                  view.presentScene(sceneNode)
+                  view.ignoresSiblingOrder = true
+                  #if DEBUG
+                  view.showsPhysics = true
+                  view.showsFPS = true
+                  view.showsNodeCount = true
+                  #endif
+                }
+              }
+            }
         
         // Habilita entrada de teclado
         becomeFirstResponder()

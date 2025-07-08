@@ -10,21 +10,11 @@ func proportionalScale(view: SKView, baseWidth: CGFloat = 390.0, multiplier: CGF
 class GameScene: SKScene, SKPhysicsContactDelegate {
     
     var entityManager: SKEntityManager!
-    // var entityManager = SKEntityManager()
 
     private var lastUpdatedTime: TimeInterval = 0
     var spawnPointPosition: CGPoint?
     var isRespawning = false
     
-    static func newGameScene() -> GameScene {
-        let size = UIScreen.main.bounds.size
-        let scene = GameScene(size: size)
-        scene.scaleMode = .resizeFill
-
-
-
-        return scene
-    }
 
     override func didMove(to view: SKView) {
         physicsWorld.contactDelegate = self
@@ -33,7 +23,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         entityManager = SKEntityManager(scene: self)
 
 
-/////
+///
+        
         MusicManager.shared.playMusic(named: "background_music")
         
         let savedMusicVolume = UserDefaults.standard.float(forKey: "musicVolume")
