@@ -10,9 +10,10 @@ import SpriteKit
 import GameplayKit
 
 class LevelScene: SKScene {
-    var entityManager = SKEntityManager()
-
+    var entityManager: SKEntityManager!
+    
     override func didMove(to view: SKView) {
+        self.entityManager = SKEntityManager(scene: self)
         self.anchorPoint = CGPoint(x: 0.5, y: 0.5)
         backgroundColor = .black
 
@@ -40,7 +41,7 @@ class LevelScene: SKScene {
 
         // Botão de voltar
         let back = SKSpriteNode(imageNamed: "back_button")
-        back.name = "backButton"
+        back.name = "back"
         back.position = CGPoint(x: -view.frame.width * 0.7, y: view.frame.height * 0.6)
         back.setScale(proportionalScale(view: view, multiplier: 0.4))
         back.zPosition = 2
@@ -76,15 +77,18 @@ class LevelScene: SKScene {
         let nodesAtPoint = nodes(at: location)
         for node in nodesAtPoint {
             if node.name == "level_1" {
+                VoiceOverManager.shared.speak(LocalizationManager.shared.localizedString(forKey: "level_1"))
+                
                 let gameplayScene = GamePlayScene(size: self.size)
                 gameplayScene.scaleMode = .aspectFill
                 self.view?.presentScene(gameplayScene, transition: .fade(withDuration: 1))
-            }  else if node.name == "backButton" {
+            }  else if node.name == "back" {
+                VoiceOverManager.shared.speak(LocalizationManager.shared.localizedString(forKey: "back"))
+
                 let gameScene = GameScene(size: self.size)
                 gameScene.scaleMode = .aspectFill
                 self.view?.presentScene(gameScene, transition: .fade(withDuration: 1))
             }
         }
     }
-
 }

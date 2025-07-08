@@ -1,8 +1,8 @@
-//
-//  SpeakComponent.swift
-//  Capi iOS
-//
-//  Created by Gabriella Tomoda on 10/06/25.
-//
+import GameplayKit
+import AVFoundation
 
-import Foundation
+class SpeakComponent: GKComponent {
+    func say(_ text: String) {
+        VoiceOverManager.shared.speak(text)
+    }
+}

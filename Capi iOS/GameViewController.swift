@@ -13,12 +13,12 @@ class GameViewController: UIViewController {
             view.ignoresSiblingOrder = true
 
             
-#if DEBUG
+            #if DEBUG
             view.showsPhysics = true
             view.showsFPS = true
             view.showsNodeCount = true
             
-#endif
+            #endif
             
             
         }
@@ -46,37 +46,34 @@ class GameViewController: UIViewController {
     override func pressesBegan(_ presses: Set<UIPress>, with event: UIPressesEvent?) {
         guard let key = presses.first?.key,
               let skView = view as? SKView,
-              let gameScene = skView.scene as? GameScene else { return }
+              let gameScene = skView.scene as? GamePlayScene else { return }
 
-
-            switch key.charactersIgnoringModifiers.lowercased() {
-            case "a":
-                gameScene.playerEntity?.moveComponent?.change(direction: Direction.left)
-            case "d":
-                gameScene.playerEntity?.moveComponent?.change(direction: Direction.right)
-            case " ":
-                gameScene.playerEntity?.component(ofType: JumpComponent.self)?.jump()
-
-            default:
-                break
-            }
-        
+        switch key.charactersIgnoringModifiers.lowercased() {
+        case "a":
+            gameScene.playerEntity?.moveComponent?.change(direction: .left)
+        case "d":
+            gameScene.playerEntity?.moveComponent?.change(direction: .right)
+        case " ":
+            gameScene.playerEntity?.component(ofType: JumpComponent.self)?.jump()
+        default:
+            break
+        }
     }
+
     
     // Tecla solta
     override func pressesEnded(_ presses: Set<UIPress>, with event: UIPressesEvent?) {
-         guard let key = presses.first?.key,
+        guard let key = presses.first?.key,
               let skView = view as? SKView,
-              let gameScene = skView.scene as? GameScene else { return }
-        
-  
-            switch key.charactersIgnoringModifiers.lowercased() {
-            case "a", "d":
-                gameScene.playerEntity?.moveComponent?.change(direction: Direction.none)
-            default:
-                break
-            }
-        
+              let gameScene = skView.scene as? GamePlayScene else { return }
+
+        switch key.charactersIgnoringModifiers.lowercased() {
+        case "a", "d":
+            gameScene.playerEntity?.moveComponent?.change(direction: .none)
+        default:
+            break
+        }
     }
+
     
 }

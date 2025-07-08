@@ -17,6 +17,15 @@ class SKEntityManager {
         }
     }
 
+    func getEntity(named name: String) -> GKEntity? {
+        return entities.first(where: { entity in
+            if let nodeComponent = entity.component(ofType: GKSKNodeComponent.self) {
+                return nodeComponent.node.name == name
+            }
+            return false
+        })
+    }
+    
     func remove(entity: GKEntity) {
         entities.remove(entity)
     }

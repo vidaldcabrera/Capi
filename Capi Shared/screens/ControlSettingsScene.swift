@@ -20,7 +20,8 @@ class ControlSettingsScene: SKScene {
         panel.fillColor = .blue
         
 //        panel.strokeColor = .black
-        panel.position = CGPoint(x: frame.midX, y: frame.midY)
+        panel.position = CGPoint(x: frame.midX, y: frame.midY - 40)
+
 
         panel.zPosition = 15
         addChild(panel)
@@ -37,20 +38,21 @@ class ControlSettingsScene: SKScene {
 //        box.zPosition = 14
 //        addChild(box)
 
+        
         // Título
-        let title = SKSpriteNode(imageNamed: "control_settings_txt")
-        title.position = CGPoint(x: frame.midX, y: frame.midY + 190)
-        title.zPosition = 15
-        addChild(title)
+        let localizedTitle = LocalizationManager.shared.localizedString(forKey: "control_settings")
+        let titleLabel = FontFactory.makeTitle(localizedTitle, at: CGPoint(x: frame.midX, y: frame.midY + 190))
+        titleLabel.zPosition = 15
+        addChild(titleLabel)
         
                 
         let backButton = SKSpriteNode(imageNamed: "back_button")
-        backButton.name = "backButton"
+        backButton.name = "back"
         backButton.position = CGPoint(x: frame.width/2 - 570, y: frame.height/2 + 190)
         backButton.zPosition = 30
         addChild(backButton)
         
-        let hudPreview = HUDOverlayPreview(panelSize: panel.frame.size )
+        let hudPreview = HUDOverlayPreview(panelSize: panel.frame.size)
         hudPreview.position = CGPoint.zero
         hudPreview.zPosition = 16
         panel.addChild(hudPreview)
@@ -62,6 +64,7 @@ class ControlSettingsScene: SKScene {
 //        leftButton.setScale(buttonScale)
 //        leftButton.zPosition = 1
 //        panel.addChild(leftButton)
+        
 //
 //        let rightButton = SKSpriteNode(imageNamed: "right_button")
 //        rightButton.position = CGPoint(x: -pw/2 + 220, y: -ph/2 + 120)
@@ -95,15 +98,17 @@ class ControlSettingsScene: SKScene {
         let location = touch.location(in: self)
         let nodes = nodes(at: location)
 
-        for node in nodes { // NAO TA VOLTANDO PRO SETTINGS
-            if node.name == "backButton" {
-                if let pauseScene = PauseScene(fileNamed: "PauseScene") {
-                    pauseScene.scaleMode = .aspectFill
-                    view?.presentScene(pauseScene, transition: .fade(withDuration: 0.5))
+        for node in nodes { 
+            if node.name == "back" {
+                VoiceOverManager.shared.speak(LocalizationManager.shared.localizedString(forKey: "back"))
+
+                if let settingsPauseScene = SettingsPauseScene(fileNamed: "SettingsPauseScene") {
+                    settingsPauseScene.scaleMode = .aspectFill
+                    view?.presentScene(settingsPauseScene, transition: .fade(withDuration: 0.5))
                 } else {
-                    let pauseScene = PauseScene(size: self.size)
-                    pauseScene.scaleMode = .aspectFill
-                    view?.presentScene(pauseScene, transition: .fade(withDuration: 0.5))
+                    let settingsPauseScene = SettingsPauseScene(size: self.size)
+                    settingsPauseScene.scaleMode = .aspectFill
+                    view?.presentScene(settingsPauseScene, transition: .fade(withDuration: 0.5))
                 }
             }
         }

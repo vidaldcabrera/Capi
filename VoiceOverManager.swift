@@ -1,0 +1,83 @@
+import AVFoundation
+import GameplayKit
+import UIKit
+
+class VoiceOverManager {
+    static let shared = VoiceOverManager()
+
+    private let synthesizer = AVSpeechSynthesizer()
+
+    var isVoiceOverEnabled: Bool {
+        get { UserDefaults.standard.bool(forKey: "VoiceOverEnabled") }
+        set { UserDefaults.standard.set(newValue, forKey: "VoiceOverEnabled") }
+    }
+
+    private init() {
+        // Se nunca foi definido, sincroniza com o estado atual do sistema
+        if UserDefaults.standard.object(forKey: "VoiceOverEnabled") == nil {
+            let voiceOverAtivo = UIAccessibility.isVoiceOverRunning
+            UserDefaults.standard.set(voiceOverAtivo, forKey: "VoiceOverEnabled")
+        }
+
+        // Observa mudanças no VoiceOver do sistema
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(systemVoiceOverChanged),
+            name: UIAccessibility.voiceOverStatusDidChangeNotification,
+            object: nil
+        )
+    }
+
+    // Fala apenas se estiver ativado pelo app
+    func speak(_ text: String) {
+        speak(text, force: false)
+    }
+
+    // Força a fala mesmo que esteja desativado no app
+    func speak(_ text: String, force: Bool) {
+        if !isVoiceOverEnabled && !force { return }
+
+        let utterance = AVSpeechUtterance(string: text)
+        utterance.voice = AVSpeechSynthesisVoice(language: languageCodeToAVSpeechLanguage(LocalizationManager.shared.selectedLanguage))
+        synthesizer.speak(utterance)
+    }
+
+    // Atualiza a textura de um botão com base no estado do narrador
+    func updateAccessibilityButton(_ button: SKSpriteNode) {
+        let newImageName = isVoiceOverEnabled ? "ButtonBoxSelected" : "ButtonBoxUnselected"
+        let titleKey = isVoiceOverEnabled ? "voiceoveron" : "voiceoveroff"
+        let newText = LocalizationManager.shared.localizedString(forKey: titleKey)
+
+        // Remove o label antigo
+        button.childNode(withName: "voiceover_label")?.removeFromParent()
+
+        // Cria e adiciona o novo texto
+        let text = FontFactory.makeButton(newText, at: .zero)
+        text.name = "voiceover_label"
+        text.zPosition = 18
+        button.addChild(text)
+
+        // Atualiza visual do botão
+        button.texture = SKTexture(imageNamed: newImageName)
+        button.setScale(0.8)
+    }
+
+
+
+    // Reage quando o sistema muda o estado do VoiceOver
+    @objc private func systemVoiceOverChanged() {
+        let ativo = UIAccessibility.isVoiceOverRunning
+        isVoiceOverEnabled = ativo
+        print("VoiceOver do sistema mudou para: \(ativo)")
+    }
+
+    // Mapeia código da linguagem para o esperado pelo AVSpeechSynthesisVoice
+    private func languageCodeToAVSpeechLanguage(_ code: String) -> String {
+        switch code {
+        case "pt": return "pt-BR"
+        case "en": return "en-US"
+        case "es": return "es-ES"
+        default: return "en-US"  // fallback para inglês
+        }
+    }
+}

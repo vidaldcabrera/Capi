@@ -3,32 +3,30 @@ import SpriteKit
 import GameplayKit
 
 class ButtonComponent: GKComponent {
-    unowned let node: SKSpriteNode
-    private let action: () -> Void
-    private let label: SKLabelNode?
-
-    /// Inicializa com o sprite, ação e texto opcional
-    init(node: SKSpriteNode, title: String? = nil, action: @escaping () -> Void) {
-        self.node = node
+    private let sprite: SKSpriteNode
+    let title: String
+    let action: () -> Void
+    let label: String
+    
+    init(node: SKSpriteNode, title: String, label: String, action: @escaping () -> Void) {
+        self.sprite = node
+        self.title = title
         self.action = action
-        if let title = title {
-            let labelNode = SKLabelNode(text: title)
-            labelNode.fontName = "Helvetica"
-            labelNode.fontSize = 20
-            labelNode.fontColor = .white
-            labelNode.position = CGPoint(x: 0, y: -labelNode.frame.height / 2)
-            node.addChild(labelNode)
-            self.label = labelNode
-        } else {
-            self.label = nil
-        }
+        self.label = label
         super.init()
-        node.isUserInteractionEnabled = true
     }
+    
 
-    /// Verifica toque e executa ação
-    func didTouch() {
-        action()
+    /// Torna a função pública
+    public func handleTouch(location: CGPoint) {
+        if sprite.contains(location) {
+            VoiceOverManager.shared.speak(label)
+            sprite.run(SKAction.sequence([
+                SKAction.scale(to: 0.95, duration: 0.05),
+                SKAction.scale(to: 1.0, duration: 0.05)
+            ]))
+            action()
+        }
     }
 
     required init?(coder aDecoder: NSCoder) {

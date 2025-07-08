@@ -1,23 +1,25 @@
-import Foundation
 import SpriteKit
 import GameplayKit
 
 class ButtonEntity: GKEntity {
-    let spriteNode: SKSpriteNode
-    private let component: ButtonComponent
-
-    init(position: CGPoint, size: CGSize, title: String? = nil, action: @escaping () -> Void) {
-        // Configuração do sprite do botão
-        spriteNode = SKSpriteNode(color: .gray, size: size)
-        spriteNode.position = position
-        spriteNode.name = "button"
-
-        // Componente de botão com ação
-        component = ButtonComponent(node: spriteNode, title: title, action: action)
-
+    init(imageNamed: String, position: CGPoint, name: String, title: String, action: @escaping () -> Void) {
         super.init()
-        addComponent(component)
-        addComponent(GKSKNodeComponent(node: spriteNode))
+
+        let spriteNode = SKSpriteNode(imageNamed: imageNamed)
+        spriteNode.name = name
+        spriteNode.position = position
+        spriteNode.zPosition = 15
+
+        // Adiciona texto centralizado sobre o botão
+        let label = FontFactory.makeButton(title, at: .zero) // posição relativa ao centro do sprite
+        label.zPosition = spriteNode.zPosition + 1
+        spriteNode.addChild(label)
+        
+        let nodeComponent = GKSKNodeComponent(node: spriteNode)
+        let buttonComponent = ButtonComponent(node: spriteNode, title: title, label: title, action: action)
+
+        addComponent(nodeComponent)
+        addComponent(buttonComponent)
     }
 
     required init?(coder: NSCoder) {
