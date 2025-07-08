@@ -1,10 +1,4 @@
-//
-//  ButtonComponent.swift
-//  Capi iOS
-//
-//  Created by Gabriella Tomoda on 17/06/25.
-//
-
+import Foundation
 import SpriteKit
 import GameplayKit
 
@@ -20,6 +14,7 @@ class ButtonComponent: GKComponent {
         self.action = action
         self.label = label
         super.init()
+        node.isUserInteractionEnabled = true
     }
     
 
@@ -35,7 +30,7 @@ class ButtonComponent: GKComponent {
         }
     }
 
-    required init?(coder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 }

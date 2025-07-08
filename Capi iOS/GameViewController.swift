@@ -1,59 +1,82 @@
-//
-//  GameViewController.swift
-//  Capi iOS
-//
-//  Created by Aluno 48 on 26/05/25.
-//
-
 import UIKit
 import SpriteKit
 import GameplayKit
 
 class GameViewController: UIViewController {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
-        if let scene = GKScene(fileNamed: "GameScene") {
+        if let view = self.view as? SKView {
+            let scene = GameScene.newGameScene()
+            view.presentScene(scene)
+            view.ignoresSiblingOrder = true
+
             
-            // Get the SKScene from the loaded GKScene
-            if let sceneNode = scene.rootNode as! GameScene? {
-                
-                // Set the scale mode to scale to fit the window
-                sceneNode.scaleMode = .aspectFill
-                
-                // Present the scene
-                if let view = self.view as! SKView? {
-                    view.presentScene(sceneNode)
-                    
-                    view.ignoresSiblingOrder = true
-                    
-                    #if DEBUG
-                    view.showsPhysics = true
-                    view.showsFPS = true
-                    view.showsNodeCount = true
-                    #endif
-                }
-            }
+            #if DEBUG
+            view.showsPhysics = true
+            view.showsFPS = true
+            view.showsNodeCount = true
+            
+            #endif
+            
+            
         }
+        
+        // Habilita entrada de teclado
+        becomeFirstResponder()
     }
-
-
-    override var shouldAutorotate: Bool {
-        return true
-    }
-
+    // Suporte a orientação paisagem esquerda em iPhone
+    override var shouldAutorotate: Bool { true }
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
-        if UIDevice.current.userInterfaceIdiom == .phone {
-            return .landscapeLeft
-        } else {
-            return .all
-        }
+        UIDevice.current.userInterfaceIdiom == .phone ? .landscapeLeft : .all
     }
 
-    override var prefersStatusBarHidden: Bool {
+    // Ativa suporte a teclado
+    override var canBecomeFirstResponder: Bool {
         return true
     }
-}
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        self.becomeFirstResponder()
+    }
+    
+    // Tecla pressionada
+    override func pressesBegan(_ presses: Set<UIPress>, with event: UIPressesEvent?) {
+        guard let key = presses.first?.key,
+              let skView = view as? SKView,
+              let gameScene = skView.scene as? GameScene else { return }
 
+
+            switch key.charactersIgnoringModifiers.lowercased() {
+            case "a":
+                gameScene.playerEntity?.moveComponent?.change(direction: Direction.left)
+            case "d":
+                gameScene.playerEntity?.moveComponent?.change(direction: Direction.right)
+            case " ":
+                gameScene.playerEntity?.component(ofType: JumpComponent.self)?.jump()
+
+            default:
+                break
+            }
+        
+    }
+    
+    // Tecla solta
+    override func pressesEnded(_ presses: Set<UIPress>, with event: UIPressesEvent?) {
+         guard let key = presses.first?.key,
+              let skView = view as? SKView,
+              let gameScene = skView.scene as? GameScene else { return }
+        
+  
+            switch key.charactersIgnoringModifiers.lowercased() {
+            case "a", "d":
+                gameScene.playerEntity?.moveComponent?.change(direction: Direction.none)
+            default:
+                break
+            }
+        
+    }
+    
+}

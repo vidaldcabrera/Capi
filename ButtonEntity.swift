@@ -1,10 +1,3 @@
-//
-//  ButtonEntity.swift
-//  Capi iOS
-//
-//  Created by Gabriella Tomoda on 11/06/25.
-//
-
 import SpriteKit
 import GameplayKit
 
