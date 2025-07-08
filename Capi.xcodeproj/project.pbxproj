@@ -148,6 +148,7 @@
 		E5C7801A2E1D41FF004DA300 /* SettingsScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5C780192E1D41FF004DA300 /* SettingsScene.swift */; };
 		E5C7801B2E1D4202004DA300 /* SettingsScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5C780192E1D41FF004DA300 /* SettingsScene.swift */; };
 		E5C7801D2E1D4B36004DA300 /* EnemySpawner.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5C7801C2E1D4B36004DA300 /* EnemySpawner.swift */; };
+		E5C7801F2E1D647C004DA300 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = E5C7801E2E1D647B004DA300 /* GameScene.sks */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -270,6 +271,7 @@
 		E5C77FF72E1D400F004DA300 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = Localizable.strings; sourceTree = "<group>"; };
 		E5C780192E1D41FF004DA300 /* SettingsScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsScene.swift; path = "Capi Shared/Screens/SettingsScene.swift"; sourceTree = SOURCE_ROOT; };
 		E5C7801C2E1D4B36004DA300 /* EnemySpawner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnemySpawner.swift; sourceTree = "<group>"; };
+		E5C7801E2E1D647B004DA300 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -438,6 +440,7 @@
 		2C6CF7462DE4B65200771D67 /* Capi Shared */ = {
 			isa = PBXGroup;
 			children = (
+				E5C7801E2E1D647B004DA300 /* GameScene.sks */,
 				E58841DE2E12AF1E00F98BBE /* MainMenuScene.swift */,
 				E521C75E2E12CDDF0061C095 /* screens */,
 				2241F3A12E0EDF1E006413EF /* background_music.mp3 */,
@@ -676,6 +679,7 @@
 				ADC032892E0DC28B00907073 /* SceneTile.sks in Resources */,
 				ADB260B82E12C28C00CF5667 /* apple10.png in Resources */,
 				2C8C1DDA2E01965D005603D6 /* Scene1.sks in Resources */,
+				E5C7801F2E1D647C004DA300 /* GameScene.sks in Resources */,
 				ADC0328C2E0DCA7600907073 /* Assets.xcassets in Resources */,
 				ADB260BB2E12C28C00CF5667 /* apple14.png in Resources */,
 				ADB260BC2E12C28C00CF5667 /* apple2.png in Resources */,
