@@ -2,9 +2,10 @@ import SpriteKit
 import GameplayKit
 
 class CreditsScene: SKScene {
-    var entityManager = SKEntityManager()
-
+    var entityManager: SKEntityManager!
+    
     override func didMove(to view: SKView) {
+        self.entityManager = SKEntityManager(scene: self)
         self.anchorPoint = CGPoint(x: 0.5, y: 0.5)
 
         let background = SKSpriteNode(imageNamed: "map")

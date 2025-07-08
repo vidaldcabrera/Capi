@@ -10,9 +10,10 @@ import SpriteKit
 import GameplayKit
 
 class SettingsScene: SKScene {
-    var entityManager = SKEntityManager()
-
+    var entityManager: SKEntityManager!
+    
     override func didMove(to view: SKView) {
+        self.entityManager = SKEntityManager(scene: self)
         self.anchorPoint = CGPoint(x: 0.5, y: 0.5)
 
         let background = SKSpriteNode(imageNamed: "map")
@@ -122,12 +123,16 @@ class SettingsScene: SKScene {
         if let node = languageButton.component(ofType: GKSKNodeComponent.self)?.node {
             node.setScale(0.8)
             node.zPosition = 30
-            addChild(node)
+            if node.parent == nil {   // <-- EVITA o erro
+                addChild(node)
+            }
 
             // Adiciona o texto acima do botão
             let label = FontFactory.makeButton(LocalizationManager.shared.localizedString(forKey: "language"), at: .zero)
             label.zPosition = node.zPosition + 1
-            node.addChild(label)
+            if label.parent == nil {
+                node.addChild(label)
+            }
         }
 
 

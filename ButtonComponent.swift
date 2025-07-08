@@ -14,7 +14,6 @@ class ButtonComponent: GKComponent {
         self.action = action
         self.label = label
         super.init()
-        node.isUserInteractionEnabled = true
     }
     
 

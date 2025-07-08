@@ -3,10 +3,10 @@ import SpriteKit
 import GameplayKit
 
 class SettingsPauseScene: SKScene {
-    var entityManager = SKEntityManager()
-
-
+    var entityManager: SKEntityManager!
+    
     override func didMove(to view: SKView) {
+        self.entityManager = SKEntityManager(scene: self)
         backgroundColor = .clear
         self.isUserInteractionEnabled = true
 
@@ -110,7 +110,9 @@ class SettingsPauseScene: SKScene {
             entityManager.add(entity: button)
             if let node = button.component(ofType: GKSKNodeComponent.self)?.node {
                 node.setScale(proportionalScale(view: view, multiplier: 0.4))
-                addChild(node)
+                if node.parent == nil {
+                    addChild(node)
+                }
             }
         }
         

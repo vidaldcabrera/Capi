@@ -54,4 +54,9 @@ class SpiderEntity: GKEntity {
     required init?(coder aDecoder: NSCoder) {
         super.init()
     }
+    
+    var spriteNode: SKSpriteNode? {
+        return self.component(ofType: GKSKNodeComponent.self)?.node as? SKSpriteNode
+    }
+
 }

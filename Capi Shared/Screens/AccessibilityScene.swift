@@ -5,9 +5,10 @@ import SpriteKit
 import GameplayKit
 
 class AccessibilityScene: SKScene {
-    var entityManager = SKEntityManager()
-
+    var entityManager: SKEntityManager!
+    
     override func didMove(to view: SKView) {
+        self.entityManager = SKEntityManager(scene: self)
         backgroundColor = .clear
         self.isUserInteractionEnabled = true
 
