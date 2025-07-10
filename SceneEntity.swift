@@ -5,13 +5,20 @@ import SpriteKit
 class SceneEntity: GKEntity {
     init(named fileName: String, entityManager: SKEntityManager) {
         super.init()
-        
-        if let sceneNode = SKReferenceNode(fileNamed: fileName) {
+
+        // Carrega o conteúdo do arquivo .sks como SKReferenceNode
+        if let referenceNode = SKReferenceNode(fileNamed: fileName) {
+            // Força o carregamento do conteúdo referenciado
+            SKReferenceNode.load()
             
-            self.addComponent(GKSKNodeComponent(node: sceneNode))
-            
-            // Só adiciona física ao tilemap "Ground", se existir
-            if let tileMapNode = sceneNode.childNode(withName: "*/Ground") as? SKTileMapNode {
+            // Centraliza a posição do node na origem da cena
+            referenceNode.position = .zero
+
+            // Adiciona o node à entidade
+            self.addComponent(GKSKNodeComponent(node: referenceNode))
+
+            // Adiciona física ao tileMap "Ground", se existir
+            if let tileMapNode = referenceNode.childNode(withName: "*/Ground") as? SKTileMapNode {
                 tileMapNode.addPhysicsToTileMap(entityManager: entityManager)
             }
         }
@@ -21,3 +28,4 @@ class SceneEntity: GKEntity {
         fatalError("init(coder:) has not been implemented")
     }
 }
+

@@ -6,7 +6,6 @@ func proportionalScale(view: SKView, baseWidth: CGFloat = 390.0, multiplier: CGF
     return (view.frame.width / baseWidth) * multiplier
 }
 
-
 class GameScene: SKScene, SKPhysicsContactDelegate {
     
     var entityManager: SKEntityManager!
@@ -15,22 +14,21 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var spawnPointPosition: CGPoint?
     var isRespawning = false
     
-
+    static func newGameScene(size: CGSize) -> GameScene {
+        return GameScene(size: size)
+    }
+    
     override func didMove(to view: SKView) {
         physicsWorld.contactDelegate = self
         physicsWorld.gravity = CGVector(dx: 0, dy: -9.8)
         
         entityManager = SKEntityManager(scene: self)
 
-
-///
-        
         MusicManager.shared.playMusic(named: "background_music")
         
         let savedMusicVolume = UserDefaults.standard.float(forKey: "musicVolume")
         let initialMusicVolume = savedMusicVolume == 0 ? 0.5 : savedMusicVolume
         MusicManager.shared.setVolume(to: CGFloat(initialMusicVolume))
-        
         
         self.anchorPoint = CGPoint(x: 0.5, y: 0.5)
         backgroundColor = .black
@@ -56,7 +54,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         addChild(title)
         
         let buttons: [(String, String, CGFloat, () -> Void)] = [
-            ("ButtonBoxUnselected", "start",0.1, {
+            ("ButtonBoxUnselected", "start", 0.1, {
+                // ✅ RESETAR VIDAS ANTES DE INICIAR O JOGO
+                GameState.shared.lives = 3
+
                 let scene = LevelScene(size: self.size)
                 scene.scaleMode = .aspectFill
                 self.view?.presentScene(scene, transition: .fade(withDuration: 1))
@@ -91,8 +92,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 node.setScale(proportionalScale(view: view, multiplier: 0.4))
             }
         }
-////
-        
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -104,5 +103,5 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             }
         }
     }
-
 }
+

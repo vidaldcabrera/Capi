@@ -2,7 +2,7 @@ import Foundation
 import SpriteKit
 import GameplayKit
 
-class GamePlayScene: SKScene {
+class GamePlayScene: SKScene, SKPhysicsContactDelegate {
     var enemySpawner: EnemySpawner!
 
     var entityManager: SKEntityManager!
@@ -14,18 +14,26 @@ class GamePlayScene: SKScene {
     var isRespawning = false
     private var lastUpdatedTime: TimeInterval = 0
 
-
     override func didMove(to view: SKView) {
         self.anchorPoint = CGPoint(x: 0.5, y: 0.5)
-
         entityManager = SKEntityManager(scene: self)
+        backgroundColor = .black
+        physicsWorld.contactDelegate = self
 
-        // Adiciona HUD
+
+        // Cria e posiciona a câmera
+        let cameraNode = SKCameraNode()
+        addChild(cameraNode)
+        camera = cameraNode
+        camera?.setScale(0.5)
+
+        // Adiciona HUD à câmera
         let hud = HUDOverlay()
         hud.name = "HUD"
-        hud.position = CGPoint(x: 0, y: 0)
         hud.setupHUD(for: size)
-        addChild(hud)
+        hud.position = .zero
+        hud.setScale(0.8)
+        cameraNode.addChild(hud)
 
         // Cria playerEntity
         let player = PlayerEntity()
@@ -50,24 +58,16 @@ class GamePlayScene: SKScene {
         // Inimigos
         enemySpawner = EnemySpawner(scene: self, entityManager: entityManager)
         enemySpawner.spawnAll()
-
         bat = enemySpawner.bat
         mosquito = enemySpawner.mosquito
         spider = enemySpawner.spider
-
-
-        // Câmera
-        let cameraNode = SKCameraNode()
-        addChild(cameraNode)
-        camera = cameraNode
-        camera?.setScale(1.8)
 
         // Animação de maçãs
         run(.wait(forDuration: 0.1)) { [weak self] in
             self?.animateCollectibles()
         }
     }
-    
+
     func didBegin(_ contact: SKPhysicsContact) {
         print("Contato detectado")
 
@@ -84,16 +84,22 @@ class GamePlayScene: SKScene {
                     SKAction.removeFromParent()
                 ]))
 
-                
+                // ⬇️ SUBTRAI 1 DO SCORE (SEM NEGATIVO)
+                GameState.shared.score = max(0, GameState.shared.score + 1)
+
+                // ⬇️ ATUALIZA O HUD
+                if let hud = camera?.childNode(withName: "HUD") as? HUDOverlay {
+                    hud.updateScore(to: GameState.shared.score)
+                }
             }
+
         }
-        
-        
+
         handleBatContact(contact)
         handleSpiderContact(contact)
         handleMosquitoContact(contact)
     }
-    
+
     func animateCollectibles() {
         let textures = (1...17).compactMap { SKTexture(imageNamed: "apple\($0)") }
         let animation = SKAction.repeatForever(SKAction.animate(with: textures, timePerFrame: 0.05))
@@ -119,19 +125,15 @@ class GamePlayScene: SKScene {
 
         print("🍏 Total de maçãs animadas: \(count)")
     }
-    
+
     override func update(_ currentTime: TimeInterval) {
         if lastUpdatedTime == 0 {
             lastUpdatedTime = currentTime
         }
 
         let dt = currentTime - lastUpdatedTime
-
         entityManager?.update(dt)
-
-
         updateCameraFollow()
-
         lastUpdatedTime = currentTime
 
         // Verifica se o personagem caiu da tela
@@ -143,6 +145,21 @@ class GamePlayScene: SKScene {
                 isRespawning = true
 
                 playerNode.run(SKAction.playSoundFileNamed("Death.mp3", waitForCompletion: false))
+                
+                // Atualiza GameState e HUD
+                GameState.shared.lives -= 1
+                if GameState.shared.lives <= 0 {
+                    // Zera o score ao morrer
+                    GameState.shared.score = 0
+
+                    // Transição para o menu inicial
+                    let transition = SKTransition.fade(withDuration: 0.5)
+                    let mainMenu = GameScene(size: size)
+                    mainMenu.scaleMode = .aspectFill
+                    view?.presentScene(mainMenu, transition: transition)
+                    return
+                }
+                updateLifes()
 
                 let respawnSequence = SKAction.sequence([
                     SKAction.fadeOut(withDuration: 0.1),
@@ -156,46 +173,32 @@ class GamePlayScene: SKScene {
                         self.isRespawning = false
                     }
                 ])
-                
-                  bat?.batStateMachine.update(deltaTime: dt)
-                  mosquito?.mosquitoStateMachine.update(deltaTime: dt)
+
+                bat?.batStateMachine.update(deltaTime: dt)
+                mosquito?.mosquitoStateMachine.update(deltaTime: dt)
                 playerNode.run(respawnSequence)
             }
         }
     }
-    
-    private func updateCameraFollow() {
-        guard
-            let playerNode = playerEntity?.component(ofType: GKSKNodeComponent.self)?.node,
-            let camera = self.camera
-        else { return }
-
-        let screenSize = self.size
-        let cameraLerpFactor: CGFloat = 0.3
-
-        let desiredScreenX = screenSize.width * 0.25
-        let desiredScreenY = screenSize.height * 0.3
-
-        let cameraTargetX = playerNode.position.x + (screenSize.width / 2 - desiredScreenX)
-        let cameraTargetY = playerNode.position.y + (screenSize.height / 2 - desiredScreenY)
-
-        let targetPosition = CGPoint(x: cameraTargetX, y: cameraTargetY)
-        let currentPosition = camera.position
-
-        let lerpedPosition = CGPoint(
-            x: currentPosition.x + (targetPosition.x - currentPosition.x) * cameraLerpFactor,
-            y: currentPosition.y + (targetPosition.y - currentPosition.y) * cameraLerpFactor
-        )
-
-        camera.position = lerpedPosition
+    func updateLifes() {
+        if let hud = camera?.childNode(withName: "HUD") as? HUDOverlay {
+            hud.updateLives(to: GameState.shared.lives)
+        }
     }
-    
+
+
+    // Câmera segue o jogador diretamente
+    private func updateCameraFollow() {
+        guard let playerNode = playerEntity?.component(ofType: GKSKNodeComponent.self)?.node else { return }
+        camera?.position = playerNode.position
+    }
+
     private func sortedBodies(_ contact: SKPhysicsContact) -> (first: SKPhysicsBody, second: SKPhysicsBody) {
         return contact.bodyA.categoryBitMask < contact.bodyB.categoryBitMask
         ? (contact.bodyA, contact.bodyB)
         : (contact.bodyB, contact.bodyA)
     }
-    
+
     private func handleBatContact(_ contact: SKPhysicsContact) {
         let bodies = sortedBodies(contact)
         if bodies.first.categoryBitMask == PhysicsCategory.player &&
@@ -203,7 +206,7 @@ class GamePlayScene: SKScene {
             bat?.batStateMachine.enter(BatAttackingState.self)
         }
     }
-    
+
     private func handleSpiderContact(_ contact: SKPhysicsContact) {
         let bodies = sortedBodies(contact)
         guard let nodeA = bodies.first.node, let nodeB = bodies.second.node else { return }
@@ -218,7 +221,7 @@ class GamePlayScene: SKScene {
             }
         }
     }
-    
+
     private func handleMosquitoContact(_ contact: SKPhysicsContact) {
         let bodies = sortedBodies(contact)
         if bodies.first.categoryBitMask == PhysicsCategory.player &&
@@ -226,28 +229,27 @@ class GamePlayScene: SKScene {
             mosquito?.mosquitoStateMachine.enter(MosquitoAttackingState.self)
         }
     }
-    
-    
+
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         handleTouch(touches)
         guard let touch = touches.first else { return }
         let location = touch.location(in: self)
-        
+
         for entity in entityManager.entities {
             if let button = entity.component(ofType: ButtonComponent.self) {
                 button.handleTouch(location: location)
             }
         }
     }
-    
+
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         handleTouch(touches)
     }
-    
+
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         playerEntity?.moveComponent?.change(direction: .none)
     }
-    
+
     private func handleTouch(_ touches: Set<UITouch>) {
         guard let location = touches.first?.location(in: self) else { return }
 
@@ -264,3 +266,6 @@ class GamePlayScene: SKScene {
         }
     }
 }
+
+
+

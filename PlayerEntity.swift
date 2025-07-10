@@ -15,8 +15,8 @@ class PlayerEntity: GKEntity {
         // spriteNode = SKSpriteNode(texture: firstTexture)
 
         spriteNode = SKSpriteNode(imageNamed: "idle1.png")
-        spriteNode.anchorPoint = CGPoint(x: 0.5, y: 0.2)
-        spriteNode.setScale(0.8)
+        spriteNode.anchorPoint = CGPoint(x: 0.5, y: 0.75)
+        spriteNode.setScale(1.0)
         spriteNode.name = "player"
         
         // Física
@@ -27,9 +27,8 @@ class PlayerEntity: GKEntity {
         body.usesPreciseCollisionDetection = true
         
         body.categoryBitMask = CollisionCategory.player
-        body.contactTestBitMask = PhysicsCategory.mosquito | PhysicsCategory.bat | CollisionCategory.apple
-        //body.collisionBitMask = 0xFFFFFFFF
-        body.collisionBitMask = PhysicsCategory.ground
+        body.contactTestBitMask = CollisionCategory.apple // e outros se quiser adicionar
+//        body.collisionBitMask = CollisionCategory.ground  // se quiser
 
         
         spriteNode.physicsBody = body
@@ -42,11 +41,11 @@ class PlayerEntity: GKEntity {
         let runAction = SKAction.repeatForever(.animate(with: .init(withFormat: "walk%@.png", range: 1...7), timePerFrame: 0.1))
         
         addComponent(AnimationComponent(node: spriteNode, idleAction: idleAction, runAction: runAction))
-        addComponent(MovementComponent(speed: 3))
+        addComponent(MovementComponent(speed: 2.5))
         
-        let jumpAtlas = SKTextureAtlas(named: "capijump")
+        let jumpAtlas = SKTextureAtlas(named: "capiJump")
         let jumpFrames = (1...8).map { jumpAtlas.textureNamed("jump\($0).png") }
-        let jumpComp = JumpComponent(node: spriteNode, frames: jumpFrames, impulse: CGVector(dx: 0, dy: 150))
+        let jumpComp = JumpComponent(node: spriteNode, frames: jumpFrames, impulse: CGVector(dx: 0, dy: 100))
         addComponent(jumpComp)
     }
 

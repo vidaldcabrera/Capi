@@ -19,14 +19,14 @@ class HUDOverlay: SKNode {
 
     func setupHUD(for sceneSize: CGSize) {
         let size = sceneSize
-        let verticalOffset: CGFloat = size.height * 0.25
+        let verticalOffset: CGFloat = size.height * 0.0
 
         // ====== VIDAS ======
         for i in 0..<GameState.shared.lives {
             let heart = SKSpriteNode(imageNamed: "heart_static")
             heart.name = "heart"
             heart.position = CGPoint(
-                x: -size.width/2 + 120 + CGFloat(i) * 40,
+                x: -size.width/2 + 0 + CGFloat(i) * 40,
                 y: size.height/2 - verticalOffset * 1.05
             )
             heart.zPosition = 100
@@ -83,13 +83,13 @@ class HUDOverlay: SKNode {
         // ====== PAUSE E INVENTÁRIO ======
         let pauseButton = SKSpriteNode(imageNamed: "pause_button")
         pauseButton.name = "pause"
-        pauseButton.position = CGPoint(x: size.width/2 - 120, y: size.height/2 - verticalOffset * 1.1)
+        pauseButton.position = CGPoint(x: size.width/2 , y: size.height/2 - verticalOffset * 1.1)
         pauseButton.zPosition = 100
         addChild(pauseButton)
 
         let inventoryButton = SKSpriteNode(imageNamed: "inventory_button")
         inventoryButton.name = "inventory"
-        inventoryButton.position = CGPoint(x: size.width/2 - 200, y: size.height/2 - verticalOffset * 1.1)
+        inventoryButton.position = CGPoint(x: size.width/2 - 85, y: size.height/2 - verticalOffset * 1.1)
         inventoryButton.zPosition = 100
         addChild(inventoryButton)
     }
@@ -135,7 +135,13 @@ class HUDOverlay: SKNode {
         for i in 0..<value {
             let heart = SKSpriteNode(imageNamed: "heart_static")
             heart.name = "heart"
-            heart.position = CGPoint(x: -size.width/2 + 20 + CGFloat(i) * 40, y: size.height/2 - 50)
+            let verticalOffset: CGFloat = size.height * 0.0
+
+            heart.position = CGPoint(
+                x: -size.width/2 + 0 + CGFloat(i) * 40,
+                y: size.height/2 - verticalOffset * 1.05
+            )
+
             heart.zPosition = 100
             addChild(heart)
         }

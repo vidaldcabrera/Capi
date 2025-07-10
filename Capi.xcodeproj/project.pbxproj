@@ -24,7 +24,6 @@
 		225860342DF85EA50024E3E8 /* SnakeEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225860332DF85EA50024E3E8 /* SnakeEntity.swift */; };
 		225860362DF85EC00024E3E8 /* GroundEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225860352DF85EC00024E3E8 /* GroundEntity.swift */; };
 		225860382DF85EE20024E3E8 /* SceneEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225860372DF85EE20024E3E8 /* SceneEntity.swift */; };
-		2258603B2DF85F0C0024E3E8 /* ProjectTilesComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2258603A2DF85F0C0024E3E8 /* ProjectTilesComponent.swift */; };
 		2258603D2DF85F1F0024E3E8 /* CollisionComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2258603C2DF85F1F0024E3E8 /* CollisionComponent.swift */; };
 		2258603F2DF85F2D0024E3E8 /* DropComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2258603E2DF85F2D0024E3E8 /* DropComponent.swift */; };
 		225860412DF85F3B0024E3E8 /* UpdateComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225860402DF85F3B0024E3E8 /* UpdateComponent.swift */; };
@@ -184,7 +183,6 @@
 		225860332DF85EA50024E3E8 /* SnakeEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnakeEntity.swift; sourceTree = "<group>"; };
 		225860352DF85EC00024E3E8 /* GroundEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroundEntity.swift; sourceTree = "<group>"; };
 		225860372DF85EE20024E3E8 /* SceneEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneEntity.swift; sourceTree = "<group>"; };
-		2258603A2DF85F0C0024E3E8 /* ProjectTilesComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectTilesComponent.swift; sourceTree = "<group>"; };
 		2258603C2DF85F1F0024E3E8 /* CollisionComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollisionComponent.swift; sourceTree = "<group>"; };
 		2258603E2DF85F2D0024E3E8 /* DropComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropComponent.swift; sourceTree = "<group>"; };
 		225860402DF85F3B0024E3E8 /* UpdateComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateComponent.swift; sourceTree = "<group>"; };
@@ -230,7 +228,7 @@
 		2C6CF78F2DE4B65700771D67 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		2C6CF7912DE4B65800771D67 /* Capi_macOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Capi_macOS.entitlements; sourceTree = "<group>"; };
 		2C8C1DD32DF9D392005603D6 /* SKEntityManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKEntityManager.swift; sourceTree = "<group>"; };
-		2C8C1DD62DFB19F7005603D6 /* PlayerEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerEntity.swift; sourceTree = "<group>"; };
+		2C8C1DD62DFB19F7005603D6 /* PlayerEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerEntity.swift; sourceTree = "<group>"; tabWidth = 4; };
 		2C8C1DD92E01965D005603D6 /* Scene1.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Scene1.sks; sourceTree = "<group>"; };
 		2C9149C72E0EE0D900CE4D6F /* RenderComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RenderComponent.swift; sourceTree = "<group>"; };
 		2C9149C92E0EE15500CE4D6F /* BatEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BatEntity.swift; sourceTree = "<group>"; };
@@ -319,7 +317,6 @@
 			children = (
 				2C9149CB2E0EE24D00CE4D6F /* ButtonComponent.swift */,
 				2C9149C72E0EE0D900CE4D6F /* RenderComponent.swift */,
-				2258603A2DF85F0C0024E3E8 /* ProjectTilesComponent.swift */,
 				2258603C2DF85F1F0024E3E8 /* CollisionComponent.swift */,
 				2258603E2DF85F2D0024E3E8 /* DropComponent.swift */,
 				225860402DF85F3B0024E3E8 /* UpdateComponent.swift */,
@@ -764,7 +761,6 @@
 				225860452DF85F690024E3E8 /* MovementComponent.swift in Sources */,
 				225860322DF85E760024E3E8 /* ItensEntity.swift in Sources */,
 				225860472DF85F840024E3E8 /* TextComponent.swift in Sources */,
-				2258603B2DF85F0C0024E3E8 /* ProjectTilesComponent.swift in Sources */,
 				E5C7800C2E1D41A5004DA300 /* ControlSettingsScene.swift in Sources */,
 				E5C7800A2E1D419E004DA300 /* PauseScene.swift in Sources */,
 				225860412DF85F3B0024E3E8 /* UpdateComponent.swift in Sources */,
