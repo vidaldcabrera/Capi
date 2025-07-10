@@ -4,7 +4,6 @@ import GameplayKit
 
 class GamePlayScene: SKScene, SKPhysicsContactDelegate {
     var enemySpawner: EnemySpawner!
-
     var entityManager: SKEntityManager!
     weak var playerEntity: PlayerEntity?
     var mosquito: MosquitoEntity?
@@ -20,14 +19,11 @@ class GamePlayScene: SKScene, SKPhysicsContactDelegate {
         backgroundColor = .black
         physicsWorld.contactDelegate = self
 
-
-        // Cria e posiciona a câmera
         let cameraNode = SKCameraNode()
         addChild(cameraNode)
         camera = cameraNode
         camera?.setScale(0.5)
 
-        // Adiciona HUD à câmera
         let hud = HUDOverlay()
         hud.name = "HUD"
         hud.setupHUD(for: size)
@@ -35,34 +31,27 @@ class GamePlayScene: SKScene, SKPhysicsContactDelegate {
         hud.setScale(0.8)
         cameraNode.addChild(hud)
 
-        // Cria playerEntity
         let player = PlayerEntity()
         playerEntity = player
 
-        // Carrega cenário com SpawnPoint
         let sceneEntity = SceneEntity(named: "Scene1", entityManager: entityManager)
         entityManager.add(entity: sceneEntity)
 
-        // Posiciona jogador no SpawnPoint
         if let scenarioNode = sceneEntity.component(ofType: GKSKNodeComponent.self)?.node,
            let spawnPoint = scenarioNode.childNode(withName: "//SpawnPoint"),
            let playerNode = playerEntity?.component(ofType: GKSKNodeComponent.self)?.node {
-            
             spawnPointPosition = spawnPoint.position
             playerNode.position = spawnPoint.position
         }
 
-        // Adiciona player à cena
         entityManager.add(entity: player)
 
-        // Inimigos
         enemySpawner = EnemySpawner(scene: self, entityManager: entityManager)
         enemySpawner.spawnAll()
         bat = enemySpawner.bat
         mosquito = enemySpawner.mosquito
         spider = enemySpawner.spider
 
-        // Animação de maçãs
         run(.wait(forDuration: 0.1)) { [weak self] in
             self?.animateCollectibles()
         }
@@ -75,7 +64,7 @@ class GamePlayScene: SKScene, SKPhysicsContactDelegate {
 
         if bodies.contains(where: { $0.categoryBitMask == CollisionCategory.player }) &&
             bodies.contains(where: { $0.categoryBitMask == CollisionCategory.apple }) {
-
+            
             print("Coletando maçã")
 
             if let fruit = bodies.first(where: { $0.categoryBitMask == CollisionCategory.apple })?.node {
@@ -84,20 +73,18 @@ class GamePlayScene: SKScene, SKPhysicsContactDelegate {
                     SKAction.removeFromParent()
                 ]))
 
-                // ⬇️ SUBTRAI 1 DO SCORE (SEM NEGATIVO)
                 GameState.shared.score = max(0, GameState.shared.score + 1)
 
-                // ⬇️ ATUALIZA O HUD
                 if let hud = camera?.childNode(withName: "HUD") as? HUDOverlay {
                     hud.updateScore(to: GameState.shared.score)
                 }
             }
-
         }
 
-        handleBatContact(contact)
-        handleSpiderContact(contact)
-        handleMosquitoContact(contact)
+        // Verifica se houve contato com inimigos
+        handleEnemyContact(contact, enemyName: "mosquito")
+        handleEnemyContact(contact, enemyName: "bat")
+        handleEnemyContact(contact, enemyName: "spider")
     }
 
     func animateCollectibles() {
@@ -113,8 +100,7 @@ class GamePlayScene: SKScene, SKPhysicsContactDelegate {
         var count = 0
         sceneNode.enumerateChildNodes(withName: "//apple") { node, _ in
             count += 1
-            print("🍎 Maçã encontrada (\(count))")
-
+            node.name = "apple"
             node.physicsBody = SKPhysicsBody(circleOfRadius: node.frame.width / 2)
             node.physicsBody?.isDynamic = false
             node.physicsBody?.categoryBitMask = CollisionCategory.apple
@@ -136,58 +122,22 @@ class GamePlayScene: SKScene, SKPhysicsContactDelegate {
         updateCameraFollow()
         lastUpdatedTime = currentTime
 
-        // Verifica se o personagem caiu da tela
         if let playerNode = playerEntity?.component(ofType: GKSKNodeComponent.self)?.node,
            let spawn = spawnPointPosition,
            !isRespawning {
 
             if playerNode.position.y < -300 {
-                isRespawning = true
-
-                playerNode.run(SKAction.playSoundFileNamed("Death.mp3", waitForCompletion: false))
-                
-                // Atualiza GameState e HUD
-                GameState.shared.lives -= 1
-                if GameState.shared.lives <= 0 {
-                    // Zera o score ao morrer
-                    GameState.shared.score = 0
-
-                    // Transição para o menu inicial
-                    let transition = SKTransition.fade(withDuration: 0.5)
-                    let mainMenu = GameScene(size: size)
-                    mainMenu.scaleMode = .aspectFill
-                    view?.presentScene(mainMenu, transition: transition)
-                    return
-                }
-                updateLifes()
-
-                let respawnSequence = SKAction.sequence([
-                    SKAction.fadeOut(withDuration: 0.1),
-                    SKAction.wait(forDuration: 0.05),
-                    SKAction.run {
-                        playerNode.physicsBody?.velocity = .zero
-                        playerNode.position = spawn
-                    },
-                    SKAction.fadeIn(withDuration: 0.1),
-                    SKAction.run {
-                        self.isRespawning = false
-                    }
-                ])
-
-                bat?.batStateMachine.update(deltaTime: dt)
-                mosquito?.mosquitoStateMachine.update(deltaTime: dt)
-                playerNode.run(respawnSequence)
+                loseLifeAndRespawn()
             }
         }
     }
+
     func updateLifes() {
         if let hud = camera?.childNode(withName: "HUD") as? HUDOverlay {
             hud.updateLives(to: GameState.shared.lives)
         }
     }
 
-
-    // Câmera segue o jogador diretamente
     private func updateCameraFollow() {
         guard let playerNode = playerEntity?.component(ofType: GKSKNodeComponent.self)?.node else { return }
         camera?.position = playerNode.position
@@ -195,38 +145,73 @@ class GamePlayScene: SKScene, SKPhysicsContactDelegate {
 
     private func sortedBodies(_ contact: SKPhysicsContact) -> (first: SKPhysicsBody, second: SKPhysicsBody) {
         return contact.bodyA.categoryBitMask < contact.bodyB.categoryBitMask
-        ? (contact.bodyA, contact.bodyB)
-        : (contact.bodyB, contact.bodyA)
+            ? (contact.bodyA, contact.bodyB)
+            : (contact.bodyB, contact.bodyA)
     }
 
-    private func handleBatContact(_ contact: SKPhysicsContact) {
-        let bodies = sortedBodies(contact)
-        if bodies.first.categoryBitMask == PhysicsCategory.player &&
-            bodies.second.categoryBitMask == PhysicsCategory.bat {
-            bat?.batStateMachine.enter(BatAttackingState.self)
-        }
-    }
-
-    private func handleSpiderContact(_ contact: SKPhysicsContact) {
+    private func handleEnemyContact(_ contact: SKPhysicsContact, enemyName: String) {
         let bodies = sortedBodies(contact)
         guard let nodeA = bodies.first.node, let nodeB = bodies.second.node else { return }
-        let (spiderNode, otherNode) = nodeA.name == "spider" ? (nodeA, nodeB) : (nodeB, nodeA)
-        if let spiderEntity = spiderNode.entity as? SpiderEntity,
-           let sm = spiderEntity.component(ofType: StateMachineComponent.self)?.stateMachine {
-            if otherNode.name == "player",
-               !(sm.currentState is SpiderAttackState) {
+        
+        // Verifica nomes dos nós
+        guard let nameA = nodeA.name, let nameB = nodeB.name else { return }
+
+        // Verifica se é uma colisão entre jogador e o inimigo esperado
+        let isValidContact = (nameA == enemyName && nameB == "player") || (nameB == enemyName && nameA == "player")
+        guard isValidContact, !isRespawning else { return }
+
+        let enemyNode = (nameA == enemyName) ? nodeA : nodeB
+
+        loseLifeAndRespawn()
+
+        // Estado de ataque por tipo
+        switch enemyName {
+        case "bat":
+            bat?.batStateMachine.enter(BatAttackingState.self)
+        case "mosquito":
+            mosquito?.mosquitoStateMachine.enter(MosquitoAttackingState.self)
+        case "spider":
+            if let spiderEntity = enemyNode.entity as? SpiderEntity,
+               let sm = spiderEntity.component(ofType: StateMachineComponent.self)?.stateMachine {
                 sm.enter(SpiderAttackState.self)
-            } else if otherNode.name == "playerAttack" {
-                sm.enter(SpiderDeadState.self)
             }
+        default:
+            break
         }
     }
 
-    private func handleMosquitoContact(_ contact: SKPhysicsContact) {
-        let bodies = sortedBodies(contact)
-        if bodies.first.categoryBitMask == PhysicsCategory.player &&
-            bodies.second.categoryBitMask == PhysicsCategory.mosquito {
-            mosquito?.mosquitoStateMachine.enter(MosquitoAttackingState.self)
+
+    private func loseLifeAndRespawn() {
+        isRespawning = true
+        GameState.shared.lives -= 1
+        updateLifes()
+
+        if GameState.shared.lives <= 0 {
+            GameState.shared.score = 0
+            let transition = SKTransition.fade(withDuration: 0.5)
+            let mainMenu = GameScene(size: size)
+            mainMenu.scaleMode = .aspectFill
+            view?.presentScene(mainMenu, transition: transition)
+            return
+        }
+
+        if let playerNode = playerEntity?.component(ofType: GKSKNodeComponent.self)?.node,
+           let spawn = spawnPointPosition {
+            playerNode.run(SKAction.playSoundFileNamed("Death.mp3", waitForCompletion: false))
+
+            let respawnSequence = SKAction.sequence([
+                SKAction.fadeOut(withDuration: 0.1),
+                SKAction.wait(forDuration: 0.05),
+                SKAction.run {
+                    playerNode.physicsBody?.velocity = .zero
+                    playerNode.position = spawn
+                },
+                SKAction.fadeIn(withDuration: 0.1),
+                SKAction.run {
+                    self.isRespawning = false
+                }
+            ])
+            playerNode.run(respawnSequence)
         }
     }
 
@@ -266,6 +251,4 @@ class GamePlayScene: SKScene, SKPhysicsContactDelegate {
         }
     }
 }
-
-
 
